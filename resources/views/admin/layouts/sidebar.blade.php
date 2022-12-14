@@ -9,11 +9,16 @@
        <div class="sidebar_user_info">
           <div class="icon_setting"></div>
           <div class="user_profle_side">
-             <div class="user_img"><img class="img-responsive" src="images/layout_img/user_img.jpg" alt="#" /></div>
-             <div class="user_info">
-                <h6>Artihc</h6>
-                {{-- <p><span class="online_animation"></span> Online</p> --}}
+             <div class="user_img">
+               <img class="img-responsive" src="adminpanel/images/logo/logo_icon.png" alt="#" />
+            </div>
+             <div class="logo">
+               <span>Artihc</span>
              </div>
+             {{-- <div class="user_info">
+
+                {{-- <p><span class="online_animation"></span> Online</p> --}}
+             {{-- </div>  --}}
           </div>
        </div>
     </div>

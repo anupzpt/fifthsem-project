@@ -1,0 +1,208 @@
+
+/* bacground colors */
+.bg-light-brown{background-color: var(--light-brown-color);}
+.bg-brown{background-color: var(--brown-color);}
+.bg-light-grey{background-color: var(--light-grey-color);}
+.bg-light-grey-color-shade{background-color: var(--light-grey-color-shade);}
+.bg-dark-grey{background-color: var(--dark-grey-color);}
+.bg-dark{background-color: var(--dark-color);}
+.bg-white{background-color: var(--brown-color);}
+
+/* text colors */
+.text-grey{color: var(--dark-grey-color);}
+.text-brown{color: var(--brown-color);}
+.text-white{color: var(--white-color);}
+.text-dark{color: var(--dark-color);}
+.text-light-grey{color: var(--light-grey-color);}
+
+.font-md{font-size: 1.8rem!important;}
+.fw-6{font-weight: 600!important;}
+
+
+
+/* buttons and links */
+.btn{
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* flexbox and grids */
+.flex{
+    /* centering as default */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+.grid{
+    display: grid;
+}
+.container{
+    max-width: calc(1145px + 20px);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* text stylings */
+.text{
+    line-height: 1.35;
+    opacity: 0.8;
+    font-weight: 400;
+}
+.text-center{text-align: center;}
+.text-uppercase{text-transform: uppercase;}
+.lead{
+    color: var(--dark-grey-color);
+    font-size: 1.8rem;
+}
+
+/* padding */
+.py{
+    padding: 12.5rem 0;
+}
+
+/* section title */
+.section-title h2{
+    text-transform: capitalize;
+    font-size: 3rem;
+    margin-bottom: 0.8rem;
+}
+.section-title .line{
+    height: 1px;
+    width: 61px;
+    background-color: var(--dark-grey-color);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+}
+.line{
+    height: 1px;
+    width: 61px;
+    background-color: var(--dark-grey-color);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+}
+
+/*button in cateogry*/
+.text-center {
+    text-align: center!important;
+}
+.text-capitalize {
+    text-transform: capitalize!important;
+    font-size: 2.5rem;
+
+
+}
+.mb-1 {
+    margin-bottom: 0.25rem!important;
+}
+.mt-3 {
+    margin-top: 1rem!important;
+}
+.fw-bold {
+    font-weight: 700!important;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+
+}
+.d-block {
+    display: block!important;
+}
+/* fonts sizes */
+.font-sm{font-size: 1.4rem!important;}
+.font-md{font-size: 1.8rem!important;}
+.font-lg{font-size: 2.4rem!important;}
+.font-xl{font-size: 3rem!important;}
+
+/* font weights */
+.fw-5{font-weight: 500!important;}
+.fw-6{font-weight: 600!important;}
+.fw-7{font-weight: 700!important;}
+
+/* product info stylings */
+.info{
+    padding: 2rem;
+}
+/* .info .ratings span{
+    margin-left: .2rem;
+}
+.info .name{
+    font-weight: 600;
+    margin: 2rem 0;
+}
+.info .price .old{
+    position: relative;
+}
+.info .price .old::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--dark-grey-color);
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+}
+.info .price .new{
+    margin-left: 1rem;
+    font-weight: 600;
+} */
+/*artist*/
+.bg-white-sm {
+    background-color: var(--light-brown-color);
+}
+.container-art {
+    max-width: calc(1145px - 20px);
+    padding: 0 2rem;
+    margin: 0 auto;
+}
+/* section title stylings */
+.section-title{
+    text-transform: capitalize;
+    font-size: 3.6rem;
+    text-align: center;
+}
+.section-title {
+    margin-bottom: 2.5rem;
+}
+.section-title-about{
+    font-size: 3rem;
+     padding: 3rem;
+   
+    
+}
+.grid {
+    display: grid;
+}
+.text-center {
+    text-align: center;
+}
+
+/* form */
+.form-control {
+    outline: 0;
+    border: none;
+    border-radius: 1rem;
+    height: 6rem;
+    display: block;
+    background-color: var(--light-brown-color);
+    width: 100%;
+}
+/* media queries */
+@media(min-width: 678px){
+    .py-4{
+        padding: 8rem 0;
+    }
+    .section-title {
+        margin-bottom: 4.2rem;
+    }
+}
