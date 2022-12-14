@@ -29,6 +29,11 @@
     <link rel="stylesheet" href="{{ asset('adminpanel/css/perfect-scrollbar.css') }}" />
     <!-- custom css -->
     <link rel="stylesheet" href="{{ asset('adminpanel/css/custom.css') }}" />
+    {{-- font css --}}
+    <link rel="stylesheet" href="{{ asset('adminpanel/css/font.css') }}" />
+
+    {{-- --font logo---- --}}
+
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -62,28 +67,28 @@
     </div>
 
     <!-- jQuery -->
-    <script src="{{asset('adminpanel/js/jquery.min.js')}}" type="text/script"></script>
-    <script src="{{ asset('adminpanel/js/popper.min.js') }}"  type="text/script"></script>
-    <script src="{{ asset('adminpanel/js/bootstrap.min.js') }}"  type="text/script"></script>
+    <<script src="{{ asset('adminpanel/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('adminpanel/js/popper.min.js') }}"></>
+    <script src="{{ asset('adminpanel/js/bootstrap.min.js') }}"></script>
     <!-- wow animation -->
-    <script src="{{ asset('adminpanel/js/animate.js') }}" type="text/script"></script>
+    <script src="{{ asset('adminpanel/js/animate.js') }}"></script>
     <!-- select country -->
-    <script src="{{ asset('adminpanel/js/bootstrap-select.js') }}" type="text/script"></script>
+    <script src="{{ asset('adminpanel/js/bootstrap-select.js') }}"></script>
     <!-- owl carousel -->
-    <script src="{{ asset('adminpanel/js/owl.carousel.js') }}" type="text/script"></script>
+    <script src="{{ asset('adminpanel/js/owl.carousel.js') }}"></script>
     <!-- chart js -->
-    <script src="{{ asset('adminpanel/js/Chart.min.js') }}" type="text/script"></script>
-    <script src="{{ asset('adminpanel/js/Chart.bundle.min.js') }}" type="text/script"></script>
-    <script src="{{ asset('adminpanel/js/utils.js') }}" type="text/script"></script>
-    <script src="{{ asset('adminpanel/js/analyser.js') }}" type="text/script"></script>
+    <script src="{{ asset('adminpanel/js/Chart.min.js') }}"></script>
+    <script src="{{ asset('adminpanel/js/Chart.bundle.min.js') }}"></script>
+    <script src="{{ asset('adminpanel/js/utils.js') }}"></script>
+    <script src="{{ asset('adminpanel/js/analyser.js') }}"></script>
     <!-- nice scrollbar -->
-    <script src="{{ asset('adminpanel/js/perfect-scrollbar.min.js') }}" type="text/script"></script>
+    <script src="{{ asset('adminpanel/js/perfect-scrollbar.min.js') }}"></script>
     <script>
         var ps = new PerfectScrollbar('#sidebar');
     </script>
     <!-- custom js -->
-    <script src="{{ asset('adminpanel/js/custom.js') }}" type="text/script"></script>
-    <script src="{{ asset('adminpanel/js/chart_custom_style1.js') }}" type="text/script"></script>
+    <script src="{{ asset('adminpanel/js/custom.js') }}"></script>
+    <script src="{{ asset('adminpanel/js/chart_custom_style1.js') }}"></script>
 </body>
 
 </html>
