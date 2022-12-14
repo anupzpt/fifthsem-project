@@ -31,6 +31,9 @@
     <link rel="stylesheet" href="{{ asset('adminpanel/css/custom.css') }}" />
     {{-- font css --}}
     <link rel="stylesheet" href="{{ asset('adminpanel/css/font.css') }}" />
+    {{-- personal css --}}
+    <link rel="stylesheet" href="{{ asset('adminpanel/css/main.css') }}" />
+
 
     {{-- --font logo---- --}}
 

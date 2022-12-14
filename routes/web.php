@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Category\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,8 @@ Route::get('/', function () {
 Route::get('/user', function () {
     return view('user.layout.master');
 });
+
+Route::resource('/Admin/Category',CategoryController::class);
+
+
+
