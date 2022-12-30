@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Category;
+namespace App\Http\Controllers\Admin\Product;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class CategoryController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $response = Category::all();
-        return view('admin.Category.index',compact('response'));
+        return view('admin.Product.index');
+
+        //
     }
 
     /**
@@ -27,13 +26,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-
-        $response=Category::where([
-            ['isParent','=','1'],
-            ['status','=','A'],
-            ])
-            ->get();
-        return view('admin.Category.create',compact('response'));
+        return view('admin.Product.create');
+        //
     }
 
     /**
@@ -44,8 +38,6 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::Create($request->all());
-        return redirect()->route('Category.index');
         //
     }
 
@@ -68,14 +60,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //category/edit{id}
-        $category = Category::find($id);
-        $response=Category::where([
-            ['isParent','=','1'],
-            ['status','=','A'],
-            ])
-            ->get();
-        return view('admin.category.edit', compact('category', 'response'));
+        //
     }
 
     /**
@@ -87,15 +72,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        // dd($request->all());
-        // dd(($request->isParent!=null) ? $request->isParent : '0');
-        $newCategory= Category::find($id);
-        DB::table('categories')->where('parentName', $newCategory["name"])->delete();
-        $newCategory["isParent"]=($request->isParent!=null) ? $request->isParent : '0';
-        $newCategory->update ($request->all());
-        return redirect()->route('Category.index');
-
+        //
     }
 
     /**
