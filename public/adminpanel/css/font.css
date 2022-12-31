@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Miss+Fajardose&display=swap");
 .logo {
+    margin-left: 35px;
     font-size: 5rem;
     font-family: "Miss Fajardose", cursive;
   }

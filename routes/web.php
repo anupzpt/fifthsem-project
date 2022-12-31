@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\Dashboard\DashboardController;
+use App\Http\Controllers\Admin\Product\ProductController;
+use App\Http\Controllers\Category\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.dashboard');
-});
+// Route::get('/', function () {
+//     return view('admin.dashboard')->name('Dashboard');
+// });
 Route::get('/user', function () {
     return view('user.layout.master');
 });
+Route::resource('/admin',DashboardController::class);
+Route::resource('/Admin/Category',CategoryController::class);
+Route::resource('/Admin/Product',ProductController::class);
+
+
+
 Route::get('/login', function () {
     return view('login.login');
 });

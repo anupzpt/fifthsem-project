@@ -33,9 +33,9 @@
         -> button section
         -> pagination
         -> model bt
-    17. Gallery Section     
+    17. Gallery Section
     18. Icons
-    19. Invoice  
+    19. Invoice
     20. Price table
     21. Mail
     22. Price table page
@@ -44,7 +44,7 @@
     25. Login Section
     26. Error
     27. Map
-   
+
 -------------------------------------------------------------------*/
 
 
@@ -513,7 +513,9 @@ a:focus {
 .blue2_bg {
     background: #03a9f4 !important;
 }
-
+.blue3_bg{
+    background: #140a6430 !important;
+}
 .red_color {
     color: #e91e63 !important;
 }
@@ -555,12 +557,13 @@ a:focus {
 }
 
 .heading1 h2 {
+
     line-height: normal;
     font-size: 21px;
     font-weight: 400;
     margin: 0;
     padding-left: 0;
-    color: #15283c;
+    color: #f0f3f7;
     letter-spacing: 0px;
 }
 
@@ -618,7 +621,7 @@ a:focus {
 
 
 /*==============
-    - topbar 
+    - topbar
 ==============*/
 
 .topbar {
@@ -1014,11 +1017,11 @@ a[data-toggle="collapse"] {
     letter-spacing: 0;
 }
 
-.user_img {
+/* .user_img {
     width: 75px;
     height: 75px;
     float: left;
-}
+} */
 
 .logo_section {
     padding: 0;
@@ -2134,7 +2137,7 @@ i.icon {
 
 
 /*------------------------------------------------------------------
-    16. General Elements 
+    16. General Elements
 -------------------------------------------------------------------*/
 
 .link.today {
@@ -2266,7 +2269,7 @@ i.icon {
 
 
 /*------------------------------------------------------------------
-    17. Gallery Section   
+    17. Gallery Section
 -------------------------------------------------------------------*/
 
 .gallery_section_inner .column {
@@ -2291,7 +2294,7 @@ i.icon {
 
 
 /*------------------------------------------------------------------
-    18. Icons  
+    18. Icons
 -------------------------------------------------------------------*/
 
 .fontawesome-icons-list .fw_icon a {
@@ -2332,7 +2335,7 @@ i.icon {
 
 
 /*------------------------------------------------------------------
-    19. Invoice  
+    19. Invoice
 -------------------------------------------------------------------*/
 
 h2.invoice_head {
@@ -2413,7 +2416,7 @@ h2.invoice_head small {
 
 
 /*------------------------------------------------------------------
-    20. Price table  
+    20. Price table
 -------------------------------------------------------------------*/
 
 .price_table table.table {
