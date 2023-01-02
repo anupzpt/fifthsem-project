@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\login\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('admin.dashboard')->name('Dashboard');
 // });
-Route::get('/user', function () {
+Route::get('/', function () {
     return view('user.layout.master');
 });
 Route::resource('/admin',DashboardController::class);
@@ -28,9 +29,12 @@ Route::resource('/Admin/Product',ProductController::class);
 
 
 
-Route::get('/login', function () {
-    return view('login.login');
-});
-Route::get('/register', function () {
-    return view('login.register');
-});
+// Route::get('/login', function () {
+//     return view('login.login');
+// // });
+// Route::get('/register', function () {
+//     return view('login.register');
+// });
+Route::get('login',[UserController::class, 'loginIndex'])->name('login');
+Route::get('register',[UserController::class, 'registerIndex'])->name('register');
+Route::post('register',[UserController::class, 'save'])->name('register');

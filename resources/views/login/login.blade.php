@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   </head>
-    <title>Register</title>
+    <title>Login</title>
     <link rel="stylesheet" href="loginpanel/css/style.css">
 </head>
 <body>
@@ -17,7 +17,7 @@
                     <img src="loginpanel/images/logo-black.png" class="img-fluid" alt="logo">
                 </div>
                 <form class="rounded bg-white shadow p-5">
-                    <p class="text-dark fw-bolder fs-4 mb-2">Sign In to Artihc</p>
+                    <p class="text-dark fw-bolder fs-4 mb-2">Welcome to Artihc! Please login</p>
                     <div class="fw-normal text-muted mb-4">
                         New Here? <a href="{{url('/register')}}" class="text-primary fw-bold text-decoration-none">Create an Account</a>
                     </div>
@@ -40,9 +40,9 @@
                     <a hfer="#" class="btn btn-light login_with w-100 mb-3">
                         <img src="loginpanel/images/facebook-icon.svg" class="img-fluid me-3">Continue with Facebook</a>
                     </a>
-                    <a hfer="#" class="btn btn-light login_with w-100 mb-3">
+                    <!-- <a hfer="#" class="btn btn-light login_with w-100 mb-3">
                         <img src="loginpanel/images/linkedin-icon.svg" class="img-fluid me-3">Continue with Linkedin</a>
-                    </a>
+                    </a> -->
                 </form>
             </div>
         </div>

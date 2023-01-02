@@ -34,6 +34,14 @@ body{
     border-color: var(--light-white);
     color: var(--gray);
 }
+.wrapper .selected{
+    background-color: var(--light-white);
+    border-color: var(--light-white);
+    color: var(--gray);
+}
+.wrapper .selected:focus{
+    box-shadow: none;
+}
 .wrapper input:focus{
     box-shadow: none;
 }
@@ -57,4 +65,7 @@ body{
 }
 .wrapper .login_with img{
     max-width:7%;
+}
+.wrapper .check{
+    border-color:blue;
 }
