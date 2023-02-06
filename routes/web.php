@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\login\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Models\login\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +22,12 @@ use Illuminate\Support\Facades\Route;
 //     return view('admin.dashboard')->name('Dashboard');
 // });
 Route::get('/', function () {
-    return view('user.layout.master');
-});
-Route::resource('/admin',DashboardController::class);
-Route::resource('/Admin/Category',CategoryController::class);
-Route::resource('/Admin/Product',ProductController::class);
+    return view('user.layout.master', ['list' => User::all()]);
+})->name('dashboard');
+
+Route::resource('/admin', DashboardController::class);
+Route::resource('/Admin/Category', CategoryController::class);
+Route::resource('/Admin/Product', ProductController::class);
 
 
 
@@ -35,6 +37,10 @@ Route::resource('/Admin/Product',ProductController::class);
 // Route::get('/register', function () {
 //     return view('login.register');
 // });
-Route::get('login',[UserController::class, 'loginIndex'])->name('login');
-Route::get('register',[UserController::class, 'registerIndex'])->name('register');
-Route::post('register',[UserController::class, 'save'])->name('register');
+Route::get('login', [UserController::class, 'loginIndex'])->name('login');
+Route::post('login', [UserController::class, 'authentication'])->name('login');
+
+Route::get('register', [UserController::class, 'registerIndex'])->name('register');
+Route::post('register', [UserController::class, 'save'])->name('register');
+
+Route::get('logout', [UserController::class, 'logout'])->name('logout');

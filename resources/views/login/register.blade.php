@@ -18,6 +18,8 @@
                 <div class="logo">
                     <img src="loginpanel/images/logo-black.png" class="img-fluid" alt="logo">
                 </div>
+
+                
                 <form class="rounded bg-white shadow p-5" action="{{route('register')}}" method="post">
                     @csrf
                     <p class="text-dark fw-bolder fs-4 mb-2">Create your Artihc Account</p>
@@ -32,6 +34,9 @@
                     <a hfer="#" class="btn btn-light login_with w-100 mb-4">
                         <img src="loginpanel/images/facebook-icon.svg" class="img-fluid me-3">Sing in with Facebook</a>
                     </a>
+                    @if(Session::has('error'))
+                    <p class="text-danger">{{Session::get('error')}}</p>
+                    @endif
 
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control @error ('name') is-invalid @enderror" id="floatingInput" name="name" placeholder="Full Name">
@@ -58,13 +63,13 @@
                             Use at least 8 characters with a mix of letters, numbers & symbols.
                         </span>
                     </div>
-                    <div class="input-group mb-3">
+                    <!-- <div class="input-group mb-3">
                         <label class="input-group-text selected" for="inputGroupSelect01">Are you a ?</label>
                         <select class="form-select selected" name="user_type" id="inputGroupSelect01">
-                            <option selected value="User" >User</option>
-                            <option value="Artist" >Artist</option>
+                            <option selected value="User">User</option>
+                            <option value="Artist">Artist</option>
                         </select>
-                    </div>
+                    </div> -->
 
                     <div class="form-check d-flex align-items-center">
                         <input class="form-check-input check" type="checkbox" id="gridCheck">
@@ -72,7 +77,7 @@
                             I Agree <a href="#">Terms and conditions</a>.
                         </label>
                     </div>
-                    
+
 
                     <button type="submit" class="btn btn-primary submit_btn w-100 my-4">Continue</button>
                     <!-- <div class="text-center text-muted text-uppercase mb-3">or</div>
