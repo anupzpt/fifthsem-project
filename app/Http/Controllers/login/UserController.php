@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\login;
+
 use App\Http\Controllers\Controller;
-Use App\Models\login\User;
+use App\Models\login\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
@@ -24,7 +27,7 @@ class UserController extends Controller
         // dd($req->all());
         $req->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users|email',
             'password' => 'required',
             'contact' => 'required',
         ]);
@@ -34,8 +37,41 @@ class UserController extends Controller
             'contact' => $req->contact,
             'email' => $req->email,
             'password' => Hash::make($req->password),
-            'user_type' =>$req->user_type,
+            'user_type' => $req->user_type,
         ]);
-        return redirect()->route('login');
+
+        // login user here
+        if (Auth::attempt($req->only('email', 'password'))) {
+            // dd('log in');
+            return redirect()->route('dashboard');
+        } else {
+            // dd('user not found');
+            return redirect('register')->withError('Error');
+        }
+    }
+
+    // login authentication
+    public function authentication(request $req)
+    {
+        // dd($req->all());
+
+        $req->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if (Auth::attempt($req->only('email', 'password'))) {
+            // dd('log in');
+            return redirect()->route('dashboard');
+        } else {
+            // dd('user not found');
+            return redirect('login')->withError('Login details are not valid');
+        }
+    }
+
+    public function logout()
+    {
+        auth()->logout();
+        return redirect()->route('dashboard');
     }
 }

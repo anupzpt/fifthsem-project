@@ -17,14 +17,14 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('email')->unique()->nullable();
-            $table->string('contact')->unique()->nullable();
+            $table->string('contact')->nullable();
             $table->string('password')->nullable();
             $table->string('img_path')->nullable();
             $table->string('address')->nullable();
             $table->string('user_type')->nullable();
+            $table->string('status')->nullable();
             $table->string('remember_token')->nullable();
             $table->timestamps();
-
         });
     }
 
