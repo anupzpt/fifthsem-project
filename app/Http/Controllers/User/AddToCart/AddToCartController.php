@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Product;
-use App\Http\Controllers\Controller;
-use App\Models\Product\Product;
-use App\Models\Category\Category;
+namespace App\Http\Controllers\User\AddToCart;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-class ProductController extends Controller
+
+class AddToCartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,6 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // $response = Product::all();
-        // return view('admin.Product.index',compact('response'));
-        return view('admin.Product.index');
         //
     }
 
@@ -29,10 +24,6 @@ class ProductController extends Controller
      */
     public function create()
     {
-        // $response = Category::whereNotNull('parent_id');
-        $response = Category::get()->whereNotNull('parent_id');
-        // dd($response);
-        return view('admin.Product.create',compact('response'));
         //
     }
 
@@ -44,26 +35,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'price' => 'required',
-            'description' => 'required',
-        ]);
-       $product = new Product;
-       $product->name =$request->name;
-       $product->category_id =$request->category_id;
-       $product->description =$request->description;
-       $product->price =$request->price;
-
-        if($request->hasFile('image'))
-        {
-            $image =$request->file('image');
-            $photo = $image->store('images','public');
-            $product->image=$request->image;
-        }
-        $product->save();
-        // return redirect()->action("index","Product")->with('status','Product Added Successfully');
-        return redirect()->action([ProductController::class, 'index'])->with('status','Product Added Successfully');
+        //
     }
 
     /**

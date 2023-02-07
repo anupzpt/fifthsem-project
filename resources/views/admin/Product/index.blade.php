@@ -1,6 +1,9 @@
 @extends('admin.layouts.master')
 @section('content')
 <div class="col-md-12  ">
+    @if(session('status'))
+    <h6 class="alert alert-success">{{session('status')}}</h6>
+    @endif
     <div class="margin_top_30 padding-bottom_2 d-flex justify-content-end ">
         <a class="btn btns btn-primary p-3 " href="{{ route('Product.create') }}" type="button">Add Prdouct</a>
     </div>
@@ -23,7 +26,22 @@
                    </tr>
                 </thead>
                 <tbody>
-
+                    @php
+                        $sn = 1;
+                    @endphp
+                    {{-- @foreach ($product as $item)
+                        <tr>
+                            <td>{{ $sn++ }}</td>
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->price }}</td>
+                            <td>{{ $item->image }}</td>
+                            <td>
+                                <a href="{{ route('Category.edit', [$item->categoryId]) }}" class="ml-5 mt-1"><i
+                                        class="fa-solid fa-pen "></i></a>
+                            <td>
+                        </tr>
+                    @endforeach --}}
                 </tbody>
              </table>
           </div>

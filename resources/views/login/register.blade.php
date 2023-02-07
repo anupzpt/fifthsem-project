@@ -72,10 +72,10 @@
                             I Agree <a href="#">Terms and conditions</a>.
                         </label>
                     </div>
-                    
+
 
                     <button type="submit" class="btn btn-primary submit_btn w-100 my-4">Continue</button>
-                    <!-- <div class="text-center text-muted text-uppercase mb-3">or</div>
+                    <div class="text-center text-muted text-uppercase mb-3">or</div>
                     <a hfer="#" class="btn btn-light login_with w-100 mb-3">
                         <img src="loginpanel/images/google-icon.svg" class="img-fluid me-3">Continue with Google</a>
                     </a>
@@ -84,7 +84,7 @@
                     </a>
                     <a hfer="#" class="btn btn-light login_with w-100 mb-3">
                         <img src="loginpanel/images/linkedin-icon.svg" class="img-fluid me-3">Continue with Linkedin</a>
-                    </a> -->
+                    </a>
                 </form>
             </div>
         </div>

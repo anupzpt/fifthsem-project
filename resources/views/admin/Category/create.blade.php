@@ -17,6 +17,7 @@
                 <label for="exampleInputPassword1">Name</label>
                 <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Category"  name="name">
               </div>
+
               <div class="form-group  p-2">
                 <label for="exampleInputPassword1">Isparent</label>
                 <label class="switch ml-3">
@@ -25,11 +26,11 @@
                   </label>
               </div>
               <div class="form-group  p-2" id="dropdown" style="display: none">
-               <select name= "parentName" class="form-control" id="">
+               <select name= "parent_id" class="form-control" id="">
                     <label for="">Select Category</label>
                 <option value="" hidden>Select Parent Category</option>
                     @foreach ($response as $value)
-                        <option value="{{$value->name}}">{{$value->name}}</option>
+                        <option value="{{$value->categoryId}}">{{$value->name}}</option>
                     @endforeach
                </select>
               </div>

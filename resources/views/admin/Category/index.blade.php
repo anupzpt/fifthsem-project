@@ -33,16 +33,16 @@
                                     <td>{{ $sn++ }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>
-                                        @if ($item->isParent == 1)
-                                            <h5><span class="badge  badge-pill badge-info text-white">Yes</span></h5>
+                                        @if ($item->parent_id == null)
+                                            <h5><span class="badge  badge-pill bg-success text-white">Y</span></h5>
                                         @else
-                                            <h5><span class="badge  badge-pill bg-danger text-white">No</span></h5>
+                                            <h5><span class="badge  badge-pill bg-danger text-white">N</span></h5>
                                         @endif
                                     </td>
 
                                     <td>
-                                        @if($item->parentName != null)
-                                        <h5><span class="badge  badge-pill badge-info text-white">{{$item->parentName}}</span></h5>
+                                        @if($item->parent_id != null)
+                                        <h5><span class="badge  badge-pill badge-info text-white">{{$item->parent->name}}</span></h5>
                                         @else
                                         <h5><span class="badge  badge-pill badge-info text-white"></span></h5>
                                         @endif
@@ -57,6 +57,8 @@
                                     <td>
                                         <a href="{{ route('Category.edit', [$item->categoryId]) }}" class="ml-5 mt-1"><i
                                                 class="fa-solid fa-pen "></i></a>
+                                                <a href="{{ route('Category.show', [$item->categoryId]) }}" class="ml-5 mt-1"><i
+                                                    class="fa-solid fa-pen "></i></a>
                                         {{-- <a href="{{route('Category.edit',[$item->categoryId])}}" class="btn btn-primary">Edit</a> --}}
                                         {{-- @if($item->isParent == 0)
                                         <a href="" class="fa-solid fa-trash-can ml-4  mt-1 btn-delete"></a>
