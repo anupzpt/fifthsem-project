@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Artihc</title>
     <!-- normalize css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- font awesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
-        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- custom utilities css -->
     <link rel="stylesheet" href="userpanel/css/utilities.css" />
     <!-- custom main css -->
@@ -53,14 +50,14 @@
                 <div class="navbar-collapse flex">
                     <!-- nav list -->
                     <ul class="navbar-nav text-uppercase">
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="#" class="nav-link active-link">
                                 <span class="nav-link-text">home</span>
                                 <span class="dropdown-icon">
-                                    <!-- <i class="fas fa-chevron-down"></i> -->
+                                     <i class="fas fa-chevron-down"></i>
                                 </span>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a href="#home" class="nav-link">
                                 <span class="nav-link-text">Home</span>
@@ -95,19 +92,49 @@
                                 <span class="nav-link-text">Contact</span>
                             </a>
                         </li>
+                        @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('login')}}">
+                                <span class="nav-link-text">Login</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('register')}}">
+                                <span class="nav-link-text">Signup</span>
+                            </a>
+                        </li>
+                        @endguest
                     </ul>
+
+                    @auth
+                    <div class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="nav-link-text">{{auth()->user()->name}}</span>
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="#" class="btn text-white">
+                            <i class="fas fa-cart-shopping"></i>
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="{{route('logout')}}" class="nav-link">
+                            <span class="nav-link-text">Logout</span>
+                        </a>
+                    </div>
+                    @endauth
+
+
 
                     <!-- end of nav list -->
 
                     <!-- account icons -->
-                    <div class="account-info">
+                    <!-- <div class="account-info">
                         <a href="#" class="btn text-white">
                             <i class="fas fa-cart-shopping"></i>
                         </a>
-                        <a href="#" class="btn text-white">
-                            <i class="fas fa-user"></i>
-                        </a>
-                    </div>
+
+                    </div> -->
 
                     <!-- end of account icons -->
                 </div>
@@ -143,8 +170,7 @@
                         <h1>Arts & Designs</h1>
                         <div class="line"></div>
                         <!-- made change here  -->
-                        <div class="toggler-and-category bg-brown text-white flex"
-                            style="margin-left: 40%; margin-top: 1%">
+                        <div class="toggler-and-category bg-brown text-white flex" style="margin-left: 40%; margin-top: 1%">
                             <div class="category-list">
                                 <span>Category</span>
                                 <button type="button" class="btn category-toggler-btn text-white">
@@ -536,27 +562,22 @@
                         <div class="contact-left text-dark">
                             <form action="" method="" class="text-center text-white">
                                 <div class="form">
-                                    <input type="text" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Your Name" />
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your Name" />
                                 </div>
                                 <div class="form">
-                                    <input type="email" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Your Email" />
+                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Your Email" />
                                 </div>
                                 <div class="form">
                                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">
-                                    Message</textarea >
+                                    Message</textarea>
                                 </div>
                                 <div>
-                                    <button
-                                    type="submit"
-                                    class="btn-header text-white bg-brown"
-                                    >
-                                    Send
+                                    <button type="submit" class="btn-header text-white bg-brown">
+                                        Send
                                     </button>
                                     -->
                                 </div>
-                  <!-- <input type = "text" class = "form-control fw-6" placeholder="Full Name" name = "full_name">
+                                <!-- <input type = "text" class = "form-control fw-6" placeholder="Full Name" name = "full_name">
                           <input type = "email" class = "form-control fw-6" placeholder="E-mail" name = "email">
                           <textarea rows = "5" class = "form-control fw-6" placeholder="Message" name = "message"></textarea>
                                     <button type="submit" class="btn bg-green">Send</button> -->
@@ -580,8 +601,7 @@
         <!-- end of footer -->
     </div>
     <!-- jquery cdn -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <!-- slick slider js -->
     <script src="userpanel/plugins/slick-1.8.1/slick/slick.js"></script>
     <!-- custom js -->
