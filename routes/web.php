@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\login\UserController;
+use App\Http\Controllers\login\SocialAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Models\login\User;
 
@@ -44,3 +45,6 @@ Route::get('register', [UserController::class, 'registerIndex'])->name('register
 Route::post('register', [UserController::class, 'save'])->name('register');
 
 Route::get('logout', [UserController::class, 'logout'])->name('logout');
+
+Route::get('/redirect', [socialAuthController::class,'redirectToProvider'])->name('googleLogin');
+Route::get('/auth/google/callback', [socialAuthController::class,'handleCallback'])->name('google.login.callback');

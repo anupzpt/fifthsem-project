@@ -28,10 +28,10 @@
                     </div>
                     <div class="text-center text-muted text-uppercase mb-3">or</div>
 
-                    <a hfer="#" class="btn btn-light login_with w-100 mb-4">
+                    <a href="{{route('googleLogin')}}" class="btn btn-light login_with w-100 mb-4">
                         <img src="loginpanel/images/google-icon.svg" class="img-fluid me-3">Sing in with Google</a>
                     </a>
-                    <a hfer="#" class="btn btn-light login_with w-100 mb-4">
+                    <a href="#" class="btn btn-light login_with w-100 mb-4">
                         <img src="loginpanel/images/facebook-icon.svg" class="img-fluid me-3">Sing in with Facebook</a>
                     </a>
                     @if(Session::has('error'))
@@ -80,6 +80,8 @@
 
 
                     <button type="submit" class="btn btn-primary submit_btn w-100 my-4">Continue</button>
+                    <a href="{{route('dashboard')}}" class="btn btn-primary login_with w-100 mb-3">Back to Home Page</a>
+                    </a>
                     <!-- <div class="text-center text-muted text-uppercase mb-3">or</div>
                     <a hfer="#" class="btn btn-light login_with w-100 mb-3">
                         <img src="loginpanel/images/google-icon.svg" class="img-fluid me-3">Continue with Google</a>
