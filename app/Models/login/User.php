@@ -9,5 +9,5 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use HasFactory;
-    protected $fillable = ['name', 'contact', 'email',  'password','googleId'];
+    protected $fillable = ['name', 'contact', 'email',  'password','googleId', 'facebookId'];
 }
