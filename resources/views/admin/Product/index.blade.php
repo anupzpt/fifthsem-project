@@ -18,10 +18,13 @@
              <table class="table ">
                 <thead>
                    <tr>
+                    <th>SN</th>
+
                       <th>Product Name</th>
                       <th>Category Name</th>
                       <th>Price<th>
                       <th>Image</th>
+                      <th></th>
                       <th>Action</th>
                    </tr>
                 </thead>
@@ -29,19 +32,28 @@
                     @php
                         $sn = 1;
                     @endphp
-                    {{-- @foreach ($product as $item)
+                    @foreach ($response as $item)
                         <tr>
                             <td>{{ $sn++ }}</td>
                             <td>{{ $item->name }}</td>
-                            <td>{{ $item->name }}</td>
+                            <td>{{$item->Categoryname}} </td>
                             <td>{{ $item->price }}</td>
-                            <td>{{ $item->image }}</td>
+                            <td></td>
                             <td>
-                                <a href="{{ route('Category.edit', [$item->categoryId]) }}" class="ml-5 mt-1"><i
-                                        class="fa-solid fa-pen "></i></a>
+                                <img src="{{asset('/uploads'.'/'.$item->image)}}" width="70px" height="70px" alt="image">
+                            </td>
                             <td>
+                                        <button class="btn btn-primary"><a href="{{ route('Product.edit', [$item->id]) }}"
+                                            class="text-white"><span class="fas fa-pencil "></a></button>
+                            <td>
+                                <form action="{{ route('Product.destroy', [$item->id]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                        <button class="btn btn-danger"  data-bs-target="#exampleModal"><span
+                                            class="fas fa-trash "></a></button>
+                                </form>
                         </tr>
-                    @endforeach --}}
+                    @endforeach
                 </tbody>
              </table>
           </div>
@@ -50,3 +62,4 @@
  </div>
 </div>
 @endsection
+

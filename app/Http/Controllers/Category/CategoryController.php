@@ -96,7 +96,6 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
         $data = array(
             'name' => $request->name,
             'parent_id' => $request->parent_id,

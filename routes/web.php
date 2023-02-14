@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\User\AddToCart\AddToCartController;
 use App\Http\Controllers\login\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Models\login\User;
@@ -28,7 +29,7 @@ Route::get('/', function () {
 Route::resource('/admin', DashboardController::class);
 Route::resource('/Admin/Category', CategoryController::class);
 Route::resource('/Admin/Product', ProductController::class);
-
+Route::resource('/Customer/AddToCart', AddToCartController::class);
 
 
 // Route::get('/login', function () {
