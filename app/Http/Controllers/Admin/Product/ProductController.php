@@ -82,7 +82,6 @@ class ProductController extends Controller
     {
         //
         $product = Product::find($id);
-        // dd($product );
         $response = Category::get()->whereNotNull('parent_id');
         return view('admin.Product.edit', compact('product', 'response'));
     }
@@ -99,7 +98,6 @@ class ProductController extends Controller
         //
         $productDetails = Product::find($id);
         $response=$request->all();
-        // dd($request->all());
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $fileName = date('dmY') . time() . '.' . $image->getClientOriginalExtension();
@@ -121,7 +119,8 @@ class ProductController extends Controller
         //
         $product= Product::find($id);
         $product->delete();
-        return redirect()->route('Product.index');
-        // return response()->json('success');
+        return redirect()->action([ProductController::class, 'index'])->with('status', 'Product Deleted Successfully');
+
+        // return redirect()->route('Product.index');
     }
 }
