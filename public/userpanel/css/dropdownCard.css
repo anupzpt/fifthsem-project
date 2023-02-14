@@ -1,8 +1,14 @@
+.user-pic{
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 20px;
+}
 .sub-menu-wrap{
     position: absolute;
     top: 100%;
-    right: 10%;
-    width: 320px;
+    right: 3%;
+    width: 300px;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s;
@@ -13,8 +19,11 @@
 
 }
 .sub-menu{
-    background: #ffff;
-    padding:20px;
+    background: rgba(0,0,0,0.6);
+    padding-top:20px;
+    padding-bottom:10px;
+    padding-right:20px;
+    padding-left:20px;
     margin: 10px;
 }
 .user-info{
@@ -23,6 +32,7 @@
 }
 .user-info h3{
     font-weight: 500;
+    color: #ffff;
 }
 .user-info img{
     width: 60px;
@@ -40,7 +50,7 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #525252;
+    color: #ffff;
     margin: 12px 0;
 }
 .sub-menu-link p{
