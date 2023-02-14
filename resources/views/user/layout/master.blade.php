@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="userpanel/css/utilities.css" />
     <!-- custom main css -->
     <link rel="stylesheet" href="userpanel/css/main.css" />
+     <!-- dropdown card css -->
+     <link rel="stylesheet" href="userpanel/css/dropdownCard.css" />
     <!-- slick slider css -->
     <link rel="stylesheet" href="userpanel/plugins/slick-1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="userpanel/plugins/slick-1.8.1/slick/slick-theme.css" />
@@ -108,8 +110,8 @@
 
                     @auth
                     <div class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span class="nav-link-text">{{auth()->user()->name}}</span>
+                        <a class="nav-link"  href="#">
+                            <span class="nav-link-text"  id="toggleMenu">{{auth()->user()->name}}</span>
                         </a>
                     </div>
                     <div class="nav-item">
@@ -117,11 +119,11 @@
                             <i class="fas fa-cart-shopping"></i>
                         </a>
                     </div>
-                    <div class="nav-item">
+                    <!-- <div class="nav-item">
                         <a href="{{route('logout')}}" class="nav-link">
                             <span class="nav-link-text">Logout</span>
                         </a>
-                    </div>
+                    </div> -->
                     @endauth
 
 
@@ -139,6 +141,35 @@
                     <!-- end of account icons -->
                 </div>
                 <!-- end of main navigation list -->
+            </div>
+            <div class="sub-menu-wrap" id="subMenu">
+                <div class="sub-menu">
+                    <div class="user-info">
+                        <img src="userpanel/images/user.png">
+                        <h3>Krishna Pathak</h3>
+                    </div>
+                    <hr>
+                    <a href="#" class="sub-menu-link">
+                        <img src="userpanel/images/happiness.png">
+                        <p>Manage Account</p>
+                        <span>></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="userpanel/images/order.png">
+                        <p>My Order</p>
+                        <span>></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="userpanel/images/cancel.png">
+                        <p>Return & Cancellation</p>
+                        <span>></span>
+                    </a>
+                    <a href="{{route('logout')}}" class="sub-menu-link">
+                        <img src="userpanel/images/logout.png">
+                        <p>Logout</p>
+                        <span>></span>
+                    </a>
+                </div>
             </div>
         </nav>
         <!-- end of navbar -->
@@ -606,6 +637,14 @@
     <script src="userpanel/plugins/slick-1.8.1/slick/slick.js"></script>
     <!-- custom js -->
     <script src="userpanel/js/script.js"></script>
+    <script>
+        let subMenu = document.getElementById("subMenu");
+
+       var toggleMenu = document.getElementById("toggleMenu");
+       toggleMenu.addEventListener('click', ()=>{
+        subMenu.classList.toggle("open-menu");
+       })
+    </script>
 </body>
 
 </html>
