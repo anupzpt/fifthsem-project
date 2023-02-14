@@ -110,21 +110,23 @@
 
                     @auth
                     <div class="nav-item">
-                        <a class="nav-link"  href="#">
-                            <span class="nav-link-text"  id="toggleMenu">{{auth()->user()->name}}</span>
-                        </a>
-                    </div>
-                    <div class="nav-item">
                         <a href="#" class="btn text-white">
                             <i class="fas fa-cart-shopping"></i>
                         </a>
                     </div>
+                    <div class="nav-item">
+                        <a class="nav-link"  href="#">
+                            <!-- <span class="nav-link-textt"  id="toggleMenu">{{auth()->user()->name}}</span> -->
+                            <img src="userpanel/images/user.png" class="user-pic" id="toggleMenu">
+                        </a>
+                    </div>
+                    
                     <!-- <div class="nav-item">
                         <a href="{{route('logout')}}" class="nav-link">
                             <span class="nav-link-text">Logout</span>
                         </a>
                     </div> -->
-                    @endauth
+                   
 
 
 
@@ -146,7 +148,8 @@
                 <div class="sub-menu">
                     <div class="user-info">
                         <img src="userpanel/images/user.png">
-                        <h3>Krishna Pathak</h3>
+                        <h3>{{auth()->user()->name}}</h3>
+                      
                     </div>
                     <hr>
                     <a href="#" class="sub-menu-link">
@@ -171,6 +174,7 @@
                     </a>
                 </div>
             </div>
+            @endauth
         </nav>
         <!-- end of navbar -->
 
@@ -643,7 +647,14 @@
        var toggleMenu = document.getElementById("toggleMenu");
        toggleMenu.addEventListener('click', ()=>{
         subMenu.classList.toggle("open-menu");
-       })
+       });
+
+       // close the sub-menu-wrap element when the user click outside of it
+       document.addEventListener("click",function(event){
+        if(!event.target.closest("#submenu") && !event.target.closest(".user-pic")){
+            subMenu.classList.remove("open-menu");
+        }
+       });
     </script>
 </body>
 
