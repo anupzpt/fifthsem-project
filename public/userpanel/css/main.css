@@ -46,7 +46,8 @@ ul {
   list-style-type: none;
 }
 img {
-  width: 100%;
+  width: 105%;
+  height: 100%;
   display: block;
 }
 h1,

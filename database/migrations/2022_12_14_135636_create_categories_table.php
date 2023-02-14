@@ -14,10 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->increments('categoryId');
-            $table->string('name');
+            $table->bigIncrements('categoryId');
+            $table->string('name')->unique();
+            $table->bigInteger('parent_id')->unsigned()->nullable();
+            $table->foreign('parent_id')->references('categoryId')->on('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->boolean('isParent')->default('0');
-            $table->string('parentName')->nullable();
             $table->string('status')->default('A');
             $table->string('description');
             $table->timestamps();

@@ -19,7 +19,7 @@
                     <img src="loginpanel/images/logo-black.png" class="img-fluid" alt="logo">
                 </div>
 
-                
+
                 <form class="rounded bg-white shadow p-5" action="{{route('register')}}" method="post">
                     @csrf
                     <p class="text-dark fw-bolder fs-4 mb-2">Create your Artihc Account</p>
@@ -91,7 +91,7 @@
                     </a>
                     <a hfer="#" class="btn btn-light login_with w-100 mb-3">
                         <img src="loginpanel/images/linkedin-icon.svg" class="img-fluid me-3">Continue with Linkedin</a>
-                    </a> -->
+                    </a>
                 </form>
             </div>
         </div>

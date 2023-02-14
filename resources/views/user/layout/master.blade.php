@@ -38,11 +38,11 @@
                         <button type="button" class="btn navbar-hide-btn text-white">
                             <i class="fas fa-times"></i>
                         </button>
-                        <li><a href="#">home</a></li>
-                        <li><a href="#">arts</a></li>
-                        <li><a href="#">artist</a></li>
-                        <li><a href="#">about</a></li>
-                        <li><a href="#">contact</a></li>
+                        <li><a href="#home">home</a></li>
+                        <li><a href="#design">arts</a></li>
+                        <li><a href="#teachers">artist</a></li>
+                        <li><a href="#catalog">about</a></li>
+                        <li><a href="#contact">contact</a></li>
                     </ul>
                     <!-- end of side navbar -->
                 </div>
@@ -59,7 +59,7 @@
                             </a>
                         </li> -->
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="#home" class="nav-link">
                                 <span class="nav-link-text">Home</span>
                                 <span class="dropdown-icon">
                                     <!-- <i class="fas fa-chevron-down"></i> -->
@@ -67,7 +67,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="#design" class="nav-link">
                                 <span class="nav-link-text">Arts</span>
                                 <span class="dropdown-icon">
                                     <!-- <i class="fas fa-chevron-down"></i> -->
@@ -75,7 +75,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="#artist" class="nav-link">
                                 <span class="nav-link-text">Artist</span>
                                 <span class="dropdown-icon">
                                     <!-- <i class="fas fa-chevron-down"></i> -->
@@ -83,12 +83,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="#catalog" class="nav-link">
                                 <span class="nav-link-text">About</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="#contact" class="nav-link">
                                 <span class="nav-link-text">Contact</span>
                             </a>
                         </li>
@@ -453,7 +453,7 @@
             <!-- About artist section -->
 
             <!-- artist section -->
-            <section class="teachers py-4 bg-white-sm" id="teachers">
+            <section class="teachers py-4 bg-white-sm" id="artist">
                 <div class="container-art">
                     <div class="section-title">
                         <h2>Our Artist</h2>
