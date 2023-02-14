@@ -28,11 +28,6 @@ class CategoryController extends Controller
     public function create()
     {
         $response = Category::whereNull('parent_id')->get();
-        // $response=Category::where([
-        //     ['isParent','=','1'],
-        //     ['status','=','A'],
-        //     ])
-        //     ->get();
         return view('admin.Category.create', compact('response'));
     }
 
