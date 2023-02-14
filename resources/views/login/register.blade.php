@@ -29,10 +29,10 @@
                     <div class="text-center text-muted text-uppercase mb-3">or</div>
 
                     <a href="{{route('googleLogin')}}" class="btn btn-light login_with w-100 mb-4">
-                        <img src="loginpanel/images/google-icon.svg" class="img-fluid me-3">Sing in with Google</a>
+                        <img src="loginpanel/images/google-icon.svg" class="img-fluid me-3">Sign in with Google</a>
                     </a>
                     <a href="#" class="btn btn-light login_with w-100 mb-4">
-                        <img src="loginpanel/images/facebook-icon.svg" class="img-fluid me-3">Sing in with Facebook</a>
+                        <img src="loginpanel/images/facebook-icon.svg" class="img-fluid me-3">Sign in with Facebook</a>
                     </a>
                     @if(Session::has('error'))
                     <p class="text-danger">{{Session::get('error')}}</p>
