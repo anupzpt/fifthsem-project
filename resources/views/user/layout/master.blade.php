@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="userpanel/css/utilities.css" />
     <!-- custom main css -->
     <link rel="stylesheet" href="userpanel/css/main.css" />
+     <!-- dropdown card css -->
+     <link rel="stylesheet" href="userpanel/css/dropdownCard.css" />
     <!-- slick slider css -->
     <link rel="stylesheet" href="userpanel/plugins/slick-1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="userpanel/plugins/slick-1.8.1/slick/slick-theme.css" />
@@ -26,7 +28,7 @@
 <body>
     <div class="holder">
         <!-- navbar -->
-        @include('user.layout.nav')
+       @include('user.layout.nav')
         <!-- end of navbar -->
 
         <!-- header -->
@@ -72,6 +74,21 @@
     <script src="userpanel/plugins/slick-1.8.1/slick/slick.js"></script>
     <!-- custom js -->
     <script src="userpanel/js/script.js"></script>
+    <script>
+        let subMenu = document.getElementById("subMenu");
+
+       var toggleMenu = document.getElementById("toggleMenu");
+       toggleMenu.addEventListener('click', ()=>{
+        subMenu.classList.toggle("open-menu");
+       });
+
+       // close the sub-menu-wrap element when the user click outside of it
+       document.addEventListener("click",function(event){
+        if(!event.target.closest("#submenu") && !event.target.closest(".user-pic")){
+            subMenu.classList.remove("open-menu");
+        }
+       });
+    </script>
 </body>
 
 </html>
