@@ -6,6 +6,7 @@ use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\User\AddToCart\AddToCartController;
 use App\Http\Controllers\login\UserController;
 use App\Http\Controllers\login\SocialAuthController;
+use App\Http\Controllers\User\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Models\login\User;
 
@@ -23,9 +24,18 @@ use App\Models\login\User;
 // Route::get('/', function () {
 //     return view('admin.dashboard')->name('Dashboard');
 // });
-Route::get('/', function () {
-    return view('user.layout.master', ['list' => User::all()]);
-})->name('dashboard');
+// Route::get('/', function () {
+//     return view('user.dashboard.dashboard', ['list' => User::all()]);
+// })->name('dashboard');
+
+
+
+Route::get('/', [HomeController::class, 'Index'])->name('home.index');
+Route::get('/art', [HomeController::class, 'Art'])->name('home.art');
+
+
+
+// ------------Admin Part-------------
 
 Route::resource('/admin', DashboardController::class);
 Route::resource('/Admin/Category', CategoryController::class);
@@ -33,12 +43,7 @@ Route::resource('/Admin/Product', ProductController::class);
 Route::resource('/Customer/AddToCart', AddToCartController::class);
 
 
-// Route::get('/login', function () {
-//     return view('login.login');
-// // });
-// Route::get('/register', function () {
-//     return view('login.register');
-// });
+
 Route::get('login', [UserController::class, 'loginIndex'])->name('login');
 Route::post('login', [UserController::class, 'authentication'])->name('login');
 
