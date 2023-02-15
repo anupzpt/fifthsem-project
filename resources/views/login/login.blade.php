@@ -49,7 +49,7 @@
                     <a href="#" class="btn btn-light login_with w-100 mb-3">
                         <img src="loginpanel/images/facebook-icon.svg" class="img-fluid me-3">Continue with Facebook</a>
                     </a>
-                    <a href="{{route('dashboard')}}" class="btn btn-primary login_with w-100 mb-3">Back to Home Page</a>
+                    <a href="{{route('home.index')}}" class="btn btn-primary login_with w-100 mb-3">Back to Home Page</a>
                     </a>
                     <!-- <a hfer="#" class="btn btn-light login_with w-100 mb-3">
                         <img src="loginpanel/images/linkedin-icon.svg" class="img-fluid me-3">Continue with Linkedin</a>

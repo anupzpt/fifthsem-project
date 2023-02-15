@@ -18,8 +18,8 @@
     <link rel="stylesheet" href="userpanel/css/utilities.css" />
     <!-- custom main css -->
     <link rel="stylesheet" href="userpanel/css/main.css" />
-     <!-- dropdown card css -->
-     <link rel="stylesheet" href="userpanel/css/dropdownCard.css" />
+    <!-- dropdown card css -->
+    <link rel="stylesheet" href="userpanel/css/dropdownCard.css" />
     <!-- slick slider css -->
     <link rel="stylesheet" href="userpanel/plugins/slick-1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="userpanel/plugins/slick-1.8.1/slick/slick-theme.css" />
@@ -28,39 +28,12 @@
 <body>
     <div class="holder">
         <!-- navbar -->
-       @include('user.layout.nav')
+        @include('user.layout.nav')
         <!-- end of navbar -->
 
-        <!-- header -->
-        @include('user.layout.home')
-        <!-- end of header -->
 
-        <!-- main content -->
-        <main>
-            <!-- category -->
-            @include('user.layout.art')
-            <!-- end of category -->
+        @yield('content')
 
-            <!-- Popular section -->
-            @include('user.layout.popular')
-            <!-- end of popular section -->
-
-            <!-- latest art deals section -->
-            @include('user.layout.latest')
-            <!-- end of latest art deals section -->
-
-            <!-- About Artist section -->
-            @include('user.layout.about')
-            <!-- About artist section -->
-
-            <!-- artist section -->
-            @include('user.layout.artist')
-            <!-- end of artist section -->
-
-            <!-- contact section -->
-            @include('user.layout.contact')
-            <!-- end of contact section -->
-        </main>
         <!-- end of main content -->
 
         <!-- footer -->
@@ -77,17 +50,17 @@
     <script>
         let subMenu = document.getElementById("subMenu");
 
-       var toggleMenu = document.getElementById("toggleMenu");
-       toggleMenu.addEventListener('click', ()=>{
-        subMenu.classList.toggle("open-menu");
-       });
+        var toggleMenu = document.getElementById("toggleMenu");
+        toggleMenu.addEventListener('click', () => {
+            subMenu.classList.toggle("open-menu");
+        });
 
-       // close the sub-menu-wrap element when the user click outside of it
-       document.addEventListener("click",function(event){
-        if(!event.target.closest("#submenu") && !event.target.closest(".user-pic")){
-            subMenu.classList.remove("open-menu");
-        }
-       });
+        // close the sub-menu-wrap element when the user click outside of it
+        document.addEventListener("click", function(event) {
+            if (!event.target.closest("#submenu") && !event.target.closest(".user-pic")) {
+                subMenu.classList.remove("open-menu");
+            }
+        });
     </script>
 </body>
 
