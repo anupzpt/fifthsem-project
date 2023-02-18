@@ -15,8 +15,8 @@
                     </div>
                     <ul id="category-list-items" class="bg-white" style="z-index: 1" class="bg-white">
                         @foreach ($parent as $parentDetail)
-                            <li style="background-color: #4a4a4e"><a href="">{{ $parentDetail->name }}</a></li>
-                            {{-- <li style="background-color: #4a4a4e"><a href="{{route('home.category',[$parentDetail->id])}}">{{ $parentDetail->name }}</a></li> --}}
+                            <li style="background-color: #4a4a4e"><a>{{ $parentDetail->name }}</a></li>
+                            {{-- <li style="background-color: #4a4a4e"><a href="{{route('product.show',[$parent->id])}}">{{ $parentDetail->name }}</a></li> --}}
 
                             @foreach ($child as $childDetail)
                                 @if ($parentDetail->categoryId == $childDetail->parent_id)

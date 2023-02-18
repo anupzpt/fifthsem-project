@@ -139,7 +139,7 @@ transition: var(--transition); */
   transition: var(--transition);
 }
 #category-list-items li a:hover {
-  color: var(--brown-color);
+  color: var(--smoky-color);
 }
 
 #side-navbar {

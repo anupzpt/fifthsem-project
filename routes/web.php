@@ -28,10 +28,13 @@ use App\Models\login\User;
 //     return view('user.dashboard.dashboard', ['list' => User::all()]);
 // })->name('dashboard');
 
+// ------------User Part-------------
 
 
 Route::get('/', [HomeController::class, 'Index'])->name('home.index');
 Route::get('/art', [HomeController::class, 'Art'])->name('home.art');
+Route::POST('/cart', [HomeController::class, 'Cart'])->name('home.cart');
+// Route::get('/category', [HomeController::class, 'Parent'])->name('home.category');
 
 
 

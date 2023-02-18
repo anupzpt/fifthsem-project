@@ -80,7 +80,7 @@
 
 
                     <button type="submit" class="btn btn-primary submit_btn w-100 my-4">Continue</button>
-                    <a href="{{route('dashboard')}}" class="btn btn-primary login_with w-100 mb-3">Back to Home Page</a>
+                    <a href="{{route('home.index')}}" class="btn btn-primary login_with w-100 mb-3">Back to Home Page</a>
                     </a>
                     <!-- <div class="text-center text-muted text-uppercase mb-3">or</div>
                     <a hfer="#" class="btn btn-light login_with w-100 mb-3">
