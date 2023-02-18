@@ -12,7 +12,8 @@
                                 </button>
                             </div>
                             <ul id="category-list-items" class="bg-white" style="z-index: 1" class="bg-white">
-                                <li><a href="#">All</a></li>
+                            
+                                {{-- <li><a href="#">All</a></li>
                                 <li><a href="#">NIghtstands</a></li>
                                 <li><a href="#">Dressers</a></li>
                                 <li><a href="#">Bookcase</a></li>
@@ -21,7 +22,7 @@
                                 <li><a href="#">Sofas</a></li>
                                 <li><a href="#">Chairs</a></li>
                                 <li><a href="#">Hall Trees</a></li>
-                                <li><a href="#">Furniture Stores</a></li>
+                                <li><a href="#">Furniture Stores</a></li> --}}
                             </ul>
                         </div>
                     </div>

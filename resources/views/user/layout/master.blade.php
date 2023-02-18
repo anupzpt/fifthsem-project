@@ -41,8 +41,7 @@
         <!-- end of footer -->
     </div>
     <!-- jquery cdn -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <!-- slick slider js -->
     <script src="userpanel/plugins/slick-1.8.1/slick/slick.js"></script>
     <!-- custom js -->
