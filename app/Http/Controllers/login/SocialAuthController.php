@@ -31,15 +31,16 @@ class SocialAuthController extends Controller
                     'name' => $google_user->getName(),
                     'email' => $google_user->getEmail(),
                     'googleId' => $google_user->getId(),
+                    'img_path' => $google_user->getAvatar(),
                 ]);
 
                 Auth::login($new_user);
 
-                return redirect()->route('dashboard');
+                return redirect()->route('home.index');
             }
             else{
                 Auth::login($user);
-                return redirect()->route('dashboard');
+                return redirect()->route('home.index');
 
             }
         } catch(\Throwable $th) {
@@ -71,15 +72,16 @@ class SocialAuthController extends Controller
                     'name' => $facebook_user->getName(),
                     'email' => $facebook_user->getEmail(),
                     'googleId' => $facebook_user->getId(),
+                    
                 ]);
 
                 Auth::login($new_user);
 
-                return redirect()->route('dashboard');
+                return redirect()->route('home.index');
             }
             else{
                 Auth::login($user);
-                return redirect()->route('dashboard');
+                return redirect()->route('home.index');
 
             }
         } catch(\Throwable $th) {
