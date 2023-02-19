@@ -19,10 +19,10 @@ return new class extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('contact')->nullable();
             $table->string('password')->nullable();
-            $table->string('img_path')->nullable();
+            $table->string('img_path')->default('userpanel/images/avatar.png');
             $table->string('address')->nullable();
-            $table->string('user_type')->nullable();
-            $table->string('status')->nullable();
+            $table->string('user_type')->default('user');
+            $table->string('status')->default('active');
             $table->string('googleId')->unique()->nullable();
             $table->string('facebookId')->unique()->nullable();
             $table->string('remember_token')->nullable();
