@@ -16,7 +16,7 @@ class HomeController extends Controller
         $latestPosts = Product::limit(3)->latest('created_at')->get();
         return view('user.dashboard.dashboard', compact('products', 'latestPosts'));
     }
-    
+
     public function Art()
     {
         $parent = Category::whereNull('parent_id')->get();
@@ -27,6 +27,8 @@ class HomeController extends Controller
 
     public function Cart(Request $request)
     {
+        $data = $request->all();
+        dd($data);
         return response()->json([
             'status' => 'success',
             'message' => $request->get('id'),

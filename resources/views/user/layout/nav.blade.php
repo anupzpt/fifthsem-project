@@ -113,7 +113,7 @@
                  </div>
                  <hr>
                  <a href="#" class="sub-menu-link">
-                     <img src="userpanel/images/happiness.png">
+                     <img src="{{asset('userpanel/images/happiness.png')}}">
                      <p>Manage Account</p>
                      <span>></span>
                  </a>

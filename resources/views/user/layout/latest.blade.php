@@ -15,7 +15,7 @@
                 <div class="info bg-dark text-white">
                     <div class="text-center">
                         <p class="text-capitalize mt-3 mb-1">{{$latest->name}}</p>
-                        <span class="fw-bold d-block">$ 45.50</span>
+                        <span class="fw-bold d-block">Rs. {{$latest->name}}</span>
                         <a href="#" class="buttons btn-primary mt-3 ml-2">Buy it Now</a>
                     </div>
                 </div>
