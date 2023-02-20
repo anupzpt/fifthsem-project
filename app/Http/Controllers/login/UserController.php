@@ -43,7 +43,7 @@ class UserController extends Controller
         // login user here
         if (Auth::attempt($req->only('email', 'password'))) {
             // dd('log in');
-            return redirect()->route('dashboard');
+            return redirect()->route('home.index');
         } else {
             // dd('user not found');
             return redirect('register')->withError('Error');
@@ -62,7 +62,7 @@ class UserController extends Controller
 
         if (Auth::attempt($req->only('email', 'password'))) {
             // dd('log in');
-            return redirect()->route('dashboard');
+            return redirect()->route('home.index');
         } else {
             // dd('user not found');
             return redirect('login')->withError('Login details are not valid');
@@ -72,6 +72,6 @@ class UserController extends Controller
     public function logout()
     {
         auth()->logout();
-        return redirect()->route('dashboard');
+        return redirect()->route('home.index');
     }
 }

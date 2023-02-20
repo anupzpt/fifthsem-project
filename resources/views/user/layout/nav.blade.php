@@ -87,7 +87,7 @@
                  <div class="nav-item">
                      <a class="nav-link" href="#">
                          <!-- <span class="nav-link-textt"  id="toggleMenu">{{ auth()->user()->name }}</span> -->
-                         <img src="userpanel/images/user.png" class="user-pic" id="toggleMenu">
+                         <img src="{{auth()->user()->img_path}}" class="user-pic" id="toggleMenu">
                      </a>
                  </div>
 
@@ -107,7 +107,7 @@
          <div class="sub-menu-wrap" id="subMenu">
              <div class="sub-menu">
                  <div class="user-info">
-                     <img src="userpanel/images/user.png">
+                     <img src="{{ auth()->user()->img_path }}">
                      <h3>{{ auth()->user()->name }}</h3>
 
                  </div>
