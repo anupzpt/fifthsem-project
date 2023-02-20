@@ -9,6 +9,7 @@ use App\Http\Controllers\login\SocialAuthController;
 use App\Http\Controllers\User\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Models\login\User;
+use App\Http\Controllers\Contact\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,3 +62,8 @@ Route::get('/auth/google/callback', [socialAuthController::class,'handleCallback
 //login with facebook part
 Route::get('/facebookRedirect', [socialAuthController::class, 'redirectToFacebookProvider'])->name('facebookLogin');
 Route::get('/auth/facebook/callback', [socialAuthController::class, 'handleFacebookCallback'])->name('facebook.login.callback');
+
+//Contact us
+Route::get('/contact-us',[ContactController::class,'contact']);
+
+Route::post('/send-message',[ContactController::class,'sendEmail'])->name('contact.send');
