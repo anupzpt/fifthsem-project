@@ -40,8 +40,14 @@
                         <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Your Email" />
                     </div>
                     <div class="form">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">
-                        Message</textarea>
+                        <select name="select" class="form-control" id="exampleFormControlDropdown1">
+                            <option value="user">User</option>
+                            <option value="artist">Artist</option>
+                        </select>
+                    </div>
+                    <div class="form">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Message" rows="3">
+                        </textarea>
                     </div>
                     <div>
                         <button type="submit" class="btn-header text-white bg-brown">
