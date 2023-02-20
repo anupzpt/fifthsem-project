@@ -30,12 +30,11 @@ use App\Models\login\User;
 
 // ------------User Part-------------
 
-
 Route::get('/', [HomeController::class, 'Index'])->name('home.index');
 Route::get('/art', [HomeController::class, 'Art'])->name('home.art');
 Route::POST('/cart', [HomeController::class, 'Cart'])->name('home.cart');
-// Route::get('/category', [HomeController::class, 'Parent'])->name('home.category');
-
+Route::get('/art/{id}', [HomeController::class, 'Parent'])->name('home.category');
+Route::get('/art-child/{id}', [HomeController::class, 'Child'])->name('home.child');
 
 
 // ------------Admin Part-------------
@@ -45,7 +44,7 @@ Route::resource('/Admin/Category', CategoryController::class);
 Route::resource('/Admin/Product', ProductController::class);
 Route::resource('/Customer/AddToCart', AddToCartController::class);
 
-
+// -------------------------------------
 
 Route::get('login', [UserController::class, 'loginIndex'])->name('login');
 Route::post('login', [UserController::class, 'authentication'])->name('login');

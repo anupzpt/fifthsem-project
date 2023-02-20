@@ -12,7 +12,7 @@ class Category extends Model
     protected $guarded=[];
     protected $fillable = ['name','parent_id','isParent', 'status', 'description'];
     protected $primaryKey ='categoryId';
-    
+
     public function parent(){
         return $this->belongsTo(Category::class,'parent_id');
     }
