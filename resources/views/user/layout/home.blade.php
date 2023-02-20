@@ -8,7 +8,7 @@
 
                 <h1>everything that you want to know about art & design</h1>
                 <br />
-                <a href="#" class="btn-header text-white bg-brown">shop now</a>
+                <a href="{{route('home.art')}}" class="btn-header text-white bg-brown">shop now</a>
             </div>
         </div>
     </div>

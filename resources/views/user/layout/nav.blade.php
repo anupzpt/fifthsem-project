@@ -5,7 +5,7 @@
              <button type="button" id="bars" class="btn navbar-show-btn text-white">
                  <i class="fas fa-bars"></i>
              </button>
-             <img src="userpanel/images/logo-white.png" alt="img" style="height: 7rem; width: 13rem" />
+             <img src="{{ asset('userpanel/images/logo-white.png') }}" alt="img" style="height: 7rem; width: 13rem" />
              <!-- <div class="logo">
               <span>Artihc</span>
             </div> -->
@@ -36,7 +36,7 @@
                             </a>
                         </li> -->
                  <li class="nav-item">
-                     <a href="{{route('home.index')}}" class="nav-link">
+                     <a href="{{ route('home.index') }}" class="nav-link">
                          <span class="nav-link-text">Home</span>
                          <span class="dropdown-icon">
                              <!-- <i class="fas fa-chevron-down"></i> -->
@@ -44,7 +44,7 @@
                      </a>
                  </li>
                  <li class="nav-item">
-                     <a href="{{route('home.art')}}" class="nav-link">
+                     <a href="{{ route('home.art') }}" class="nav-link">
                          <span class="nav-link-text">Arts</span>
                          <span class="dropdown-icon">
                              <!-- <i class="fas fa-chevron-down"></i> -->
@@ -92,10 +92,10 @@
                  </div>
 
                  <!-- <div class="nav-item">
-                            <a href="{{ route('logout') }}" class="nav-link">
-                                <span class="nav-link-text">Logout</span>
-                            </a>
-                        </div> -->
+                                <a href="{{ route('logout') }}" class="nav-link">
+                                    <span class="nav-link-text">Logout</span>
+                                </a>
+                            </div> -->
 
 
 

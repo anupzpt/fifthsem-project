@@ -15,14 +15,14 @@
         integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- custom utilities css -->
-    <link rel="stylesheet" href="userpanel/css/utilities.css" />
+    <link rel="stylesheet" href="{{asset('userpanel/css/utilities.css')}}" />
     <!-- custom main css -->
-    <link rel="stylesheet" href="userpanel/css/main.css" />
+    <link rel="stylesheet" href="{{asset('userpanel/css/main.css')}}" />
     <!-- dropdown card css -->
-    <link rel="stylesheet" href="userpanel/css/dropdownCard.css" />
+    <link rel="stylesheet" href="{{asset('userpanel/css/dropdownCard.css')}}" />
     <!-- slick slider css -->
-    <link rel="stylesheet" href="userpanel/plugins/slick-1.8.1/slick/slick.css" />
-    <link rel="stylesheet" href="userpanel/plugins/slick-1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" href="{{asset('userpanel/plugins/slick-1.8.1/slick/slick.css')}}" />
+    <link rel="stylesheet" href="{{asset('userpanel/plugins/slick-1.8.1/slick/slick-theme.css')}}" />
 </head>
 
 <body>
@@ -43,9 +43,9 @@
     <!-- jquery cdn -->
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <!-- slick slider js -->
-    <script src="userpanel/plugins/slick-1.8.1/slick/slick.js"></script>
+    <script src="{{asset('userpanel/plugins/slick-1.8.1/slick/slick.js')}}"></script>
     <!-- custom js -->
-    <script src="userpanel/js/script.js"></script>
+    <script src="{{asset('userpanel/js/script.js')}}"></script>
     <script>
         let subMenu = document.getElementById("subMenu");
 
