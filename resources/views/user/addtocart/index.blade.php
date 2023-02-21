@@ -4,6 +4,7 @@
     <thead>
       <tr>
         <th >SN</th>
+        {{-- <th >Image</th> --}}
         <th >Product</th>
         <th >Quantity</th>
         <th >Price</th>
@@ -12,10 +13,11 @@
     </thead>
     <tbody>
       <tr>
-        <th>1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <td><img width="60" src="" alt="">
+        </td>
+        <td>Name</td>
+        <td>Quantity</td>
+        <td>Price</td>
       </tr>
 
     </tbody>

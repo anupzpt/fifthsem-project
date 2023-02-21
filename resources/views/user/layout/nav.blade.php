@@ -80,22 +80,23 @@
 
              @auth
                  <div class="nav-item">
-                     <a href="#" class="btn text-white">
-                         <i class="fas fa-cart-shopping"></i>
+                     <a href="" class="btn text-white">
+                         <i class="fas fa-cart-shopping"> </i>
+                         <sup> <span  class="cartCount">{{$count}}</span></sup>
                      </a>
                  </div>
                  <div class="nav-item">
                      <a class="nav-link" href="#">
                          <!-- <span class="nav-link-textt"  id="toggleMenu">{{ auth()->user()->name }}</span> -->
-                         <img src="{{auth()->user()->img_path}}" class="user-pic" id="toggleMenu">
+                         <img src="{{ auth()->user()->img_path }}" class="user-pic" id="toggleMenu">
                      </a>
                  </div>
 
                  <!-- <div class="nav-item">
-                                <a href="{{ route('logout') }}" class="nav-link">
-                                    <span class="nav-link-text">Logout</span>
-                                </a>
-                            </div> -->
+                                    <a href="{{ route('logout') }}" class="nav-link">
+                                        <span class="nav-link-text">Logout</span>
+                                    </a>
+                                </div> -->
 
 
 
@@ -113,7 +114,7 @@
                  </div>
                  <hr>
                  <a href="#" class="sub-menu-link">
-                     <img src="{{asset('userpanel/images/happiness.png')}}">
+                     <img src="{{ asset('userpanel/images/happiness.png') }}">
                      <p>Manage Account</p>
                      <span>></span>
                  </a>

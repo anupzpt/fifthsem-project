@@ -62,7 +62,11 @@
 
             },
             success: function(response) {
-                alert(response.message);
+                // console.log(response.message);
+                if(response.code == 0) {
+                    $(".cartCount").text("")
+                    $(".cartCount").text(response.count);
+                }
             },
             error: function(xhr) {
                 alert(xhr.responseText);
