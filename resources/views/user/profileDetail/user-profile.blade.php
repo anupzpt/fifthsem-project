@@ -66,50 +66,76 @@
             <!-- Account Section -->
             <div class="col-lg-9 my-lg-0 my-1 account-section-wrap enable" id="account-wrap">
                 <div id="main-content" class="bg-white border">
-                    <div class="d-flex flex-column">
+                    <div class="d-flex flex-column user-info">
                         <h2>My Account</h2>
-                        <div class="h5 mt-3">Hello Krishna,</div>
-                        <div>Logged in as: krishna@gmail.com</div>
-                        <hr />
+                        <div class="d-flex align-items-center">
+                            <img src="{{ auth()->user()->img_path }}">
+                        </div>
+                        <div class="h5 mt-3">Hello {{auth()->user()->name}},</div>
+                        <div>Logged in as: {{auth()->user()->email}}</div>
                     </div>
+                    <hr />
 
-                    <div class="row">
+                    <div class="row mt-4">
                         <div class="col-md-5 mb-5">
                             <div class="account-detail">
                                 <div class="detail-label">Full Name</div>
-                                <div class="detail-value">Krishna Pathak</div>
+                                <div class="detail-value">{{auth()->user()->name}}</div>
                             </div>
                         </div>
                         <div class="col-md-5 mb-5">
                             <div class="account-detail">
                                 <div class="detail-label">Email:</div>
-                                <div class="detail-value">krishna@gmail.com</div>
+                                <div class="detail-value">{{auth()->user()->email}}</div>
                             </div>
                         </div>
                         <div class="col-md-5 mb-5">
                             <div class="account-detail">
                                 <div class="detail-label">Mobile:</div>
-                                <div class="detail-value">9818821027</div>
+                                <div class="detail-value">
+                                    @if (auth()->user()->contact)
+                                    {{ auth()->user()->contact}}
+                                    @else
+                                    <span class="placeholder-text">Please enter your mobile</span>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-5 mb-5">
                             <div class="account-detail">
                                 <div class="detail-label">Address:</div>
                                 <div class="detail-value">
-                                    Jalpa Chowk, Baniyatar, Kathmandu
+                                    @if (auth()->user()->address)
+                                    {{ auth()->user()->address}}
+                                    @else
+                                    <span class="placeholder-text">Please enter your address</span>
+                                    @endif
+
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-5 mb-5">
                             <div class="account-detail">
                                 <div class="detail-label">City:</div>
-                                <div class="detail-value">Kathmandu</div>
+                                <div class="detail-value">
+                                    @if (auth()->user()->city)
+                                    {{auth()->user()->city}}
+                                    @else
+                                    <span class="placeholder-text">Please enter your city</span>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-5 mb-5">
                             <div class="account-detail">
                                 <div class="detail-label">Zip Code:</div>
-                                <div class="detail-value">12345</div>
+                                <div class="detail-value">
+                                    @if (auth()->user()->zip_code)
+                                    {{auth()->user()->zip_code}}
+                                    @else
+                                    <span class="placeholder-text">Please enter your zip code</span>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                         <div class="mb-2">
@@ -125,8 +151,8 @@
                 <div id="main-content" class="bg-white border">
                     <div class="d-flex flex-column">
                         <h2>My Order</h2>
-                        <div class="h5 mt-3">Hello Krishna,</div>
-                        <div>Logged in as: krishna@gmail.com</div>
+                        <div class="h5 mt-3">Hello {{auth()->user()->name}},</div>
+                        <div>Logged in as: {{auth()->user()->email}}</div>
                         <hr />
                     </div>
                 </div>
@@ -138,8 +164,8 @@
                 <div id="main-content" class="bg-white border">
                     <div class="d-flex flex-column">
                         <h2>My Return & Cancellation</h2>
-                        <div class="h5 mt-3">Hello Krishna,</div>
-                        <div>Logged in as: krishna@gmail.com</div>
+                        <div class="h5 mt-3">Hello {{auth()->user()->name}},</div>
+                        <div>Logged in as: {{auth()->user()->email}}</div>
                         <hr />
                     </div>
                 </div>
