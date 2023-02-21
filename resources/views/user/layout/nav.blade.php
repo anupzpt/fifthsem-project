@@ -119,7 +119,7 @@
                      <span>></span>
                  </a>
                  <a href="#" class="sub-menu-link">
-                     <img src="userpanel/images/order.png">
+                     <img src="userpanel/images/my-order.png">
                      <p>My Order</p>
                      <span>></span>
                  </a>
