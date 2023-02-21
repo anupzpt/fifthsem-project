@@ -139,12 +139,103 @@
                             </div>
                         </div>
                         <div class="mb-2">
-                            <a href="#" class="my-button">EDIT PROFILE</a>
+                            <a href="#" id="edit-profile-btn" class="my-button">EDIT PROFILE</a>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- account section end -->
+
+            <!-- edit form section -->
+            <!-- <form id="edit-profile-form" style="display:block;" > -->
+            <div class="col-lg-9 my-lg-0 my-1 account-section-wrap enable d-none" id="edit-profile-form">
+                <div id="main-content" class="bg-white border">
+                    <div class="d-flex flex-column user-info">
+                        <h2>My Account</h2>
+                        <div class="d-flex align-items-center">
+                            <img src="{{ auth()->user()->img_path }}">
+                        </div>
+                        <div class="h5 mt-3">Hello {{auth()->user()->name}},</div>
+                        <div>Logged in as: {{auth()->user()->email}}</div>
+                    </div>
+                    <hr />
+                    <form>
+                        <div class="row mt-4">
+                            <div class="col-md-5 mb-5">
+                                <div class="account-detail">
+                                    <div class="detail-label">Full Name</div>
+                                    <div class="detail-value">
+                                        <input type="text" name="name" value="{{auth()->user()->name}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-5">
+                                <div class="account-detail">
+                                    <div class="detail-label">Email:</div>
+                                    <div class="detail-value">
+                                        <input type="text" name="email" value="{{auth()->user()->email}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-5">
+                                <div class="account-detail">
+                                    <div class="detail-label">Mobile:</div>
+                                    <div class="detail-value">
+                                        @if (auth()->user()->contact)
+                                        <input type="text" name="contact" value="{{ auth()->user()->contact}}">
+                                        @else
+                                        <input type="text" name="contact" placeholder="Enter your number">
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-5">
+                                <div class="account-detail">
+                                    <div class="detail-label">Address:</div>
+                                    <div class="detail-value">
+                                        @if (auth()->user()->address)
+                                        <input type="text" name="address" value="{{ auth()->user()->address}}">
+                                        @else
+                                        <input type="text" name="address" placeholder="Eg: Tokha-06,Jalpachowk,Baniyatar">
+                                        @endif
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-5">
+                                <div class="account-detail">
+                                    <div class="detail-label">City:</div>
+                                    <div class="detail-value">
+                                        @if (auth()->user()->city)
+                                        <input type="text" name="city" value="{{auth()->user()->city}}">
+                                        @else
+                                        <input type="text" name="city" placeholder="Enter your city">
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-5">
+                                <div class="account-detail">
+                                    <div class="detail-label">Zip Code:</div>
+                                    <div class="detail-value">
+                                        @if (auth()->user()->zip_code)
+                                        <input type="text" name="zip_code" value="{{auth()->user()->zip_code}}">
+                                        @else
+                                        <input type="text" name="zip_code" placeholder="Enter zip code ">
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-2">
+                                <a href="#" class="my-button" style="background-color:green">UPDATE PROFILE</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+
+            <!-- edit form section end -->
 
             <!-- order section -->
             <div class="col-lg-9 my-lg-0 my-1 order-section-wrap" id="order-wrap">
@@ -259,6 +350,18 @@
             order.classList.remove("enable");
             cancel.classList.add("enable");
         }
+    });
+
+    // edit profile part
+    const editBtn = document.getElementById('edit-profile-btn');
+    const editForm = document.getElementById('edit-profile-form');
+    var account = document.getElementById("account-wrap");
+
+    editBtn.addEventListener("click", () => {
+        account.classList.remove("enable");
+        editForm.classList.remove("d-none");
+        editForm.classList.add("d-block");
+
     });
 </script>
 
