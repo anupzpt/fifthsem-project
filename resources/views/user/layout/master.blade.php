@@ -23,6 +23,8 @@
     <!-- slick slider css -->
     <link rel="stylesheet" href="{{asset('userpanel/plugins/slick-1.8.1/slick/slick.css')}}" />
     <link rel="stylesheet" href="{{asset('userpanel/plugins/slick-1.8.1/slick/slick-theme.css')}}" />
+    
+  
 </head>
 
 <body>

@@ -31,6 +31,9 @@ use App\Models\login\User;
 // ------------User Part-------------
 
 Route::get('/', [HomeController::class, 'Index'])->name('home.index');
+Route::get('/user-profile/my-account', [HomeController::class, 'myAccount'])->name('account');
+Route::get('/user-profile/my-order', [HomeController::class, 'myOrder'])->name('order');
+Route::get('/user-profile/return-and-cancel', [HomeController::class, 'returnAndCancel'])->name('return');
 Route::get('/art', [HomeController::class, 'Art'])->name('home.art');
 Route::POST('/cart', [HomeController::class, 'Cart'])->name('home.cart');
 Route::get('/art/{id}', [HomeController::class, 'Parent'])->name('home.category');
