@@ -1,3 +1,20 @@
+// dropdown 
+let subMenu = document.getElementById("subMenu");
+
+        var toggleMenu = document.getElementById("toggleMenu");
+        toggleMenu.addEventListener('click', () => {
+          event.preventDefault();
+            subMenu.classList.toggle("open-menu");
+        });
+
+        // close the sub-menu-wrap element when the user click outside of it
+        document.addEventListener("click", function(event) {
+            if (!event.target.closest("#submenu") && !event.target.closest(".user-pic")) {
+                subMenu.classList.remove("open-menu");
+            }
+        });
+
+
 // side navbar
 const navShowBtn = document.querySelector(".navbar-show-btn");
 const navHideBtn = document.querySelector(".navbar-hide-btn");

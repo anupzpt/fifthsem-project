@@ -1,0 +1,176 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap');
+
+/* Reset styles */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Main content styles */
+#main-content {
+  padding: 30px;
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#main-content .h5 {
+  font-weight: 600;
+  margin-bottom: 0;
+  color: #404040;
+}
+
+#main-content .h5 + div {
+  font-size: 0.9rem;
+  color: #808080;
+  margin-bottom: 20px;
+}
+
+/* Sidebar styles */
+#sidebar {
+  padding: 15px 0px 15px 0px;
+  border-radius: 10px;
+  background-color: #404040;
+  color: #ffffff;
+}
+
+#sidebar .h4 {
+  font-weight: 500;
+  padding-left: 15px;
+}
+
+#sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0rem;
+}
+
+#sidebar ul li {
+  padding: 10px 0;
+  display: block;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-left: 5px solid transparent;
+}
+
+#sidebar ul .active {
+  border-left: 5px solid #ff5252;
+  background-color: #55009b;
+}
+#sidebar ul li:hover {
+  border-left: 5px solid #ff5252;
+  background-color: #55009b;
+}
+
+#sidebar ul li a {
+  display: block;
+  color: #ffffff;
+}
+
+#sidebar ul li a .fas,
+#sidebar ul li a .far {
+  color: #ddd;
+}
+
+#sidebar ul li a .link {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+#sidebar ul li a .link-desc {
+  font-size: 0.8rem;
+  color: #ddd;
+}
+.account-section-wrap{
+  display: none;
+}
+.account-section-wrap.enable{
+  display: block;
+}
+.order-section-wrap{
+  display: none;
+}
+.order-section-wrap.enable{
+  display: block;
+}
+.return-section-wrap{
+  display: none;
+}
+.return-section-wrap.enable{
+  display: block;
+}
+
+/* Account Details */
+.row .detail-value{
+    font-weight: 600;
+}
+.my-button {
+    /* padding: 10px; */
+    width: 300px;
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    cursor: pointer;
+  }
+  
+  .my-button:hover {
+    background-color: #2980b9;
+  }
+/* .account-details {
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .account-details h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .account-details ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .account-details li {
+    margin-bottom: 10px;
+  }
+  
+  .account-details li span {
+    font-weight: bold;
+  }
+  
+  .account-details a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .account-details a:hover {
+    text-decoration: underline;
+  } */
+
+/* Responsive styles */
+@media (max-width: 767px) {
+  #sidebar {
+    margin-bottom: 30px;
+  }
+
+  #main-content {
+    margin-bottom: 30px;
+  }
+}

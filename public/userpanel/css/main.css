@@ -46,7 +46,7 @@ ul {
   list-style-type: none;
 }
 img {
-  width: 105%;
+  width: 100%;
   height: 100%;
   display: block;
 }
@@ -260,12 +260,14 @@ header {
   margin-right: auto;
   margin-left: auto;
 }
-.btn-header {
+.btn-header{
   text-transform: uppercase;
   font-weight: 700;
   padding: 1.4rem 4.2rem;
-
   border-radius: 3rem;
+}
+.btn-header:hover{
+    background-color: #474747;
 }
 .header-right {
   z-index: 1;
@@ -377,6 +379,11 @@ header {
   color: rgb(75, 74, 74);
   border-color: var(--light-grey-color-shade);
 }
+/* view more*/
+.center {
+    text-align: center;
+    margin-top: 5rem;
+  }
 /* new products */
 .new-products-content {
   padding: 5rem 0;
