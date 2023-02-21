@@ -338,6 +338,8 @@
 
     navbar.addEventListener("click", function(event) {
         if (event.target.closest("#account")) {
+            editForm.classList.remove("d-block");
+            editForm.classList.add("d-none");
             order.classList.remove("enable");
             cancel.classList.remove("enable");
             account.classList.add("enable");
