@@ -342,10 +342,14 @@
             cancel.classList.remove("enable");
             account.classList.add("enable");
         } else if (event.target.closest("#order")) {
+            editForm.classList.remove("d-block");
+            editForm.classList.add("d-none");
             account.classList.remove("enable");
             cancel.classList.remove("enable");
             order.classList.add("enable");
         } else if (event.target.closest("#return")) {
+            editForm.classList.remove("d-block");
+            editForm.classList.add("d-none");
             account.classList.remove("enable");
             order.classList.remove("enable");
             cancel.classList.add("enable");
@@ -355,7 +359,7 @@
     // edit profile part
     const editBtn = document.getElementById('edit-profile-btn');
     const editForm = document.getElementById('edit-profile-form');
-    var account = document.getElementById("account-wrap");
+    // var account = document.getElementById("account-wrap");
 
     editBtn.addEventListener("click", () => {
         account.classList.remove("enable");
