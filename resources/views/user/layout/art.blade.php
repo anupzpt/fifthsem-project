@@ -4,27 +4,17 @@
              <h1>Arts & Designs</h1>
              <div class="line"></div>
              <!-- made change here  -->
-             <div class="toggler-and-category bg-brown text-white flex" style="margin-left: 40%; margin-top: 1%">
-                 <div class="category-list">
-                     <span>Category</span>
-                     <button type="button" class="btn category-toggler-btn text-white">
-                         <i class="fas fa-circle-arrow-down"></i>
-                     </button>
+             {{-- <div class="toggler-and-category bg-brown text-white flex" style="margin-left: 40%; margin-top: 1%"> --}}
+                 <div class="category-list category-toggler-btn">
+                     {{-- <span>Category</span> --}}
+                     {{-- <button type="button" class="btn category-toggler-btn text-white"> --}}
+                         {{-- <i class="fas fa-circle-arrow-down"></i> --}}
+                     {{-- </button> --}}
                  </div>
-                 <ul id="category-list-items" class="bg-white" style="z-index: 1" class="bg-white">
+                 {{-- <ul id="category-list-items" class="bg-white" style="z-index: 1" class="bg-white">
 
-                     {{-- <li><a href="#">All</a></li>
-                                <li><a href="#">NIghtstands</a></li>
-                                <li><a href="#">Dressers</a></li>
-                                <li><a href="#">Bookcase</a></li>
-                                <li><a href="#">Coffee Tables</a></li>
-                                <li><a href="#">Mattresses</a></li>
-                                <li><a href="#">Sofas</a></li>
-                                <li><a href="#">Chairs</a></li>
-                                <li><a href="#">Hall Trees</a></li>
-                                <li><a href="#">Furniture Stores</a></li> --}}
-                 </ul>
-             </div>
+                 </ul> --}}
+             {{-- </div> --}}
          </div>
 
          <div class="design-content">
@@ -45,5 +35,9 @@
              @endforeach
 
          </div>
-     </div>
+         <div>
+             <div class="center">
+                 <a href="{{ route('home.art') }}" class="button btn-primary ">View More</a>
+             </div>
+         </div>
  </section>
