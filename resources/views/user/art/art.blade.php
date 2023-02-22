@@ -1,6 +1,7 @@
 @extends('user.layout.master')
 @section('content')
     <section class="design" id="design">
+        <link href="toastr.css" rel="stylesheet"/>
         <div class="container">
             <div class="title">
                 <h1>Arts & Designs</h1>
@@ -37,6 +38,7 @@
                             <span class="fw-bold d-block">RS. {{ $product->price }}</span>
                             <button id="cart" class="button btn-primary mt-3 cart"
                                 onClick="set('{{ $product->id }}')">Add to Cart</button>
+
                             <a href="#" class="button btn-primary mt-3 ml-2">Buy it Now</a>
                         </div>
                     </div>
@@ -51,8 +53,10 @@
 
 <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
     crossorigin="anonymous"></script>
+    {{-- <script src="toastr.js"></script> --}}
 <script>
     function set($id) {
+        debugger
         $.ajax({
             url: '{{ route('home.cart') }}',
             type: 'POST',
@@ -62,10 +66,14 @@
 
             },
             success: function(response) {
-                // console.log(response.message);
+                console.log(response.message);
                 if(response.code == 0) {
                     $(".cartCount").text("")
                     $(".cartCount").text(response.count);
+                }
+                if(response.code==1){
+                    alert(response.message)
+                    // toastr.info('Are you the 6 fingered man?')
                 }
             },
             error: function(xhr) {

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\User\AddToCart;
 
 use App\Http\Controllers\Controller;
+use App\Models\User\AddToCart\AddToCart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AddToCartController extends Controller
 {
@@ -15,6 +17,9 @@ class AddToCartController extends Controller
     public function index()
     {
         //
+
+
+
     }
 
     /**
@@ -35,7 +40,7 @@ class AddToCartController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         // $order =new Order();
         // $order->save($request->all())
     }
@@ -82,6 +87,18 @@ class AddToCartController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+
+
     }
+    public function delete(Request $request)
+    {
+        // $cart=AddToCart::find($request->get('id'));
+
+        $cartId=$request->input('productId');
+        $cart=AddToCart::where('productId',$cartId);
+        $cart->delete();
+        return response()->json(['message' =>  "Are you sure you want to delete product?"]);
+    }
+
 }
