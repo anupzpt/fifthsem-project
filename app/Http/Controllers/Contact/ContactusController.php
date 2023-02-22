@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Contact;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Mail\ContactMail;
+use App\Models\Mail\ContactMail;
+use App\Http\Controllers\Controller;
+use Mail;
 
-class ContactController extends Controller
+
+class ContactusController extends Controller
 {
     public function contact()
     {
@@ -21,7 +23,7 @@ class ContactController extends Controller
             'msg' => $request->msg
         ];
 
-        Mail::to('ishankhadka2058@gmail.com')->send(new ContactMail($details));
+        Mail::to('artihc82@gmail.com')->send(new ContactMail($details));
         return back()->with('message_sent','Your message has been sent Successfully!');
     }
 }

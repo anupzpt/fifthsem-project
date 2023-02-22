@@ -9,7 +9,7 @@ use App\Http\Controllers\login\SocialAuthController;
 use App\Http\Controllers\User\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Models\login\User;
-use App\Http\Controllers\Contact\ContactController;
+use App\Http\Controllers\Contact\ContactusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +67,6 @@ Route::get('/facebookRedirect', [socialAuthController::class, 'redirectToFaceboo
 Route::get('/auth/facebook/callback', [socialAuthController::class, 'handleFacebookCallback'])->name('facebook.login.callback');
 
 //Contact us
-Route::get('/contact',[ContactController::class,'contact']);
+Route::get('/contact',[ContactusController::class,'contact']);
 
-Route::post('/send-message',[ContactController::class,'sendEmail'])->name('contact.send');
+Route::post('/send-message',[ContactusController::class,'sendEmail'])->name('contact.send');
