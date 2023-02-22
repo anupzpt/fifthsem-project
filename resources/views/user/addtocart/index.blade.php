@@ -71,11 +71,12 @@
         .total {
             margin-top: 20px;
             margin-left: 107rem;
+
             padding: 10px 0;
             font-size: 25px;
+            box-shadow: 1px 6px 1px -5px rgba(0, 0, 0, 0.5);
 
         }
-
 
         .order {
             margin: 10px 15px;
@@ -161,7 +162,7 @@
                 @endforeach
                 <div>
                     <div>
-                        <h4 style="margin-right:20px;" class="total">Total Price: Rs. {{ $total }}</h4>
+                        <h4 style="margin-right:20px;" class="total"> Total Price: Rs. {{ $total }}</h4>
                     </div>
 
                 </div>
@@ -179,7 +180,6 @@
     crossorigin="anonymous"></script>
 {{-- <script src="toastr.js"></script> --}}
 <script>
-
     $(document).ready(function() {
 
         $('.delete_cart_data').click(function(e) {
