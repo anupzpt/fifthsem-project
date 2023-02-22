@@ -53,6 +53,7 @@ Route::resource('/Customer/AddToCart', AddToCartController::class);
 
 Route::get('login', [UserController::class, 'loginIndex'])->name('login');
 Route::post('login', [UserController::class, 'authentication'])->name('login');
+Route::post('/update-user-data', [UserController::class, 'updateUserData'])->name('update-user-data');
 
 Route::get('register', [UserController::class, 'registerIndex'])->name('register');
 Route::post('register', [UserController::class, 'save'])->name('register');
