@@ -32,16 +32,28 @@
             </div>
 
             <div class="contact-left text-dark">
-                <form action="" method="" class="text-center text-white">
+                @if(Session::has('message_sent'))
+                    <div class="alert alert-success" role="alert">
+                        {{Session::get('message_sent')}}
+                    </div>
+                @endif
+                <form  method="POST" action="{{route('contact.send')}}" enctype="multipart/form-data" class="text-center text-white" >
+                    @csrf
                     <div class="form">
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your Name" />
+                        <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="Your Name" />
                     </div>
                     <div class="form">
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Your Email" />
+                        <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="Your Email" />
                     </div>
+                    <!-- <div class="form">
+                        <select name="Select" class="form-control">
+                            <option value="user">User</option>
+                            <option value="artist">Artist</option>s
+                        </select>
+                    </div> -->
                     <div class="form">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">
-                        Message</textarea>
+                        <textarea name="msg" class="form-control" id="exampleFormControlTextarea1" placeholder="Your Message" rows="3">
+                        </textarea>
                     </div>
                     <div>
                         <button type="submit" class="btn-header text-white bg-brown">
@@ -49,10 +61,6 @@
                         </button>
                         -->
                     </div>
-                    <!-- <input type = "text" class = "form-control fw-6" placeholder="Full Name" name = "full_name">
-              <input type = "email" class = "form-control fw-6" placeholder="E-mail" name = "email">
-              <textarea rows = "5" class = "form-control fw-6" placeholder="Message" name = "message"></textarea>
-                        <button type="submit" class="btn bg-green">Send</button> -->
                 </form>
             </div>
         </div>
