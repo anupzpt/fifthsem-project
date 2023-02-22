@@ -13,10 +13,26 @@ class HomeController extends Controller
 {
     public function Index()
     {
+        session()->put(['popupBoxValue']);
         $products = Product::take(3)->get();
         $latestPosts = Product::limit(3)->latest('created_at')->get();
         $count= AddToCart::where('userId','1')->get()->count();
         return view('user.dashboard.dashboard', compact('products', 'latestPosts','count'));
+    }
+    public function myOrder()
+    {
+        session()->put('popupBoxValue','2');
+        return view('user.profileDetail.user-profile');
+    }
+    public function myAccount()
+    {
+        session()->put('popupBoxValue','1');
+        return view('user.profileDetail.user-profile');
+    }
+    public function returnAndCancel()
+    {
+        session()->put('popupBoxValue','3');
+        return view('user.profileDetail.user-profile');
     }
 
     public function Art()

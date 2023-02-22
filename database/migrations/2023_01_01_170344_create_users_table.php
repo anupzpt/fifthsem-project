@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->string('img_path')->default('userpanel/images/avatar.png');
             $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('zip_code')->nullable();
             $table->string('user_type')->default('user');
             $table->string('status')->default('active');
             $table->string('googleId')->unique()->nullable();

@@ -82,7 +82,7 @@
                  <div class="nav-item">
                      <a href="{{route('home.cart.index')}}" class="btn text-white">
                          <i class="fas fa-cart-shopping"> </i>
-                         <sup> <span  class="cartCount">{{$count}}</span></sup>
+                         <sup> <span  class="cartCount"></span></sup>
                      </a>
                  </div>
                  <div class="nav-item">
@@ -113,17 +113,17 @@
 
                  </div>
                  <hr>
-                 <a href="#" class="sub-menu-link">
+                 <a href="{{route('account')}}" class="sub-menu-link">
                      <img src="{{ asset('userpanel/images/happiness.png') }}">
                      <p>Manage Account</p>
                      <span>></span>
                  </a>
-                 <a href="#" class="sub-menu-link">
-                     <img src="userpanel/images/order.png">
+                 <a href="{{route('order')}}" class="sub-menu-link">
+                     <img src="userpanel/images/my-order.png">
                      <p>My Order</p>
                      <span>></span>
                  </a>
-                 <a href="#" class="sub-menu-link">
+                 <a href="{{route('return')}}" class="sub-menu-link">
                      <img src="userpanel/images/cancel.png">
                      <p>Return & Cancellation</p>
                      <span>></span>

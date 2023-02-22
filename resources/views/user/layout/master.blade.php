@@ -23,6 +23,8 @@
     <!-- slick slider css -->
     <link rel="stylesheet" href="{{asset('userpanel/plugins/slick-1.8.1/slick/slick.css')}}" />
     <link rel="stylesheet" href="{{asset('userpanel/plugins/slick-1.8.1/slick/slick-theme.css')}}" />
+    
+  
 </head>
 
 <body>
@@ -46,21 +48,7 @@
     <script src="{{asset('userpanel/plugins/slick-1.8.1/slick/slick.js')}}"></script>
     <!-- custom js -->
     <script src="{{asset('userpanel/js/script.js')}}"></script>
-    <script>
-        let subMenu = document.getElementById("subMenu");
-
-        var toggleMenu = document.getElementById("toggleMenu");
-        toggleMenu.addEventListener('click', () => {
-            subMenu.classList.toggle("open-menu");
-        });
-
-        // close the sub-menu-wrap element when the user click outside of it
-        document.addEventListener("click", function(event) {
-            if (!event.target.closest("#submenu") && !event.target.closest(".user-pic")) {
-                subMenu.classList.remove("open-menu");
-            }
-        });
-    </script>
+   
 </body>
 
 </html>
