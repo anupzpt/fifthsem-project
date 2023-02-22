@@ -37,7 +37,6 @@ Route::get('/user-profile/return-and-cancel', [HomeController::class, 'returnAnd
 Route::get('/art', [HomeController::class, 'Art'])->name('home.art');
 Route::POST('/cart', [HomeController::class, 'Cart'])->name('home.cart');
 Route::get('/cartIndex', [HomeController::class, 'CartIndex'])->name('home.cart.index');
-
 Route::get('/art/{id}', [HomeController::class, 'Parent'])->name('home.category');
 Route::get('/art-child/{id}', [HomeController::class, 'Child'])->name('home.child');
 
@@ -48,6 +47,7 @@ Route::resource('/admin', DashboardController::class);
 Route::resource('/Admin/Category', CategoryController::class);
 Route::resource('/Admin/Product', ProductController::class);
 Route::resource('/Customer/AddToCart', AddToCartController::class);
+Route::delete('delete-from-cart', [AddToCartController::class, 'delete'])->name('cart.delete');
 
 // -------------------------------------
 

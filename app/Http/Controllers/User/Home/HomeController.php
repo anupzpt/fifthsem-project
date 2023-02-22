@@ -8,6 +8,7 @@ use App\Models\login\User;
 use App\Models\Product\Product;
 use App\Models\User\AddToCart\AddToCart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -16,22 +17,22 @@ class HomeController extends Controller
         session()->put(['popupBoxValue']);
         $products = Product::take(3)->get();
         $latestPosts = Product::limit(3)->latest('created_at')->get();
-        $count= AddToCart::where('userId','1')->get()->count();
-        return view('user.dashboard.dashboard', compact('products', 'latestPosts','count'));
+        $count = AddToCart::where('userId', Auth::id())->get()->count();
+        return view('user.dashboard.dashboard', compact('products', 'latestPosts', 'count'));
     }
     public function myOrder()
     {
-        session()->put('popupBoxValue','2');
+        session()->put('popupBoxValue', '2');
         return view('user.profileDetail.user-profile');
     }
     public function myAccount()
     {
-        session()->put('popupBoxValue','1');
+        session()->put('popupBoxValue', '1');
         return view('user.profileDetail.user-profile');
     }
     public function returnAndCancel()
     {
-        session()->put('popupBoxValue','3');
+        session()->put('popupBoxValue', '3');
         return view('user.profileDetail.user-profile');
     }
 
@@ -40,36 +41,53 @@ class HomeController extends Controller
         $parent = Category::whereNull('parent_id')->get();
         $child = Category::whereNotNull('parent_id')->get();
         $products = Product::all();
-        $count= AddToCart::where('userId','1')->get()->count();
-        return view('user.art.art', compact('products', 'child', 'parent','count'));
+        $count = AddToCart::where('userId', Auth::id())->get()->count();
+        return view('user.art.art', compact('products', 'child', 'parent', 'count'));
     }
 
     public function Cart(Request $request)
     {
+        // if(Auth::id() == null){
+        //     // retrun redit
+        // }
         $cart = Product::find($request->get('id'));
-        $cartDetail = new AddToCart();
-        $cartDetail->productId = $cart->id;
-        $cartDetail->userId = 1;
-        $cartDetail->quantity = '1';
-        $cartDetail->price = $cart->price;
-        $cartDetail->save();
-        $count= AddToCart::where('userId','1')->get()->count();
-        // $demo = AddToCart::where('userId','1')->get()->count();
-        return response()->json([
-            'status' => 'success',
-            // 'message' => $request->get('id'),
-            'message' => $cart,
-            'code' => 0,
-            'count'=>$count,
+        $cartCheck = AddToCart::where('productId', $request->get('id'))->get()->count();
+        if ($cartCheck != null) {
+            $count = AddToCart::where('userId', Auth::id())->get()->count();
+            return response()->json([
+                'status' => 'success',
+                // 'message' => $request->get('id'),
+                'message' => "Product Already Exists",
+                'code' => 1,
+                'count' => $count,
 
-        ]);
+            ]);
+        } else {
+            $cartDetail = new AddToCart();
+            $cartDetail->productId = $cart->id;
+            $cartDetail->userId = Auth::id();
+            $cartDetail->quantity = '1';
+            $cartDetail->price = $cart->price;
+            $cartDetail->save();
+            $count = AddToCart::where('userId', Auth::id())->get()->count();
+            // $demo = AddToCart::where('userId','1')->get()->count();
+            return response()->json([
+                'status' => 'success',
+                // 'message' => $request->get('id'),
+                'message' => $cartCheck,
+                'code' => 0,
+                'count' => $count,
+
+            ]);
+        }
     }
-    public function CartIndex() {
-        $response = AddToCart::where('userId','1')->get();
-        $count= AddToCart::where('userId','1')->get()->count();
+    public function CartIndex()
+    {
+        $response = AddToCart::where('userId', '1')->get();
+        $count = AddToCart::where('userId', Auth::id())->get()->count();
         $art = AddToCart::with('products')->get();
-        // dd($art);
-        return view('user.addtocart.index', compact('response','count','art'));
+        $total =AddToCart::where('userId', Auth::id())->get()->sum('price');
+        return view('user.addtocart.index', compact('response', 'count', 'art','total'));
     }
 
     public function Parent($id)
@@ -88,4 +106,5 @@ class HomeController extends Controller
         $products = Product::where('category_id', $id)->get();
         return view('user.art.art_detail', compact('products', 'parent', 'child'));
     }
+
 }
