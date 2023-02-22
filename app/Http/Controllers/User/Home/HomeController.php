@@ -48,7 +48,6 @@ class HomeController extends Controller
     public function Cart(Request $request)
     {
         // if(Auth::id() == null){
-        //     // retrun redit
         // }
         $cart = Product::find($request->get('id'));
         $cartCheck = AddToCart::where('productId', $request->get('id'))->get()->count();
@@ -56,7 +55,6 @@ class HomeController extends Controller
             $count = AddToCart::where('userId', Auth::id())->get()->count();
             return response()->json([
                 'status' => 'success',
-                // 'message' => $request->get('id'),
                 'message' => "Product Already Exists",
                 'code' => 1,
                 'count' => $count,
@@ -70,10 +68,8 @@ class HomeController extends Controller
             $cartDetail->price = $cart->price;
             $cartDetail->save();
             $count = AddToCart::where('userId', Auth::id())->get()->count();
-            // $demo = AddToCart::where('userId','1')->get()->count();
             return response()->json([
                 'status' => 'success',
-                // 'message' => $request->get('id'),
                 'message' => $cartCheck,
                 'code' => 0,
                 'count' => $count,

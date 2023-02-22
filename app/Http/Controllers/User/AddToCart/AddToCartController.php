@@ -18,7 +18,7 @@ class AddToCartController extends Controller
     {
         //
 
-       
+
 
     }
 
@@ -98,7 +98,7 @@ class AddToCartController extends Controller
         $cartId=$request->input('productId');
         $cart=AddToCart::where('productId',$cartId);
         $cart->delete();
-        return response()->json(['status' =>  "Product Deleted successfully"]);
+        return response()->json(['message' =>  "Are you sure you want to delete product?"]);
     }
 
 }

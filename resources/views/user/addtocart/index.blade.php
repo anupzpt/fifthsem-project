@@ -179,7 +179,7 @@
     crossorigin="anonymous"></script>
 {{-- <script src="toastr.js"></script> --}}
 <script>
-   
+
     $(document).ready(function() {
 
         $('.delete_cart_data').click(function(e) {
@@ -198,6 +198,8 @@
                 data: data,
                 success: function(response) {
                     window.location.reload();
+                    alert(response.message)
+
                 }
             });
         });
