@@ -159,7 +159,8 @@
                         <div>Logged in as: {{auth()->user()->email}}</div>
                     </div>
                     <hr />
-                    <form>
+                    <form action="{{route('update-user-data')}}" method="POST">
+                        @csrf
                         <div class="row mt-4">
                             <div class="col-md-5 mb-5">
                                 <div class="account-detail">
@@ -227,7 +228,7 @@
                                 </div>
                             </div>
                             <div class="mb-2">
-                                <a href="#" class="my-button" style="background-color:green">UPDATE PROFILE</a>
+                                <button class="my-button" style="background-color:green">UPDATE PROFILE</button>
                             </div>
                         </div>
                     </form>

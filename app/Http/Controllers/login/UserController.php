@@ -74,4 +74,13 @@ class UserController extends Controller
         auth()->logout();
         return redirect()->route('home.index');
     }
+    public function updateUserData(Request $req)
+    {
+        // dd($req->all());
+        $userInfo = User::find(auth()->user()->id);
+        $input = $req->all();
+        $userInfo->update($input);
+        // session()->put('popupBoxValue','1');
+        return redirect()->route('account');
+    }
 }
