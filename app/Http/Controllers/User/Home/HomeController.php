@@ -37,9 +37,7 @@ class HomeController extends Controller
         $cartDetail->quantity = '1';
         $cartDetail->price = $cart->price;
         $cartDetail->save();
-
         $count= AddToCart::where('userId','1')->get()->count();
-
         // $demo = AddToCart::where('userId','1')->get()->count();
         return response()->json([
             'status' => 'success',
@@ -50,6 +48,14 @@ class HomeController extends Controller
 
         ]);
     }
+    public function CartIndex() {
+        $response = AddToCart::where('userId','1')->get();
+        $count= AddToCart::where('userId','1')->get()->count();
+        $art = AddToCart::with('products')->get();
+        // dd($art);
+        return view('user.addtocart.index', compact('response','count','art'));
+    }
+
     public function Parent($id)
     {
         $child = Category::whereNotNull('parent_id')->get();

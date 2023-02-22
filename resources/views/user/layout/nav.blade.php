@@ -80,7 +80,7 @@
 
              @auth
                  <div class="nav-item">
-                     <a href="" class="btn text-white">
+                     <a href="{{route('home.cart.index')}}" class="btn text-white">
                          <i class="fas fa-cart-shopping"> </i>
                          <sup> <span  class="cartCount">{{$count}}</span></sup>
                      </a>

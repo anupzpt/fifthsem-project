@@ -33,6 +33,8 @@ use App\Models\login\User;
 Route::get('/', [HomeController::class, 'Index'])->name('home.index');
 Route::get('/art', [HomeController::class, 'Art'])->name('home.art');
 Route::POST('/cart', [HomeController::class, 'Cart'])->name('home.cart');
+Route::get('/cartIndex', [HomeController::class, 'CartIndex'])->name('home.cart.index');
+
 Route::get('/art/{id}', [HomeController::class, 'Parent'])->name('home.category');
 Route::get('/art-child/{id}', [HomeController::class, 'Child'])->name('home.child');
 
