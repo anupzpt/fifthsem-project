@@ -48,7 +48,7 @@
                     <!-- <div class="form">
                         <select name="Select" class="form-control">
                             <option value="user">User</option>
-                            <option value="artist">Artist</option>
+                            <option value="artist">Artist</option>s
                         </select>
                     </div> -->
                     <div class="form">

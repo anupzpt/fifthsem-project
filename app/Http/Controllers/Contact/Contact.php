@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Contact;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Mail\ContactMail;
 use Illuminate\Http\Request;
-use App\Http\Mail\ContactMail;
+use Mail;
 
-class ContactController extends Controller
+class Contact extends Controller
 {
     public function contact()
     {
@@ -21,7 +21,7 @@ class ContactController extends Controller
             'msg' => $request->msg
         ];
 
-        Mail::to('ishankhadka2058@gmail.com')->send(new ContactMail($details));
+        Mail::to('artihc82@gmail.com')->send(new ContactMail($details));
         return back()->with('message_sent','Your message has been sent Successfully!');
     }
 }

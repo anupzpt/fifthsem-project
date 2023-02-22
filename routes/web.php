@@ -67,6 +67,6 @@ Route::get('/facebookRedirect', [socialAuthController::class, 'redirectToFaceboo
 Route::get('/auth/facebook/callback', [socialAuthController::class, 'handleFacebookCallback'])->name('facebook.login.callback');
 
 //Contact us
-Route::get('/contact-us',[ContactController::class,'contact']);
+Route::get('/contact',[ContactController::class,'contact']);
 
 Route::post('/send-message',[ContactController::class,'sendEmail'])->name('contact.send');
