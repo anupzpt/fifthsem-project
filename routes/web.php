@@ -9,6 +9,7 @@ use App\Http\Controllers\login\SocialAuthController;
 use App\Http\Controllers\User\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Models\login\User;
+use App\Http\Controllers\Contact\ContactusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,7 @@ Route::delete('delete-from-cart', [AddToCartController::class, 'delete'])->name(
 
 Route::get('login', [UserController::class, 'loginIndex'])->name('login');
 Route::post('login', [UserController::class, 'authentication'])->name('login');
+Route::post('/update-user-data', [UserController::class, 'updateUserData'])->name('update-user-data');
 
 Route::get('register', [UserController::class, 'registerIndex'])->name('register');
 Route::post('register', [UserController::class, 'save'])->name('register');
@@ -66,3 +68,8 @@ Route::get('/auth/google/callback', [socialAuthController::class,'handleCallback
 //login with facebook part
 Route::get('/facebookRedirect', [socialAuthController::class, 'redirectToFacebookProvider'])->name('facebookLogin');
 Route::get('/auth/facebook/callback', [socialAuthController::class, 'handleFacebookCallback'])->name('facebook.login.callback');
+
+//Contact us
+Route::get('/contact',[ContactusController::class,'contact']);
+
+Route::post('/send-message',[ContactusController::class,'sendEmail'])->name('contact.send');
