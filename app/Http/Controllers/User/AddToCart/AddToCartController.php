@@ -35,7 +35,9 @@ class AddToCartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
+        // $order =new Order();
+        // $order->save($request->all())
     }
 
     /**

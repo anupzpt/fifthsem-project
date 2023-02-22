@@ -37,6 +37,8 @@ Route::get('/user-profile/my-order', [HomeController::class, 'myOrder'])->name('
 Route::get('/user-profile/return-and-cancel', [HomeController::class, 'returnAndCancel'])->name('return');
 Route::get('/art', [HomeController::class, 'Art'])->name('home.art');
 Route::POST('/cart', [HomeController::class, 'Cart'])->name('home.cart');
+Route::get('/cartIndex', [HomeController::class, 'CartIndex'])->name('home.cart.index');
+
 Route::get('/art/{id}', [HomeController::class, 'Parent'])->name('home.category');
 Route::get('/art-child/{id}', [HomeController::class, 'Child'])->name('home.child');
 
@@ -52,6 +54,7 @@ Route::resource('/Customer/AddToCart', AddToCartController::class);
 
 Route::get('login', [UserController::class, 'loginIndex'])->name('login');
 Route::post('login', [UserController::class, 'authentication'])->name('login');
+Route::post('/update-user-data', [UserController::class, 'updateUserData'])->name('update-user-data');
 
 Route::get('register', [UserController::class, 'registerIndex'])->name('register');
 Route::post('register', [UserController::class, 'save'])->name('register');
