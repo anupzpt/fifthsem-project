@@ -39,7 +39,7 @@
                         <label for="floatingPassword">Password</label>
                     </div>
                     <div class="mt-2  text-end">
-                        <a href="{{route('passowrd.reset')}}" class="text-primary fw-bold text-decoration-none">Forget Password?</a>
+                        <a href="" class="text-primary fw-bold text-decoration-none">Forget Password?</a>
                     </div>
                     <button type="submit" class="btn btn-primary submit_btn w-100 my-4">Continue</button>
                     <div class="text-center text-muted text-uppercase mb-3">or</div>
