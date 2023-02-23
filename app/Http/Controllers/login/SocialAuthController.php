@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class SocialAuthController extends Controller
 {
     //login with google part
-    // Redirect the user to the Google authentication page. 
+    // Redirect the user to the Google authentication page.
 
     public function redirectToProvider()
     {
@@ -41,17 +41,12 @@ class SocialAuthController extends Controller
             else{
                 Auth::login($user);
                 return redirect()->route('home.index');
-
             }
         } catch(\Throwable $th) {
             dd('something went wrong!'. $th->getMessage());
         }
-       
+
     }
-
-
-     //login with facebook part
-    // Redirect the user to the Google authentication page. 
 
     public function redirectToFacebookProvider()
     {
@@ -72,7 +67,7 @@ class SocialAuthController extends Controller
                     'name' => $facebook_user->getName(),
                     'email' => $facebook_user->getEmail(),
                     'googleId' => $facebook_user->getId(),
-                    
+
                 ]);
 
                 Auth::login($new_user);
@@ -87,8 +82,8 @@ class SocialAuthController extends Controller
         } catch(\Throwable $th) {
             dd('something went wrong!'. $th->getMessage());
         }
-       
+
     }
 
-    
+
 }
