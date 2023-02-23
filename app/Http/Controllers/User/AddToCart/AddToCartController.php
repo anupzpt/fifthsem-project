@@ -18,7 +18,6 @@ class AddToCartController extends Controller
     {
         //
 
-        return view('user.addtocart.index');
 
 
     }
@@ -44,6 +43,9 @@ class AddToCartController extends Controller
         // dd($request->all());
         // $order =new Order();
         // $order->save($request->all())
+        $count = AddToCart::where('userId', Auth::id())->get()->count();
+
+        return view('user.order.index',compact('count'));
 
     }
 
