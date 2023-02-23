@@ -35,9 +35,9 @@ class SocialAuthController extends Controller
                 ]);
 
                 Auth::login($new_user);
-
                 return redirect()->route('home.index');
             }
+
             else{
                 Auth::login($user);
                 return redirect()->route('home.index');
