@@ -190,8 +190,6 @@
                 "productId": productId,
             };
 
-            // $(this).closest(".cartpage").remove();
-
             $.ajax({
                 url: '/delete-from-cart',
                 type: 'DELETE',
