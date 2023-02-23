@@ -7,6 +7,7 @@ use App\Models\Category\Category;
 use App\Models\login\User;
 use App\Models\Product\Product;
 use App\Models\User\AddToCart\AddToCart;
+use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,35 +48,43 @@ class HomeController extends Controller
 
     public function Cart(Request $request)
     {
-        // if(Auth::id() == null){
-        // }
-        $cart = Product::find($request->get('id'));
-        $cartCheck = AddToCart::where('productId', $request->get('id'))->get()->count();
-        if ($cartCheck != null) {
-            $count = AddToCart::where('userId', Auth::id())->get()->count();
-            return response()->json([
-                'status' => 'success',
-                'message' => "Product Already Exists",
-                'code' => 1,
-                'count' => $count,
 
-            ]);
-        } else {
-            $cartDetail = new AddToCart();
-            $cartDetail->productId = $cart->id;
-            $cartDetail->userId = Auth::id();
-            $cartDetail->quantity = '1';
-            $cartDetail->price = $cart->price;
-            $cartDetail->save();
-            $count = AddToCart::where('userId', Auth::id())->get()->count();
+        if(Auth::id() == null){
             return response()->json([
-                'status' => 'success',
-                'message' => $cartCheck,
-                'code' => 0,
-                'count' => $count,
-
+                'message' => Auth::check(),
+                'code' => 101,
             ]);
-        }
+         }
+         else{
+            $cart = Product::find($request->get('id'));
+            $cartCheck = AddToCart::where('productId', $request->get('id'))->get()->count();
+            if ($cartCheck != null) {
+                $count = AddToCart::where('userId', Auth::id())->get()->count();
+                return response()->json([
+                    'status' => 'success',
+                    'message' => "Product Already Exists",
+                    'code' => 1,
+                    'count' => $count,
+
+                ]);
+            } else {
+                $cartDetail = new AddToCart();
+                $cartDetail->productId = $cart->id;
+                $cartDetail->userId = Auth::id();
+                $cartDetail->quantity = '1';
+                $cartDetail->price = $cart->price;
+                $cartDetail->save();
+                $count = AddToCart::where('userId', Auth::id())->get()->count();
+                return response()->json([
+                    'status' => 'success',
+                    'message' => $cartCheck,
+                    'code' => 0,
+                    'count' => $count,
+
+                ]);
+            }
+         }
+
     }
     public function CartIndex()
     {
@@ -91,16 +100,20 @@ class HomeController extends Controller
         $child = Category::whereNotNull('parent_id')->get();
         $parent = Category::whereNull('parent_id')->get();
         $childCategory = Category::where('parent_id', $id)->get();
+        $count = AddToCart::where('userId', Auth::id())->get()->count();
+
         $products = Product::whereIn('category_id', $childCategory->pluck('categoryId'))
             ->get();
-        return view('user.art.art_detail', compact('products', 'child', 'parent'));
+        return view('user.art.art_detail', compact('products', 'child', 'parent','count'));
     }
     public function Child($id)
     {
         $parent = Category::whereNull('parent_id')->get();
         $child = Category::whereNotNull('parent_id')->get();
         $products = Product::where('category_id', $id)->get();
-        return view('user.art.art_detail', compact('products', 'parent', 'child'));
+        $count = AddToCart::where('userId', Auth::id())->get()->count();
+
+        return view('user.art.art_detail', compact('products', 'parent', 'child','count'));
     }
 
 }

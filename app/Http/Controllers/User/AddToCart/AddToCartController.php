@@ -18,6 +18,7 @@ class AddToCartController extends Controller
     {
         //
 
+        return view('user.addtocart.index');
 
 
     }
@@ -43,6 +44,7 @@ class AddToCartController extends Controller
         // dd($request->all());
         // $order =new Order();
         // $order->save($request->all())
+
     }
 
     /**
