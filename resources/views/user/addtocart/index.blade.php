@@ -134,19 +134,6 @@
                                     <label
                                         style="margin-right:20px;"><strong>Quantity:</strong></label>{{ $detail->quantity }}
                                 </div>
-                                <div class="row">
-                                    {{-- <div>
-                                        <button class="btn-cart" id="less">-</button>
-                                        <button class="btn-cart input-group-text decrement-btn changeQuantity">-</button>
-                                    </div> --}}
-                                    {{-- <div>
-                                        <input type="text" id="quantity" name="quantity" class="w3-input"
-                                            style="background-color: gainsboro" value='1' />
-                                    </div> --}}
-                                    {{-- <div>
-                                        <button class="btn-cart input-group-text increment-btn changeQuantity">+</button>
-                                    </div> --}}
-                                </div>
 
                             </div>
                             <div>
