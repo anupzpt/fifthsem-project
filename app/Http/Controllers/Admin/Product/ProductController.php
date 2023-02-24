@@ -105,7 +105,7 @@ class ProductController extends Controller
             $response["image"] = $fileName;
         }
         $productDetails->update($response);
-        return redirect()->route('Product.index');
+        return redirect()->route('Product.index')->with('status', 'Product Updated Successfully');
     }
 
     /**
