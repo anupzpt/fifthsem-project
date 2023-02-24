@@ -48,7 +48,7 @@ Route::get('/art-child/{id}', [HomeController::class, 'Child'])->name('home.chil
 Route::resource('/admin', DashboardController::class)->middleware(['auth']);;
 Route::resource('/Admin/Category', CategoryController::class);
 Route::resource('/Admin/Product', ProductController::class);
-Route::resource('/Customer/AddToCart', AddToCartController::class);
+Route::resource('/Customer/Order', AddToCartController::class);
 Route::delete('delete-from-cart', [AddToCartController::class, 'delete'])->name('cart.delete');
 Route::resource('/Admin/AdminList', AdminController::class);
 
