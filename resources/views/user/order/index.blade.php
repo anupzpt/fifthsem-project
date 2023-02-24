@@ -1,6 +1,5 @@
 @extends('user.layout.master')
 @section('content')
-{{-- <link rel="stylesheet" href="{{ asset('userpanel/css/order.css') }}" /> --}}
 
 <html>
 
@@ -78,4 +77,3 @@
 </html>
 
 @endsection
-<script src="{{ asset('userpanel/js/script.js') }}"></script>
