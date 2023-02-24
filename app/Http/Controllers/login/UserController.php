@@ -62,7 +62,12 @@ class UserController extends Controller
 
         if (Auth::attempt($req->only('email', 'password'))) {
             // dd('log in');
-            return redirect()->route('home.index');
+            if(Auth::user()->user_type == '1'){
+                return redirect ('/admin'); 
+            }else{
+                return redirect()->route('home.index');
+            }
+        
         } else {
             // dd('user not found');
             return redirect('login')->withError('Login details are not valid');

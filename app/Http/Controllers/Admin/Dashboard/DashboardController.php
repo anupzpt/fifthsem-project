@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -14,7 +15,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        if (Auth::user()->user_type == '1') {
+            return view('admin.dashboard');
+        }
+        else{
+            return redirect()->route('home.index')->with('error_msg','You are not authorised to access admin page');
+        }
     }
 
     /**
