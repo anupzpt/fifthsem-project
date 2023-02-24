@@ -10,6 +10,7 @@ use App\Http\Controllers\User\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Models\login\User;
 use App\Http\Controllers\Contact\ContactusController;
+use App\Http\Controllers\Admin\AdminList\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,7 @@ Route::resource('/Admin/Category', CategoryController::class);
 Route::resource('/Admin/Product', ProductController::class);
 Route::resource('/Customer/AddToCart', AddToCartController::class);
 Route::delete('delete-from-cart', [AddToCartController::class, 'delete'])->name('cart.delete');
+Route::resource('/Admin/AdminList', AdminController::class);
 
 // -------------------------------------
 
