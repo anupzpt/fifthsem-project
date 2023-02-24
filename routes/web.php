@@ -44,7 +44,7 @@ Route::get('/art-child/{id}', [HomeController::class, 'Child'])->name('home.chil
 
 // ------------Admin Part-------------
 
-Route::resource('/admin', DashboardController::class);
+Route::resource('/admin', DashboardController::class)->middleware(['auth']);;
 Route::resource('/Admin/Category', CategoryController::class);
 Route::resource('/Admin/Product', ProductController::class);
 Route::resource('/Customer/AddToCart', AddToCartController::class);
