@@ -69,8 +69,8 @@
     </div>
 
     <!-- jQuery -->
-    <<script src="{{ asset('adminpanel/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('adminpanel/js/popper.min.js') }}"></>
+    <script src="{{ asset('adminpanel/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('adminpanel/js/popper.min.js') }}"></script>
     <script src="{{ asset('adminpanel/js/bootstrap.min.js') }}"></script>
     <!-- wow animation -->
     <script src="{{ asset('adminpanel/js/animate.js') }}"></script>
