@@ -74,7 +74,10 @@
 
             padding: 10px 0;
             font-size: 25px;
-            box-shadow: 1px 6px 1px -5px rgba(0, 0, 0, 0.5);
+    border-bottom-style: dotted;
+    border-color: #b1aeae;
+
+            /* box-shadow: 1px 6px 1px -5px rgba(0, 0, 0, 0.5); */
 
         }
 
@@ -100,7 +103,7 @@
             <h2>Your Cart</h2>
         </div>
         <div class="panel-body">
-            <form action="{{ route('AddToCart.store') }}" method="post">
+            <form action="{{route('Order.store')}}" method="post">
                 @foreach ($art as $i => $detail)
                     @csrf
                     <div class="row row-cart cartpage ">
