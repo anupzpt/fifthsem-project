@@ -146,7 +146,7 @@
                     <img src="{{ asset('userpanel/images/logo-black.png') }}" alt="">
                 </div>
                 <div class="time">
-                    <h2>Date:25th feb</h2>
+                    <h2>Date:2023/2/25</h2>
                 </div>
             </div>
             <div class="main-contain">
