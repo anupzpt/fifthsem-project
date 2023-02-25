@@ -41,7 +41,7 @@
                             <td>{{ $item->address }}</td>
                             
                             <td>
-                                <img src="{{$item->img_path}}" width="70px" height="70px" alt="image">
+                                <img src="{{asset('/uploads'.'/'.$item->img_path)}}" width="70px" height="70px" alt="image">
                             </td>
                             <td></td>
                             <td>
