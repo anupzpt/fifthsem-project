@@ -7,6 +7,7 @@ use App\Http\Controllers\User\AddToCart\AddToCartController;
 use App\Http\Controllers\login\UserController;
 use App\Http\Controllers\login\SocialAuthController;
 use App\Http\Controllers\User\Home\HomeController;
+use App\Http\Controllers\Admin\UserList\UserListController;
 use Illuminate\Support\Facades\Route;
 use App\Models\login\User;
 use App\Http\Controllers\Contact\ContactusController;
@@ -51,6 +52,7 @@ Route::resource('/Admin/Product', ProductController::class);
 Route::resource('/Customer/Order', AddToCartController::class);
 Route::delete('delete-from-cart', [AddToCartController::class, 'delete'])->name('cart.delete');
 Route::resource('/Admin/AdminList', AdminController::class);
+Route::resource('/Admin/UserList', UserListController::class);
 
 // -------------------------------------
 
