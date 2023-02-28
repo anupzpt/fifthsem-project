@@ -82,14 +82,16 @@
         /* //////////////////////////////////////////// */
         .footers {
             margin-top: 100px;
+            display: flex;
+            justify-content: space-between;
+
         }
 
         .total {
 
-            margin-left: 80rem;
+            /* margin-left: 80rem; */
 
             padding: 10px 0;
-
             border-bottom-style: dotted;
             border-color: #b1aeae;
         }
@@ -109,30 +111,39 @@
             cursor: pointer;
         }
 
+        .address {
+            background-color: rgb(83, 83, 83);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
         /* //////////////////////////////////////////// */
         /* .pagination {
-                margin-top: 40px;
-                float: right;
-                display: inline-block;
-            }
+                        margin-top: 40px;
+                        float: right;
+                        display: inline-block;
+                    }
 
-            .pagination a {
-                color: black;
-                float: left;
-                padding: 8px 16px;
-                text-decoration: none;
-            }
+                    .pagination a {
+                        color: black;
+                        float: left;
+                        padding: 8px 16px;
+                        text-decoration: none;
+                    }
 
-            .pagination a.active {
-                background-color: #4CAF50;
-                color: white;
-                border-radius: 5px;
-            }
+                    .pagination a.active {
+                        background-color: #4CAF50;
+                        color: white;
+                        border-radius: 5px;
+                    }
 
-            .pagination a:hover:not(.active) {
-                background-color: #ddd;
-                border-radius: 5px;
-            } */
+                    .pagination a:hover:not(.active) {
+                        background-color: #ddd;
+                        border-radius: 5px;
+                    } */
 
         /* /////////////////////////////// */
     </style>
@@ -141,84 +152,60 @@
             <div class="head-bar">
                 <h2>Your Order</h2>
             </div>
-            <div class="contains ">
-                <div class="arthic-image">
-                    <img src="{{ asset('userpanel/images/logo-black.png') }}" alt="">
+            <form action="{{ route('Order.store') }}" method="POST">
+                @csrf
+                <div class="contains ">
+                    <div class="arthic-image">
+                        <img src="{{ asset('userpanel/images/logo-black.png') }}" alt="">
+                    </div>
+                    <div class="time">
+                        <h2>Date:2023/2/25</h2>
+                    </div>
                 </div>
-                <div class="time">
-                    <h2>Date:2023/2/25</h2>
-                </div>
-            </div>
-            <div class="main-contain">
-                <div>
-                    <table id="table-design">
-                        <thead>
-                            <tr>
-                                <th>SN</th>
-                                <th>Product Name</th>
-                                <th>Detail</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>1</td>
-                                <td>john@example.com</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>1</td>
-                                <td>john@example.com</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>1</td>
-                                <td>john@example.com</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>1</td>
-                                <td>john@example.com</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>1</td>
-                                <td>john@example.com</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="footers">
+                <div class="main-contain">
                     <div>
-                        <div class="total">
-                            <h2>Total Price : 30000</h2>
+                        <table id="table-design">
+                            <thead>
+                                <tr>
+                                    <th>SN</th>
+                                    <th>Product Name</th>
+                                    <th>Detail</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $sn = 1;
+                                @endphp
+                                @foreach ($detail as $item)
+                                    <tr>
+                                        <td>{{ $sn++ }}</td>
+                                        <td>{{ $item->products->name }}</td>
+                                        <td>{{ $item->products->description }}</td>
+                                        <td>{{ $item->quantity }}</td>
+                                        <td>{{ $item->price }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="footers ">
+                        <div>
+                            <button class="address btn" type="submit"> + Addd Address</button>
+                        </div>
+                        <div>
+                            <div class="total">
+                                <h2>Total Price : {{ $total }}</h2>
+                            </div>
+
+                            <div class="order">
+                                <button class="btn order-btn" type="submit">Done</button>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="order">
-                        <button class="order-btn" type="submit">Done</button>
-                    </div>
                 </div>
-                {{-- <div class="pagination">
-                    <a href="#">&laquo;</a>
-                    <a href="#">1</a>
-                    <a class="active" href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">&raquo;</a>
-                </div> --}}
-            </div>
+            </form>
         </div>
     </div>
 @endsection
