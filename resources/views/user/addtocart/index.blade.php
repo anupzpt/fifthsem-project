@@ -9,7 +9,6 @@
             background-color: gainsboro;
             text-align: center;
             box-shadow: -6px 10px 10px -6px rgba(0, 0, 0, 0.5);
-
         }
 
         .panel-body {
@@ -71,14 +70,11 @@
         .total {
             margin-top: 20px;
             margin-left: 107rem;
-
             padding: 10px 0;
             font-size: 25px;
-    border-bottom-style: dotted;
-    border-color: #b1aeae;
-
+            border-bottom-style: dotted;
+            border-color: #b1aeae;
             /* box-shadow: 1px 6px 1px -5px rgba(0, 0, 0, 0.5); */
-
         }
 
         .order {
@@ -103,18 +99,20 @@
             <h2>Your Cart</h2>
         </div>
         <div class="panel-body">
-            <form action="{{route('Order.store')}}" method="post">
                 @foreach ($art as $i => $detail)
-                    @csrf
                     <div class="row row-cart cartpage ">
                         <div class="box-left ">
                             <img class="img-responsive" src="{{ asset('/uploads' . '/' . $detail->products->image) }}">
                             {{-- src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS33qwUA-4fBp6748mOoHU5EGN9IQnB503Nm2jBApIb&s"> --}}
                         </div>
                         <div class="box-right">
+                         <div>
+                            <input type="hidden"  class="cartId" name="id[]" value={{ $detail->id }}>
+
+                         </div>
                             <div>
                                 <label style="margin-right:20px;"><strong>{{ $i + 1 }}.</strong></label>
-                                <input type="hidden" class="productId" value={{ $detail->productId }}>
+                                <input type="hidden"  class="productId" name="productId[]" value={{ $detail->productId }}>
                             </div>
                             <div>
                                 <label
@@ -136,12 +134,16 @@
                                 <div>
                                     <label
                                         style="margin-right:20px;"><strong>Quantity:</strong></label>{{ $detail->quantity }}
+                                <input name="quantity[]" value="{{ $detail->products->description }}" type="hidden" />
+
                                 </div>
 
                             </div>
                             <div>
                                 <label style="margin-right:20px;"><strong>Total
                                         Price: </strong></label>Rs. {{ $detail->price * $detail->quantity }}
+                                <input name="total" value="{{ $detail->products->description }}" type="hidden" />
+
                             </div>
                             <div class="remove">
                                 <a class="remove-button delete_cart_data " id="cart" data-id="{{ $detail->id }}"><i
@@ -158,7 +160,7 @@
                 </div>
 
                 <div class="order">
-                    <button class="order-btn" type="submit">Place Order</button>
+                    <a href="{{ route('Order.index') }}"  class="btn order-btn" type="submit">Place Order</a>
                 </div>
 
             </form>

@@ -112,7 +112,6 @@ class HomeController extends Controller
         $child = Category::whereNotNull('parent_id')->get();
         $products = Product::where('category_id', $id)->get();
         $count = AddToCart::where('userId', Auth::id())->get()->count();
-
         return view('user.art.art_detail', compact('products', 'parent', 'child','count'));
     }
 
