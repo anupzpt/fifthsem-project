@@ -187,15 +187,12 @@
                                         <td>{{ $item->price }}</td>
                                     </tr>
                                 @endforeach
-
-
                             </tbody>
                         </table>
                     </div>
                     <div class="footers ">
                         <div>
-                            <button class="address btn" type="submit">+Add Address</button>
-
+                            <button class="address btn" type="submit"> + Addd Address</button>
                         </div>
                         <div>
                             <div class="total">
