@@ -11,8 +11,13 @@ use App\Http\Controllers\Admin\UserList\UserListController;
 use Illuminate\Support\Facades\Route;
 use App\Models\login\User;
 use App\Http\Controllers\Contact\ContactusController;
+<<<<<<< HEAD
+use App\Http\Controllers\Forget\ForgetController;
+
+=======
 use App\Http\Controllers\Admin\AdminList\AdminController;
 use App\Http\Controllers\Admin\Order\OrderListController;
+>>>>>>> 10bba9777e0c23b6839db51f86e6ab69e231e020
 
 /*
 |--------------------------------------------------------------------------
@@ -81,3 +86,11 @@ Route::get('/auth/facebook/callback', [socialAuthController::class, 'handleFaceb
 Route::get('/contact',[ContactusController::class,'contact']);
 
 Route::post('/send-message',[ContactusController::class,'sendEmail'])->name('contact.send');
+
+
+//Forget password
+Route::get('/forget-password',[ForgetController::class,'forgetPasswordLoad']);
+Route::post('/forget-password',[ForgetController::class,'forgetPassword'])->name('forgetPassword');
+
+Route::get('/reset-password/{token}',[ForgetController::class,'resetPasswordLoad']);
+Route::post('/reset-password',[ForgetController::class,'resetPassword'])->name('resetPassword');
