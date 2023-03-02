@@ -37,7 +37,7 @@ class UserController extends Controller
             'contact' => $req->contact,
             'email' => $req->email,
             'password' => Hash::make($req->password),
-            'user_type' => $req->user_type,
+
         ]);
 
         // login user here
@@ -63,11 +63,11 @@ class UserController extends Controller
         if (Auth::attempt($req->only('email', 'password'))) {
             // dd('log in');
             if(Auth::user()->user_type == '1'){
-                return redirect ('/admin'); 
+                return redirect ('/admin');
             }else{
                 return redirect()->route('home.index');
             }
-        
+
         } else {
             // dd('user not found');
             return redirect('login')->withError('Login details are not valid');

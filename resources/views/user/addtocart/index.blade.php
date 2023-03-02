@@ -92,6 +92,10 @@
             cursor: pointer;
             margin-right: 20px;
         }
+        .empty{
+            text-align: center;
+            margin-top: 30px;
+        }
     </style>
 
     <div class="container-fluid">
@@ -99,6 +103,7 @@
             <h2>Your Cart</h2>
         </div>
         <div class="panel-body">
+            @if ($art->count() > 0)
                 @foreach ($art as $i => $detail)
                     <div class="row row-cart cartpage ">
                         <div class="box-left ">
@@ -106,13 +111,13 @@
                             {{-- src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS33qwUA-4fBp6748mOoHU5EGN9IQnB503Nm2jBApIb&s"> --}}
                         </div>
                         <div class="box-right">
-                         <div>
-                            <input type="hidden"  class="cartId" name="id[]" value={{ $detail->id }}>
+                            <div>
+                                <input type="hidden" class="cartId" name="id[]" value={{ $detail->id }}>
 
-                         </div>
+                            </div>
                             <div>
                                 <label style="margin-right:20px;"><strong>{{ $i + 1 }}.</strong></label>
-                                <input type="hidden"  class="productId" name="productId[]" value={{ $detail->productId }}>
+                                <input type="hidden" class="productId" name="productId[]" value={{ $detail->productId }}>
                             </div>
                             <div>
                                 <label
@@ -134,7 +139,7 @@
                                 <div>
                                     <label
                                         style="margin-right:20px;"><strong>Quantity:</strong></label>{{ $detail->quantity }}
-                                <input name="quantity[]" value="{{ $detail->products->description }}" type="hidden" />
+                                    <input name="quantity[]" value="{{ $detail->products->description }}" type="hidden" />
 
                                 </div>
 
@@ -160,8 +165,16 @@
                 </div>
 
                 <div class="order">
-                    <a href="{{ route('Order.index') }}"  class="btn order-btn" type="submit">Place Order</a>
+                    <a href="{{ route('Order.index') }}" class="btn order-btn" type="submit">Place Order</a>
                 </div>
+                @else
+                <div class="empty">
+                    <h2>Your Cart is empty</h2>
+                </div>
+                <div class="order">
+                    <a href="{{ route('home.art') }}" class="btn order-btn" type="submit">Back</a>
+                </div>
+            @endif
 
             </form>
         </div>

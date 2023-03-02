@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('userId');
             $table->string('quantity');
             $table->string('price');
+            $table->string('payment_status');
             $table->string('address')->nullable();
             $table->timestamps();
         });

@@ -55,6 +55,8 @@ class AddToCartController extends Controller
             $data[$i]['productId'] = $cart->productId;
             $data[$i]['quantity'] = $cart->quantity;
             $data[$i]['price'] = $cart->price;
+            $data[$i]['payment_status'] = '0';
+
         }
         $ProductBooking = Order::insert($data);
         if($ProductBooking){

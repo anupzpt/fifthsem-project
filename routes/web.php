@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\login\User;
 use App\Http\Controllers\Contact\ContactusController;
 use App\Http\Controllers\Admin\AdminList\AdminController;
+use App\Http\Controllers\Admin\Order\OrderListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,8 @@ Route::get('/art-child/{id}', [HomeController::class, 'Child'])->name('home.chil
 Route::resource('/admin', DashboardController::class)->middleware(['auth']);;
 Route::resource('/Admin/Category', CategoryController::class);
 Route::resource('/Admin/Product', ProductController::class);
+Route::resource('/Admin/OrderList', OrderListController::class);
+
 Route::resource('/Customer/Order', AddToCartController::class);
 // Route::post('place-order', [AddToCartController::class, 'order']);
 Route::delete('delete-from-cart', [AddToCartController::class, 'delete'])->name('cart.delete');
@@ -57,11 +60,11 @@ Route::resource('/Admin/UserList', UserListController::class);
 
 // -------------------------------------
 
-Route::get('login', [UserController::class, 'loginIndex'])->name('login');
+Route::get('login', [UserController::class, 'loginIndex'])->name('login1');
 Route::post('login', [UserController::class, 'authentication'])->name('login');
 Route::post('/update-user-data', [UserController::class, 'updateUserData'])->name('update-user-data');
 
-Route::get('register', [UserController::class, 'registerIndex'])->name('register');
+Route::get('register', [UserController::class, 'registerIndex'])->name('register1');
 Route::post('register', [UserController::class, 'save'])->name('register');
 
 Route::get('logout', [UserController::class, 'logout'])->name('logout');

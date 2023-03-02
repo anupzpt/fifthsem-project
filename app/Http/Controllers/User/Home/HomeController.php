@@ -7,6 +7,7 @@ use App\Models\Category\Category;
 use App\Models\login\User;
 use App\Models\Product\Product;
 use App\Models\User\AddToCart\AddToCart;
+use App\Models\User\Order\Order;
 use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,10 @@ class HomeController extends Controller
     public function myOrder()
     {
         session()->put('popupBoxValue', '2');
-        return view('user.profileDetail.user-profile');
+        $orders= Order::where('userId',Auth::id())->get();
+        $total =AddToCart::where('userId', Auth::id())->get()->sum('price');
+
+        return view('user.profileDetail.user-profile',compact('orders','total'));
     }
     public function myAccount()
     {
