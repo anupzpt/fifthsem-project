@@ -9,7 +9,6 @@
             background-color: gainsboro;
             text-align: center;
             box-shadow: -6px 10px 10px -6px rgba(0, 0, 0, 0.5);
-
         }
 
         .panel-body {
@@ -71,11 +70,11 @@
         .total {
             margin-top: 20px;
             margin-left: 107rem;
-
             padding: 10px 0;
             font-size: 25px;
-            box-shadow: 1px 6px 1px -5px rgba(0, 0, 0, 0.5);
-
+            border-bottom-style: dotted;
+            border-color: #b1aeae;
+            /* box-shadow: 1px 6px 1px -5px rgba(0, 0, 0, 0.5); */
         }
 
         .order {
@@ -93,6 +92,10 @@
             cursor: pointer;
             margin-right: 20px;
         }
+        .empty{
+            text-align: center;
+            margin-top: 30px;
+        }
     </style>
 
     <div class="container-fluid">
@@ -100,9 +103,8 @@
             <h2>Your Cart</h2>
         </div>
         <div class="panel-body">
-            <form action="{{ route('AddToCart.store') }}" method="post">
+            @if ($art->count() > 0)
                 @foreach ($art as $i => $detail)
-                    @csrf
                     <div class="row row-cart cartpage ">
                         <div class="box-left ">
                             <img class="img-responsive" src="{{ asset('/uploads' . '/' . $detail->products->image) }}">
@@ -110,8 +112,12 @@
                         </div>
                         <div class="box-right">
                             <div>
+                                <input type="hidden" class="cartId" name="id[]" value={{ $detail->id }}>
+
+                            </div>
+                            <div>
                                 <label style="margin-right:20px;"><strong>{{ $i + 1 }}.</strong></label>
-                                <input type="hidden" class="productId" value={{ $detail->productId }}>
+                                <input type="hidden" class="productId" name="productId[]" value={{ $detail->productId }}>
                             </div>
                             <div>
                                 <label
@@ -133,25 +139,16 @@
                                 <div>
                                     <label
                                         style="margin-right:20px;"><strong>Quantity:</strong></label>{{ $detail->quantity }}
-                                </div>
-                                <div class="row">
-                                    {{-- <div>
-                                        <button class="btn-cart" id="less">-</button>
-                                        <button class="btn-cart input-group-text decrement-btn changeQuantity">-</button>
-                                    </div> --}}
-                                    {{-- <div>
-                                        <input type="text" id="quantity" name="quantity" class="w3-input"
-                                            style="background-color: gainsboro" value='1' />
-                                    </div> --}}
-                                    {{-- <div>
-                                        <button class="btn-cart input-group-text increment-btn changeQuantity">+</button>
-                                    </div> --}}
+                                    <input name="quantity[]" value="{{ $detail->products->description }}" type="hidden" />
+
                                 </div>
 
                             </div>
                             <div>
                                 <label style="margin-right:20px;"><strong>Total
                                         Price: </strong></label>Rs. {{ $detail->price * $detail->quantity }}
+                                <input name="total" value="{{ $detail->products->description }}" type="hidden" />
+
                             </div>
                             <div class="remove">
                                 <a class="remove-button delete_cart_data " id="cart" data-id="{{ $detail->id }}"><i
@@ -168,8 +165,16 @@
                 </div>
 
                 <div class="order">
-                    <button class="order-btn" type="submit">Place Order</button>
+                    <a href="{{ route('Order.index') }}" class="btn order-btn" type="submit">Place Order</a>
                 </div>
+                @else
+                <div class="empty">
+                    <h2>Your Cart is empty</h2>
+                </div>
+                <div class="order">
+                    <a href="{{ route('home.art') }}" class="btn order-btn" type="submit">Back</a>
+                </div>
+            @endif
 
             </form>
         </div>
@@ -189,8 +194,6 @@
                 '_token': $('input[name=_token]').val(),
                 "productId": productId,
             };
-
-            // $(this).closest(".cartpage").remove();
 
             $.ajax({
                 url: '/delete-from-cart',

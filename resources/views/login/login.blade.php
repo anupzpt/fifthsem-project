@@ -23,7 +23,7 @@
                     @csrf
                     <p class="text-dark fw-bolder fs-4 mb-2">Welcome to Artihc! Please login</p>
                     <div class="fw-normal text-muted mb-4">
-                        New Here? <a href="{{url('/register')}}" class="text-primary fw-bold text-decoration-none">Create an Account</a>
+                        New Here? <a href="{{url('/register1')}}" class="text-primary fw-bold text-decoration-none">Create an Account</a>
                     </div>
                     @if(Session::has('error'))
                     <p class="text-danger">{{Session::get('error')}}</p>
@@ -39,7 +39,11 @@
                         <label for="floatingPassword">Password</label>
                     </div>
                     <div class="mt-2  text-end">
+<<<<<<< HEAD
                         <a href="/forget-password" class="text-primary fw-bold text-decoration-none">Forget Password?</a>
+=======
+                        <a href="" class="text-primary fw-bold text-decoration-none">Forget Password?</a>
+>>>>>>> 10bba9777e0c23b6839db51f86e6ab69e231e020
                     </div>
                     <button type="submit" class="btn btn-primary submit_btn w-100 my-4">Continue</button>
                     <div class="text-center text-muted text-uppercase mb-3">or</div>

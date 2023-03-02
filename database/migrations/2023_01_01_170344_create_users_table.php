@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('zip_code')->nullable();
-            $table->string('user_type')->default('user');
+            $table->string('user_type')->default('0');
             $table->string('status')->default('active');
             $table->string('googleId')->unique()->nullable();
             $table->string('facebookId')->unique()->nullable();

@@ -41,7 +41,18 @@
              <a href="contact.html">
              <i class="fa fa-paper-plane red_color"></i> <span>Contact</span></a>
           </li>
-          <li><a href="charts.html"><i class="fa fa-user green_color"></i> <span>Admin</span></a></li>
+          {{-- admin --}}
+          <li>
+            <a href="{{ route('AdminList.index')}}"><i class="fa fa-user green_color"></i> <span>Admin</span></a>
+         </li>
+         {{-- users --}}
+         <li>
+            <a href="{{route('UserList.index')}}"><i class="fa fa-user blue1_color"></i><span>Users</span></a>
+         </li>
+         {{-- orderlist --}}
+         <li>
+            <a href="{{route('OrderList.index')}}"><i class="fa fa-user blue1_color"></i><span>Orders</span></a>
+         </li>
           <li><a href="settings.html"><i class="fa fa-cog yellow_color"></i> <span>Settings</span></a></li>
        </ul>
     </div>

@@ -7,11 +7,17 @@ use App\Http\Controllers\User\AddToCart\AddToCartController;
 use App\Http\Controllers\login\UserController;
 use App\Http\Controllers\login\SocialAuthController;
 use App\Http\Controllers\User\Home\HomeController;
+use App\Http\Controllers\Admin\UserList\UserListController;
 use Illuminate\Support\Facades\Route;
 use App\Models\login\User;
 use App\Http\Controllers\Contact\ContactusController;
+<<<<<<< HEAD
 use App\Http\Controllers\Forget\ForgetController;
 
+=======
+use App\Http\Controllers\Admin\AdminList\AdminController;
+use App\Http\Controllers\Admin\Order\OrderListController;
+>>>>>>> 10bba9777e0c23b6839db51f86e6ab69e231e020
 
 /*
 |--------------------------------------------------------------------------
@@ -46,19 +52,24 @@ Route::get('/art-child/{id}', [HomeController::class, 'Child'])->name('home.chil
 
 // ------------Admin Part-------------
 
-Route::resource('/admin', DashboardController::class);
+Route::resource('/admin', DashboardController::class)->middleware(['auth']);;
 Route::resource('/Admin/Category', CategoryController::class);
 Route::resource('/Admin/Product', ProductController::class);
-Route::resource('/Customer/AddToCart', AddToCartController::class);
+Route::resource('/Admin/OrderList', OrderListController::class);
+
+Route::resource('/Customer/Order', AddToCartController::class);
+// Route::post('place-order', [AddToCartController::class, 'order']);
 Route::delete('delete-from-cart', [AddToCartController::class, 'delete'])->name('cart.delete');
+Route::resource('/Admin/AdminList', AdminController::class);
+Route::resource('/Admin/UserList', UserListController::class);
 
 // -------------------------------------
 
-Route::get('login', [UserController::class, 'loginIndex'])->name('login');
+Route::get('login', [UserController::class, 'loginIndex'])->name('login1');
 Route::post('login', [UserController::class, 'authentication'])->name('login');
 Route::post('/update-user-data', [UserController::class, 'updateUserData'])->name('update-user-data');
 
-Route::get('register', [UserController::class, 'registerIndex'])->name('register');
+Route::get('register', [UserController::class, 'registerIndex'])->name('register1');
 Route::post('register', [UserController::class, 'save'])->name('register');
 
 Route::get('logout', [UserController::class, 'logout'])->name('logout');

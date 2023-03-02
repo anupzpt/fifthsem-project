@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Dashboard;
+namespace App\Http\Controllers\Admin\Order;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product\Product;
+use App\Models\User\Order\Order;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class OrderListController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +16,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->user_type == '1') {
-            return view('admin.dashboard');
-        }
-        else{
-            return redirect()->route('home.index')->with('error_msg','You are not authorised to access admin page');
-        }
+        //
+        $order = Order::get();
+
+
+        return view('admin.OrderList.index',compact('order'));
+
     }
 
     /**

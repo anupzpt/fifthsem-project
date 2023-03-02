@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\login;
+
 use App\Http\Controllers\Controller;
 use App\Models\login\User;
 use Laravel\Socialite\Facades\Socialite;
@@ -10,7 +11,7 @@ use Illuminate\Http\Request;
 class SocialAuthController extends Controller
 {
     //login with google part
-    // Redirect the user to the Google authentication page. 
+    // Redirect the user to the Google authentication page.
 
     public function redirectToProvider()
     {
@@ -20,13 +21,13 @@ class SocialAuthController extends Controller
     // Handle the callback from google
     public function handleCallback()
     {
-        try{
+        try {
             $google_user = Socialite::driver('google')->user();
             // dd($google_user);
 
-            $user =User::where('googleId', $google_user->getId())->first();
+            $user = User::where('googleId', $google_user->getId())->first();
 
-            if(!$user){
+            if (!$user) {
                 $new_user = User::create([
                     'name' => $google_user->getName(),
                     'email' => $google_user->getEmail(),
@@ -35,23 +36,19 @@ class SocialAuthController extends Controller
                 ]);
 
                 Auth::login($new_user);
-
                 return redirect()->route('home.index');
-            }
-            else{
+            } else {
                 Auth::login($user);
-                return redirect()->route('home.index');
-
+                if (Auth::user()->user_type == '1') {
+                    return redirect('/admin');
+                } else {
+                    return redirect()->route('home.index');
+                }
             }
-        } catch(\Throwable $th) {
-            dd('something went wrong!'. $th->getMessage());
+        } catch (\Throwable $th) {
+            dd('something went wrong!' . $th->getMessage());
         }
-       
     }
-
-
-     //login with facebook part
-    // Redirect the user to the Google authentication page. 
 
     public function redirectToFacebookProvider()
     {
@@ -61,34 +58,29 @@ class SocialAuthController extends Controller
     // Handle the callback from google
     public function handleFacebookCallback()
     {
-        try{
+        try {
             $facebook_user = Socialite::driver('facebook')->user();
             // dd($google_user);
 
-            $user =User::where('facebookId', $facebook_user->getId())->first();
+            $user = User::where('facebookId', $facebook_user->getId())->first();
 
-            if(!$user){
+            if (!$user) {
                 $new_user = User::create([
                     'name' => $facebook_user->getName(),
                     'email' => $facebook_user->getEmail(),
                     'googleId' => $facebook_user->getId(),
-                    
+
                 ]);
 
                 Auth::login($new_user);
 
                 return redirect()->route('home.index');
-            }
-            else{
+            } else {
                 Auth::login($user);
                 return redirect()->route('home.index');
-
             }
-        } catch(\Throwable $th) {
-            dd('something went wrong!'. $th->getMessage());
+        } catch (\Throwable $th) {
+            dd('something went wrong!' . $th->getMessage());
         }
-       
     }
-
-    
 }
