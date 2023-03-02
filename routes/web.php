@@ -81,5 +81,5 @@ Route::post('/send-message',[ContactusController::class,'sendEmail'])->name('con
 Route::get('/forget-password',[ForgetController::class,'forgetPasswordLoad']);
 Route::post('/forget-password',[ForgetController::class,'forgetPassword'])->name('forgetPassword');
 
-Route::get('/reset-password',[ForgetController::class,'resetPasswordLoad']);
-Route::post('/reset-password',[ForgetController::class,'resetPasswordLoad'])->name('resetPassword');
+Route::get('/reset-password/{token}',[ForgetController::class,'resetPasswordLoad']);
+Route::post('/reset-password',[ForgetController::class,'resetPassword'])->name('resetPassword');

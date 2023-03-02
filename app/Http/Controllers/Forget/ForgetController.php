@@ -10,37 +10,37 @@ use App\Models\passwordreset\PasswordReset;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Carbon;
-
-
+use App\Models\login\User;
 use Mail;
 
 class ForgetController extends Controller
 {
     public function forgetPasswordLoad()
     {
-        return view('forget-password');
+        return view('forget.forget-password');
     }
 
-    public function forgetPassword(REquest $request)
+    public function forgetPassword(Request $request)
     {
         try{
             $user = User::where('email',$request->email)->get();
 
             if(count($user) > 0){
+                
                 $token = Str::random(40);
-                $token = URL::to('/');
-                $domain.'/reset-password?token='.$token;
+                $url = URL::to('/reset-password/'.$token);
+                $domain = '/reset-password?token='.$token;
 
                 $data['url'] = $url;
                 $data['email'] = $request->email;
                 $data['title'] = 'Password Reset';
                 $data['body'] = 'Please click on below link to reset your password.';
                 
-                Mail::send('forgetPasswordMail',['date'=>$data],function($message) use ($data){
+                Mail::send('forget.forgetPasswordMail',['data'=>$data],function($message) use ($data){
                     $message->to($data['email'])->subject($data['title']);
                 });
 
-                Carbon::now()->format('Y-m-d H:i:s');
+                $dateTime = Carbon::now()->format('Y-m-d H:i:s');
 
                 PasswordReset::updateOrCreate(
                     ['email'=>$request->email],
@@ -61,16 +61,16 @@ class ForgetController extends Controller
         }
     }
 
-    public function resetPasswordLoad(Request $req)
+    public function resetPasswordLoad(Request $req,$token)
     {
-        $resetData = PasswordReset::where('token',$request->token)->get();
+        $resetData = PasswordReset::where('token',$token)->get();
 
-        if(isset($request->token) && count($resetData) > 0){
+        if(isset($req->token) && count($resetData) > 0){
             $user = User::where('email',$resetData[0]['email'])->get();
             
-            return view('resetPassword',compact('user'));
+            return view('forget.resetPassword',compact('user'));
         }else{
-            return view('404');
+            return view('forget.404');
         }
     }
 
@@ -87,5 +87,6 @@ class ForgetController extends Controller
         PasswordReset::where('email',$user->email)->delete();
 
         return "<h2>Your password has been reset successfully.</h2>";
+
     }
 }

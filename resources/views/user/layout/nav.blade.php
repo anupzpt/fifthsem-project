@@ -125,7 +125,7 @@
                  </a>
                  <a href="{{route('return')}}" class="sub-menu-link">
                      <img src="userpanel/images/cancel.png">
-                     <p>Return & Cancellation</p>
+                     <p>Artist Registration</p>
                      <span>></span>
                  </a>
                  <a href="{{ route('logout') }}" class="sub-menu-link">
