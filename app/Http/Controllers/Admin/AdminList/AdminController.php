@@ -29,12 +29,12 @@ class AdminController extends Controller
         if ($req->hasFile('img_path')) {
             $image = $req->file('img_path');
             $fileName = date('dmY') . time() . '.' . $image->getClientOriginalExtension();
-            
+
             $image->move(public_path("/uploads"), $fileName);
             $response["img_path"] = $fileName;
         }
         // dd($response);
-        
+
         $adminDetail->update($response);
         return redirect()->route('AdminList.index')->with('status', 'Admin Updated Successfully');
     }
@@ -80,7 +80,7 @@ class AdminController extends Controller
 
         return redirect()->route('AdminList.index')->with('status', 'Admin Created Successfully');
 
-     
+
     }
     public function destroy($id){
         $user= User::find($id);

@@ -71,7 +71,7 @@
                  </li>
                  @guest
                  <li class="nav-item">
-                     <a class="nav-link" href="{{ route('login') }}">
+                     <a class="nav-link" href="{{ route('login1') }}">
                          <span class="nav-link-text">Login</span>
                      </a>
                  </li>
