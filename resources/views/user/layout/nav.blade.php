@@ -79,7 +79,7 @@
              </ul>
 
              @auth
-<<<<<<< HEAD
+
                  <div class="nav-item">
                      <a href="{{route('home.cart.index')}}" class="btn text-white">
                          <i class="fas fa-cart-shopping"> </i>
@@ -133,12 +133,12 @@
                      <img src="userpanel/images/logout.png">
                      <p>Logout</p>
                      <span>></span>
-=======
+{{-- =======
              <div class="nav-item">
                  <a href="{{route('home.cart.index')}}" class="btn text-white">
                      <i class="fas fa-cart-shopping"> </i>
                      <sup> <span class="cartCount">{{$count}}</span></sup>
->>>>>>> 10bba9777e0c23b6839db51f86e6ab69e231e020
+>>>>>>> 10bba9777e0c23b6839db51f86e6ab69e231e020 --}}
                  </a>
              </div>
              <div class="nav-item">
