@@ -26,6 +26,7 @@
                                 <th>Price<th>
                                 <th>Payment Status</th>
                                 <th>Action</th>
+                            <th></th>
                             </tr>
                         </thead>
                         <tbody>
