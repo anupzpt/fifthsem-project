@@ -5,8 +5,10 @@ namespace App\Http\Controllers\User\Home;
 use App\Http\Controllers\Controller;
 use App\Models\Category\Category;
 use App\Models\login\User;
+use App\Models\Order\OrderList;
 use App\Models\Product\Product;
 use App\Models\User\AddToCart\AddToCart;
+use App\Models\User\Home\Home;
 use App\Models\User\Order\Order;
 use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
@@ -26,9 +28,11 @@ class HomeController extends Controller
     {
         session()->put('popupBoxValue', '2');
         $orders= Order::where('userId',Auth::id())->get();
-        $total =AddToCart::where('userId', Auth::id())->get()->sum('price');
+        $orderitem = Order::with('Product')->get();
+    //  dd($orderitem);
+        $total =Order::where('userId', Auth::id())->get()->sum('price');
 
-        return view('user.profileDetail.user-profile',compact('orders','total'));
+        return view('user.profileDetail.user-profile',compact('orderitem','total'));
     }
     public function myAccount()
     {

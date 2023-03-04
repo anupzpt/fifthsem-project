@@ -261,27 +261,26 @@
                                     <table class="table table-bordered">
 
                                         <thead>
-                                            <tr>
-                                                <th>Name</th>
+                                            <tr class="table-dark">
+                                                <th>Product Name</th>
                                                 <th>Quantity</th>
-                                                <th>Order Date</th>
+                                                {{-- <th>Order Date</th> --}}
                                                 <th>Price</th>
                                                 <th>Status</th>
                                             </tr>
-                                            @foreach ($orders as $item)
+                                            @foreach ($orderitem as $item)
                                                 <tr>
-                                                    <th>{{ date('d-m-Y'), strtotime($item->created_at) }}</th>
-                                                    <th>{{ $item->price }}</th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
+                                                    <th>{{$item->Product->name}}</th>
+                                                    <th>{{ $item->quantity }}</th>
+                                                    <th>{{$item->price}}</th>
+                                                    <th>{{$item->payment_status}}</th>
                                                 </tr>
                                             @endforeach
 
-                                            <tr>
+                                            {{-- <tr>
                                                 <th colspan="2" style="text-align: center">Total</th>
-                                                <th colspan="2">Rs. </th>
-                                            </tr>
+                                                <th colspan="2">Rs.{{$total}} </th>
+                                            </tr> --}}
                                         </thead>
                                     </table>
                                 </div>
