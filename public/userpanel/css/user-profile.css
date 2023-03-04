@@ -7,7 +7,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  /* font-family: 'Poppins', sans-serif; */
 }
 
 /* Main content styles */
@@ -114,6 +114,7 @@
 .row .detail-value{
     font-weight: 600;
 }
+
 .my-button {
     /* padding: 10px; */
     width: 300px;
@@ -129,7 +130,7 @@
     box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
     cursor: pointer;
   }
-  
+
   .my-button:hover {
     background-color: #2980b9;
   }
@@ -145,7 +146,7 @@
       margin-right: 1rem;
       border-radius: 50%;
     }
-  
+
 /* Responsive styles */
 @media (max-width: 767px) {
   #sidebar {

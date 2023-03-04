@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product\Product;
 use App\Models\User\Order\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderListController extends Controller
 {
@@ -17,10 +18,16 @@ class OrderListController extends Controller
     public function index()
     {
         //
-        $order = Order::get();
+        // $order = Order::get();
+        $detail = Order::where('userId', Auth::id())->get();
+        $art = Order::with('Product')->get();
+        $username = Order::with('login')->get();
 
+        // dd($username);
+        $total =Order::where('userId', Auth::id())->get()->sum('price');
+        $count = Order::where('userId', Auth::id())->get()->count();
 
-        return view('admin.OrderList.index',compact('order'));
+        return view('admin.Order.index',compact('detail','art','username','total','count'));
 
     }
 
