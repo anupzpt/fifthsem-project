@@ -24,7 +24,7 @@ class UserOrderController extends Controller
         $total = AddToCart::where('userId', Auth::id())->get()->sum('price');
         $count = AddToCart::where('userId', Auth::id())->get()->count();
         $userAddress = Address::where('userId', Auth::id())->get();
-        return view('user.order.index', compact('count', 'detail', 'total', 'userAddress'));
+        return view('user.order.index', compact('count', 'detail', 'art','total', 'userAddress'));
     }
 
     /**

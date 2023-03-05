@@ -27,13 +27,13 @@
 
                                 <div class="row row-order">
                                     <div class="col-50" style="margin-left:-7%">
-                                        <h3>Billing Address</h3>
+                                        <h3 style="margin-bottom: 5px;">Billing Address</h3>
                                         <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                                        <input type="text" id="fname" placeholder="Enter Name"
-                                            value="{{ Auth::user()->name }}">
+                                        <input type="text" id="fname"  placeholder="Enter Name"
+                                            value="{{ Auth::user()->name }}" readonly>
                                         <label for="email"><i class="fa fa-envelope"></i> Email</label>
                                         <input type="text" id="email" placeholder="Enter Email Address"
-                                            value="{{ Auth::user()->email }}">
+                                            value="{{ Auth::user()->email }}" readonly>
                                         <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
                                         <div>
                                             <select id="dynamic-address">
@@ -42,7 +42,7 @@
                                                     <option
                                                         value="{{ Auth::user()->address }},{{ Auth::user()->city }},{{ Auth::user()->zip_code }}"
                                                         selected>
-                                                        {{ Auth::user()->address }},{{ Auth::user()->city }},{{ Auth::user()->zip_code }}
+                                                        {{ Auth::user()->address }}{{ Auth::user()->city }}{{ Auth::user()->zip_code }}
                                                     </option>
                                                 @endif
                                                 @foreach ($userAddress as $address)
@@ -85,7 +85,7 @@
                                                             <tr>
                                                                 <td>{{ $sn++ }}</td>
                                                                 <td><img class="image-responsive"
-                                                                        src="{{asset('/uploads'.'/'.$item->image)}}">
+                                                                        src="{{asset('/uploads'.'/'.$item->products->image)}}">
                                                                 </td>
                                                                 <td>
                                                                     {{ $item->products->name }}
@@ -115,12 +115,12 @@
                                                             <tr>
                                                                 <td>{{ $sn++ }}</td>
                                                                 <td><img class="image-responsive"
-                                                                        src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg">
+                                                                    src="{{asset('/uploads'.'/'.$item->image)}}">
                                                                 </td>
                                                                 <td>
                                                                     {{ $item->name }}
                                                                     <input type="hidden" name="productId[]"
-                                                                        value="{{ $item->id }}" />
+                                                                        value="{{ $item->productId }}" />
                                                                 </td>
                                                                 <td>
                                                                     1

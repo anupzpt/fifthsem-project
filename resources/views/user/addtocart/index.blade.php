@@ -104,7 +104,6 @@
             cursor: pointer;
             margin-right: 20px;
         }
-
         .empty {
             text-align: center;
             margin-top: 40px;
