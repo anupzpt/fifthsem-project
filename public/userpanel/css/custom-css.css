@@ -1,0 +1,304 @@
+#newAddress {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid black;
+}
+#city {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid black;
+}
+#zipcode {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid black;
+}
+.line{
+    border: 1px solid #EDE7ED;
+    width: 100%;
+    margin-bottom: 30px;
+}
+/* The Modal (background) */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.container-main {
+
+    margin-left: 100px;
+}
+
+.sub-container {
+    margin-top: 30px;
+    margin-bottom: 90px;
+    width: 95%;
+    background-color: #FFFCFC;
+    border: 2px solid #514F51;
+    padding: 40px;
+}
+
+/* //////////////////////////////////////// */
+
+.head-bar {
+    background-color: #514F51;
+    border-radius: 15px;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding: 10px;
+}
+
+.contains {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+/* //////////////////////////////////////// */
+
+.arthic-image {
+    width: 200px;
+    height: 150px;
+}
+
+.time {
+    padding: 20px;
+    margin-top: 30px;
+}
+
+/* //////////////////////////////////////// */
+
+.main-contain {
+    margin-top: 30px;
+}
+
+/* //////////////////////////////////////// */
+#table-design {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+#table-design td,
+#table-design th {
+    text-align: center;
+
+    padding: 8px;
+}
+
+#table-design tr:nth-child(even) {
+    background-color: #E5E5E5;
+}
+
+#table-design th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #373636;
+    color: #FFFDFD;
+}
+
+/* //////////////////////////////////////////// */
+.footers {
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.total {
+
+    /* margin-left: 80rem; */
+
+    padding: 10px 0;
+    border-bottom-style: dotted;
+    border-color: #b1aeae;
+}
+
+.order {
+    margin: 10px 15px;
+    padding: 10px 0;
+    float: right;
+}
+
+.order-btn {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.address {
+    background-color: rgb(83, 83, 83);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* //////////////////////////////////// */
+
+
+  .row {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    margin: 0 -16px;
+    padding: 20px;
+  }
+
+  .col-25 {
+    -ms-flex: 25%; /* IE10 */
+    flex: 25%;
+  }
+
+  .col-50 {
+    width: 47%; /* IE10 */
+    flex: 50%;
+  }
+
+  .col-75 {
+    -ms-flex: 75%; /* IE10 */
+    flex: 75%;
+  }
+
+  .col-25,
+  .col-50,
+  .col-75 {
+    padding: 0 16px;
+  }
+
+  /* .container {
+    background-color: #f2f2f2;
+    padding: 5px 20px 15px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+  } */
+
+  input[type=text] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  #dynamic-address{
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+/*
+  label {
+    margin-bottom: 10px;
+    display: block;
+  } */
+
+  .icon-container {
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
+  }
+/*
+  .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+  } */
+/*
+  .btn:hover {
+    background-color: #45a049;
+  }
+
+  a {
+    color: #2196F3;
+  } */
+
+  hr {
+    border: 1px solid lightgrey;
+  }
+
+  span.price {
+    float: right;
+    color: grey;
+  }
+  .image-responsive{
+    width: 60px;
+    border-radius: 50%;
+    height: 60px;
+  }
+
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+  @media (max-width: 800px) {
+    .row {
+      flex-direction: column-reverse;
+    }
+    .col-25 {
+      margin-bottom: 20px;
+    }
+  }

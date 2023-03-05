@@ -27,12 +27,11 @@ class HomeController extends Controller
     public function myOrder()
     {
         session()->put('popupBoxValue', '2');
-        $orders= Order::where('userId',Auth::id())->get();
-        $orderitem = Order::with('Product')->get();
-    //  dd($orderitem);
-        $total =Order::where('userId', Auth::id())->get()->sum('price');
-
-        return view('user.profileDetail.user-profile',compact('orderitem','total'));
+        $orders = Order::where('userId', Auth::id())->get();
+        $product = Order::with('products')->get();
+        // dd($product);
+        $total = Order::where('userId', Auth::id())->get()->sum('price');
+        return view('user.profileDetail.user-profile', compact('orders','product', 'total'));
     }
     public function myAccount()
     {
@@ -57,13 +56,12 @@ class HomeController extends Controller
     public function Cart(Request $request)
     {
 
-        if(Auth::id() == null){
+        if (Auth::id() == null) {
             return response()->json([
                 'message' => Auth::check(),
                 'code' => 101,
             ]);
-         }
-         else{
+        } else {
             $cart = Product::find($request->get('id'));
             $cartCheck = AddToCart::where('productId', $request->get('id'))->get()->count();
             if ($cartCheck != null) {
@@ -91,16 +89,15 @@ class HomeController extends Controller
 
                 ]);
             }
-         }
-
+        }
     }
     public function CartIndex()
     {
         $response = AddToCart::where('userId', '1')->get();
         $count = AddToCart::where('userId', Auth::id())->get()->count();
         $art = AddToCart::with('products')->get();
-        $total =AddToCart::where('userId', Auth::id())->get()->sum('price');
-        return view('user.addtocart.index', compact('response', 'count', 'art','total'));
+        $total = AddToCart::where('userId', Auth::id())->get()->sum('price');
+        return view('user.addtocart.index', compact('response', 'count', 'art', 'total'));
     }
 
     public function Parent($id)
@@ -112,7 +109,7 @@ class HomeController extends Controller
 
         $products = Product::whereIn('category_id', $childCategory->pluck('categoryId'))
             ->get();
-        return view('user.art.art_detail', compact('products', 'child', 'parent','count'));
+        return view('user.art.art_detail', compact('products', 'child', 'parent', 'count'));
     }
     public function Child($id)
     {
@@ -120,7 +117,6 @@ class HomeController extends Controller
         $child = Category::whereNotNull('parent_id')->get();
         $products = Product::where('category_id', $id)->get();
         $count = AddToCart::where('userId', Auth::id())->get()->count();
-        return view('user.art.art_detail', compact('products', 'parent', 'child','count'));
+        return view('user.art.art_detail', compact('products', 'parent', 'child', 'count'));
     }
-
 }

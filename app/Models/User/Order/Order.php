@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
-    public function Product(){
+    public function products(){
         return $this->belongsTo(Product::class , 'productId' ,'id');
     }
 

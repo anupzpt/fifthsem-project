@@ -4,6 +4,18 @@
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+        }
+        .back{
+            position: fixed;
+            left:650px;
+            top: 280px;
+
+        }
         .panel-heading {
             padding: 20px 0;
             background-color: gainsboro;
@@ -92,9 +104,10 @@
             cursor: pointer;
             margin-right: 20px;
         }
-        .empty{
+
+        .empty {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 40px;
         }
     </style>
 
@@ -104,78 +117,86 @@
         </div>
         <div class="panel-body">
             @if ($art->count() > 0)
-                @foreach ($art as $i => $detail)
-                    <div class="row row-cart cartpage ">
-                        <div class="box-left ">
-                            <img class="img-responsive" src="{{ asset('/uploads' . '/' . $detail->products->image) }}">
-                            {{-- src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS33qwUA-4fBp6748mOoHU5EGN9IQnB503Nm2jBApIb&s"> --}}
-                        </div>
-                        <div class="box-right">
-                            <div>
-                                <input type="hidden" class="cartId" name="id[]" value={{ $detail->id }}>
-
+                <div class="content">
+                    @foreach ($art as $i => $detail)
+                        <div class="row row-cart cartpage ">
+                            <div class="box-left ">
+                                <img class="img-responsive" src="{{ asset('/uploads' . '/' . $detail->products->image) }}">
+                                {{-- src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS33qwUA-4fBp6748mOoHU5EGN9IQnB503Nm2jBApIb&s"> --}}
                             </div>
-                            <div>
-                                <label style="margin-right:20px;"><strong>{{ $i + 1 }}.</strong></label>
-                                <input type="hidden" class="productId" name="productId[]" value={{ $detail->productId }}>
-                            </div>
-                            <div>
-                                <label
-                                    style="margin-right:20px;"><strong>Name:</strong></label>{{ $detail->products->name }}
-                                <input name="name[]" value="{{ $detail->products->name }}" type="hidden" />
-                            </div>
-                            <div>
-                                <label style="margin-right:20px;"><strong>Price:</strong></label>{{ $detail->price }}
-                                <input name="price[]" value="{{ $detail->price }}" type="hidden" />
-
-                            </div>
-                            <div>
-                                <label
-                                    style="margin-right:20px;"><strong>Description:</strong></label>{{ $detail->products->description }}
-                                <input name="description[]" value="{{ $detail->products->description }}" type="hidden" />
-
-                            </div>
-                            <div class="row">
+                            <div class="box-right">
                                 <div>
-                                    <label
-                                        style="margin-right:20px;"><strong>Quantity:</strong></label>{{ $detail->quantity }}
-                                    <input name="quantity[]" value="{{ $detail->products->description }}" type="hidden" />
+                                    <input type="hidden" class="cartId" name="id[]" value={{ $detail->id }}>
 
                                 </div>
+                                <div>
+                                    <label style="margin-right:20px;"><strong>{{ $i + 1 }}.</strong></label>
+                                    <input type="hidden" class="productId" name="productId[]"
+                                        value={{ $detail->productId }}>
+                                </div>
+                                <div>
+                                    <label
+                                        style="margin-right:20px;"><strong>Name:</strong></label>{{ $detail->products->name }}
+                                    <input name="name[]" value="{{ $detail->products->name }}" type="hidden" />
+                                </div>
+                                <div>
+                                    <label style="margin-right:20px;"><strong>Price:</strong></label>{{ $detail->price }}
+                                    <input name="price[]" value="{{ $detail->price }}" type="hidden" />
 
-                            </div>
-                            <div>
-                                <label style="margin-right:20px;"><strong>Total
-                                        Price: </strong></label>Rs. {{ $detail->price * $detail->quantity }}
-                                <input name="total" value="{{ $detail->products->description }}" type="hidden" />
+                                </div>
+                                <div>
+                                    <label
+                                        style="margin-right:20px;"><strong>Description:</strong></label>{{ $detail->products->description }}
+                                    <input name="description[]" value="{{ $detail->products->description }}"
+                                        type="hidden" />
 
-                            </div>
-                            <div class="remove">
-                                <a class="remove-button delete_cart_data " id="cart" data-id="{{ $detail->id }}"><i
-                                        class="fa-solid fa-trash"></i></a>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <label
+                                            style="margin-right:20px;"><strong>Quantity:</strong></label>{{ $detail->quantity }}
+                                        <input name="quantity[]" value="{{ $detail->products->description }}"
+                                            type="hidden" />
+
+                                    </div>
+
+                                </div>
+                                <div>
+                                    <label style="margin-right:20px;"><strong>Total
+                                            Price: </strong></label>Rs. {{ $detail->price * $detail->quantity }}
+                                    <input name="total" class="Totalprice"
+                                        value="{{ $detail->price * $detail->quantity }}" type="hidden" />
+
+                                </div>
+                                <div class="remove">
+                                    <a class="remove-button btn btn-danger delete_cart_data " id="cart"
+                                        data-id="{{ $detail->id }}"><i class="fa-solid fa-trash"></i></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
-                <div>
+                    @endforeach
                     <div>
-                        <h4 style="margin-right:20px;" class="total"> Total Price: Rs. {{ $total }}</h4>
+                        <div>
+                            <h4 style="margin-right:20px;" class="total"> Total Price: Rs.<span
+                                    id="totalsum">{{ $total }}</span></h4>
+                        </div>
+
                     </div>
 
+                    <div class="order" style="margin-bottom: 10%">
+                        <a href="{{ route('Order.index') }}" class="btn order-btn" type="submit">Place Order</a>
+                    </div>
                 </div>
-
-                <div class="order">
-                    <a href="{{ route('Order.index') }}" class="btn order-btn" type="submit">Place Order</a>
-                </div>
-                @else
+            @else
                 <div class="empty">
                     <h2>Your Cart is empty</h2>
                 </div>
                 <div class="order">
-                    <a href="{{ route('home.art') }}" class="btn order-btn" type="submit">Back</a>
+                    <a href="{{ route('home.art') }}" class="btn order-btn back" type="submit">Back</a>
                 </div>
             @endif
-
+            <div class="main-empty">
+            </div>
             </form>
         </div>
     </div>
@@ -190,8 +211,12 @@
         $('.delete_cart_data').click(function(e) {
             e.preventDefault();
             var productId = $(this).closest(".cartpage").find('.productId').val();
+            var price = $(this).closest(".cartpage").find('.Totalprice').val();
+            var data = $(this).closest(".cartpage").remove();;
+
+            // alert(productId);
             var data = {
-                '_token': $('input[name=_token]').val(),
+                '_token': "{{ csrf_token() }}",
                 "productId": productId,
             };
 
@@ -200,8 +225,18 @@
                 type: 'DELETE',
                 data: data,
                 success: function(response) {
-                    window.location.reload();
-                    alert(response.message)
+                    var totalsum = parseInt($("#totalsum").text())
+                    var count = parseInt($('.cartCount').text());
+                    $(".cartCount").text(count - 1);
+                    debugger
+                    if (count - 1 == 0) {
+                        $('.content').remove();
+                        $('.main-empty').append(
+                            '<div class="empty"><h2>Your Cart is empty</h2></div><div class="order"><a href="{{ route('home.art') }}" class="btn order-btn" type="submit">Back</a></div>'
+                            );
+                    }
+                    $("#totalsum").text(totalsum - parseInt(price));
+                    swal("", response.status, "success");
 
                 }
             });

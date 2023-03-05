@@ -19,13 +19,7 @@ class AddToCartController extends Controller
      */
     public function index()
     {
-        //
-        $detail = AddToCart::where('userId', Auth::id())->get();
-        $art = AddToCart::with('products')->get();
-        $total =AddToCart::where('userId', Auth::id())->get()->sum('price');
-        $count = AddToCart::where('userId', Auth::id())->get()->count();
-        return view('user.order.index', compact('count','detail','total'));
-
+        return redirect()->route("UserOrderList.index");
     }
 
     /**
@@ -115,7 +109,7 @@ class AddToCartController extends Controller
         $cartId = $request->input('productId');
         $cart = AddToCart::where('productId', $cartId);
         $cart->delete();
-        return response()->json(['message' =>  "Are you sure you want to delete product?"]);
+        return response()->json(['status' =>  "Deleted"]);
     }
 
     // public function order(Request $request){

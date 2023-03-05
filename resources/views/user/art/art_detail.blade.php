@@ -33,7 +33,7 @@
                             <span class="fw-bold d-block">RS. {{ $product->price }}</span>
                             <button id="cart" class="button btn-primary mt-3 cart"
                                 onClick="set('{{ $product->id }}')">Add to Cart</button>
-                            <a href="#" class="button btn-primary mt-3 ml-2">Buy it Now</a>
+                                <a href="#" class="button btn-primary mt-3 ml-2">Buy it Now</a>
                         </div>
                     </div>
                 @endforeach
