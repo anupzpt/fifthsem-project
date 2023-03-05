@@ -88,8 +88,10 @@
                  </div>
                  <div class="nav-item">
                      <a class="nav-link" href="#">
-                         <!-- <span class="nav-link-textt"  id="toggleMenu">{{ auth()->user()->name }}</span> -->
-                         <img src="{{ auth()->user()->img_path }}" class="user-pic" id="toggleMenu">
+                         <!-- <span class="nav-link-textt"  id="toggleMenu"></span> -->
+                         {{-- <img src="{{ auth()->user()->img_path }}" class="user-pic" id="toggleMenu"> --}}
+                         <img src="{{asset('userpanel/images/avatar.png')}}" class="user-pic" id="toggleMenu">
+
                      </a>
                  </div>
 
@@ -109,7 +111,9 @@
          <div class="sub-menu-wrap" id="subMenu">
              <div class="sub-menu">
                  <div class="user-info">
-                     <img src="{{ auth()->user()->img_path }}">
+                     {{-- <img src="{{ auth()->user()->img_path }}"> --}}
+                     <img src="{{ asset('userpanel/images/avatar.png') }}">
+
                      <h3>{{ auth()->user()->name }}</h3>
 
                  </div>
@@ -120,35 +124,30 @@
                      <span>></span>
                  </a>
                  <a href="{{route('order')}}" class="sub-menu-link">
-                     <img src="userpanel/images/my-order.png">
+                     <img src="{{asset('userpanel/images/my-order.png')}}">
                      <p>My Order</p>
                      <span>></span>
                  </a>
                  <a href="{{route('return')}}" class="sub-menu-link">
-                     <img src="userpanel/images/cancel.png">
+                     <img src="{{asset('userpanel/images/cancel.png')}}">
                      <p>Artist Registration</p>
                      <span>></span>
                  </a>
                  <a href="{{ route('logout') }}" class="sub-menu-link">
-                     <img src="userpanel/images/logout.png">
+                     <img src="{{asset('userpanel/images/logout.png')}}">
                      <p>Logout</p>
                      <span>></span>
-{{-- =======
-             <div class="nav-item">
-                 <a href="{{route('home.cart.index')}}" class="btn text-white">
-                     <i class="fas fa-cart-shopping"> </i>
-                     <sup> <span class="cartCount">{{$count}}</span></sup>
->>>>>>> 10bba9777e0c23b6839db51f86e6ab69e231e020 --}}
+
                  </a>
              </div>
              <div class="nav-item">
                  <a class="nav-link" href="#">
-                     <!-- <span class="nav-link-textt"  id="toggleMenu">{{ auth()->user()->name }}</span> -->
+                     <!-- <span class="nav-link-textt"  id="toggleMenu"></span> -->
                      @if (Auth::user()->user_type == '1')
                      <img src="{{asset('/uploads'.'/'.auth()->user()->img_path)}}" class="user-pic" id="toggleMenu">
 
                      @else
-                     <img src="{{ auth()->user()->img_path }}" class="user-pic" id="toggleMenu">
+                     {{-- <img src="{{ auth()->user()->img_path }}" class="user-pic" id="toggleMenu"> --}}
                      @endif
                  </a>
              </div>
@@ -175,17 +174,17 @@
                  <span>></span>
              </a>
              <a href="{{route('order')}}" class="sub-menu-link">
-                 <img src="userpanel/images/my-order.png">
+                 <img src="{{asset('userpanel/images/my-order.png')}}">
                  <p>My Order</p>
                  <span>></span>
              </a>
              <a href="{{route('return')}}" class="sub-menu-link">
-                 <img src="userpanel/images/cancel.png">
+                 <img src="{{asset('userpanel/images/cancel.png')}}">
                  <p>Return & Cancellation</p>
                  <span>></span>
              </a>
              <a href="{{ route('logout') }}" class="sub-menu-link">
-                 <img src="userpanel/images/logout.png">
+                 <img src="{{asset('userpanel/images/logout.png')}}">
                  <p>Logout</p>
                  <span>></span>
              </a>

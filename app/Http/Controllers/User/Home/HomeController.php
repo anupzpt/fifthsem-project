@@ -28,20 +28,22 @@ class HomeController extends Controller
     {
         session()->put('popupBoxValue', '2');
         $orders = Order::where('userId', Auth::id())->get();
-        $product = Order::with('products')->get();
-        // dd($product);
+        $OrderList = Order::with('products')->where('userId', Auth::id())
+        ->get();
         $total = Order::where('userId', Auth::id())->get()->sum('price');
-        return view('user.profileDetail.user-profile', compact('orders','product', 'total'));
+        return view('user.profileDetail.user-profile', compact('orders', 'OrderList', 'total'));
     }
     public function myAccount()
     {
         session()->put('popupBoxValue', '1');
-        return view('user.profileDetail.user-profile');
+        $OrderList = Order::with('products')->get();
+        return view('user.profileDetail.user-profile', compact('OrderList'));
     }
     public function returnAndCancel()
     {
         session()->put('popupBoxValue', '3');
-        return view('user.profileDetail.user-profile');
+        $OrderList = Order::with('products')->get();
+        return view('user.profileDetail.user-profile', compact('OrderList'));
     }
 
     public function Art()
@@ -93,9 +95,13 @@ class HomeController extends Controller
     }
     public function CartIndex()
     {
-        $response = AddToCart::where('userId', '1')->get();
+        $response = AddToCart::where('userId', Auth::id())->get();
         $count = AddToCart::where('userId', Auth::id())->get()->count();
-        $art = AddToCart::with('products')->get();
+        $art = AddToCart::with('products')
+            ->where('userId', Auth::id())
+            ->get();
+            
+        // $art = AddToCart::with('products')->get();
         $total = AddToCart::where('userId', Auth::id())->get()->sum('price');
         return view('user.addtocart.index', compact('response', 'count', 'art', 'total'));
     }

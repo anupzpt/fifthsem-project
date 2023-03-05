@@ -201,8 +201,8 @@
     display: flex;
     -ms-flex-wrap: wrap; /* IE10 */
     flex-wrap: wrap;
-    margin: 0 -16px;
-    padding: 20px;
+    margin: 0 -4px;
+    padding: 13px;
   }
 
   .col-25 {
@@ -288,9 +288,9 @@
     color: grey;
   }
   .image-responsive{
-    width: 60px;
+    width: 70px;
     border-radius: 50%;
-    height: 60px;
+    height: 70px;
   }
 
   /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */

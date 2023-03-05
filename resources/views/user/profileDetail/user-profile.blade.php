@@ -17,13 +17,22 @@
 </head>
 
 <body>
-
+    <div class="mycontainer">
+        <div class="logoimg">
+            <img src="{{ asset('userpanel/images/logo-white.png') }}" alt="img"
+                style="height: 4rem; width: 7rem" />
+        </div>
+        <div class="myheader">
+            <h3> My Profile</h3>
+        </div>
+    </div>
+    {{-- <div class="btn">Back</div> --}}
     <div class="container mt-4">
         <div class="row">
             <div class="col-lg-3 my-lg-0 my-md-1" id="navbar">
                 <div id="sidebar" class="bg-black">
-                    <div class="h4 text-white">My Profile</div>
-                    <hr />
+                    {{-- <div class="h4 text-white">My Profile</div> --}}
+                    {{-- <hr /> --}}
                     <div id="navbar">
                         <ul>
                             <li class="btnn active mb-2" id="account">
@@ -269,23 +278,23 @@
                                                 <th>Price</th>
                                                 <th>Status</th>
                                             </tr>
-                                           
-                                            
+
+
                                             @php
-                                            $sn = 1;
-                                        @endphp
-                                        @foreach ($product as $detail)
-                                            <tr>
-                                                <td>{{ $sn++ }}</td>
-                                                <td>{{ $detail->products->name ?? 'Code Not Found'}}</td>
-                                                <td>{{$detail->quantity}} </td>
-                                                <td>{{ $detail->price }}</td>
-                                                <td>{{$detail->payment_status}}</td>
-                                              
-                                            </tr>
-                                        @endforeach
-                                        
-                              
+                                                $sn = 1;
+                                            @endphp
+                                            @foreach ($OrderList as $detail)
+                                                <tr>
+                                                    <td>{{ $sn++ }}</td>
+                                                    <td>{{ $detail->products->name }}</td>
+                                                    <td>{{ $detail->quantity }} </td>
+                                                    <td>{{ $detail->price }}</td>
+                                                    <td>{{ $detail->payment_status }}</td>
+
+                                                </tr>
+                                            @endforeach
+
+
 
                                             {{-- <tr>
                                                 <th colspan="2" style="text-align: center">Total</th>
@@ -315,7 +324,11 @@
             <!-- return section end -->
         </div>
     </div>
+    {{-- <div class="myfooter" >
+        <p class="text text-white text-center">&copy; Artihc.com.np</p>
+    </div> --}}
 </body>
+
 @if (session()->get('popupBoxValue') === '1')
     <script>
         var account = document.getElementById("account-wrap");
