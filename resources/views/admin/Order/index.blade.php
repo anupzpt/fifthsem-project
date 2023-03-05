@@ -34,7 +34,6 @@
                             @endphp
                             @foreach ($art as $item)
                                 <tr>
-
                                     <td>{{ $sn++ }}</td>
                                     <td>{{$item->Product->name}}</td>
                                     <td>{{ $item->login->name }}</td>

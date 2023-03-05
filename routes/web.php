@@ -15,6 +15,7 @@ use App\Http\Controllers\Forget\ForgetController;
 
 use App\Http\Controllers\Admin\AdminList\AdminController;
 use App\Http\Controllers\Admin\Order\OrderListController;
+use App\Http\Controllers\User\Order\UserOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,9 @@ Route::POST('/cart', [HomeController::class, 'Cart'])->name('home.cart');
 Route::get('/cartIndex', [HomeController::class, 'CartIndex'])->name('home.cart.index');
 Route::get('/art/{id}', [HomeController::class, 'Parent'])->name('home.category');
 Route::get('/art-child/{id}', [HomeController::class, 'Child'])->name('home.child');
+Route::resource('/Customer/UserOrderList', UserOrderController::class);
+Route::post('/UserOrderList/store', [UserOrderController::class,'orderStore'])->name('UserOrderList.orderstore');
+
 
 
 // ------------Admin Part-------------
@@ -55,7 +59,6 @@ Route::resource('/Admin/Product', ProductController::class);
 Route::resource('/Admin/OrderList', OrderListController::class);
 
 Route::resource('/Customer/Order', AddToCartController::class);
-// Route::post('place-order', [AddToCartController::class, 'order']);
 Route::delete('delete-from-cart', [AddToCartController::class, 'delete'])->name('cart.delete');
 Route::resource('/Admin/AdminList', AdminController::class);
 Route::resource('/Admin/UserList', UserListController::class);

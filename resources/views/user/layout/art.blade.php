@@ -18,24 +18,21 @@
          </div>
 
          <div class="design-content">
-             @foreach ($products as $product)
-                 <!-- item -->
-                 <div class="design-item">
-                     <div class="design-img">
-                         <img src="{{ asset('/uploads' . '/' . $product->image) }}" alt="" />
-                     </div>
-                     <div class="text-center">
-                         <p class="text-capitalize mt-3 mb-1">{{ $product->name }}</p>
-                         <span class="fw-bold d-block">RS.{{ $product->price }}</span>
-                         <button id="cart" class="button btn-primary mt-3 cart"
-                             onClick="set('{{ $product->id }}')">Add to Cart</button>
-                         <a href="#" class="button btn-primary mt-3 ml-2">Buy it Now</a>
-                     </div>
-                 </div>
-                 <!-- end of item -->
-             @endforeach
-
-         </div>
+            <!-- item -->
+            @foreach ($products as $product)
+                <div class="design-item">
+                    <div class="design-img">
+                        <img src="{{ asset('/uploads' . '/' . $product->image) }}" alt="" />
+                    </div>
+                    <div class="text-center">
+                        <div class="text-capitalize mt-3 mb-1">{{ $product->name }}</div>
+                        <span class="fw-bold d-block">RS. {{ $product->price }}</span>
+                        <button id="cart" class="button btn-primary mt-3 cart"
+                            onClick="set('{{ $product->id }}')">Add to Cart</button>
+                        <a href="{{route('UserOrderList.show',[$product->id])}}" class="button btn-primary mt-3 ml-2">Buy it Now</a>                        </div>
+                </div>
+            @endforeach
+        </div>
          <div>
              <div class="center">
                  <a href="{{ route('home.art') }}" class="button btn-primary ">View More</a>

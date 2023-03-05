@@ -262,20 +262,30 @@
 
                                         <thead>
                                             <tr class="table-dark">
+                                                <th>SN</th>
                                                 <th>Product Name</th>
                                                 <th>Quantity</th>
                                                 {{-- <th>Order Date</th> --}}
                                                 <th>Price</th>
                                                 <th>Status</th>
                                             </tr>
-                                            @foreach ($orderitem as $item)
-                                                <tr>
-                                                    <th>{{$item->Product->name}}</th>
-                                                    <th>{{ $item->quantity }}</th>
-                                                    <th>{{$item->price}}</th>
-                                                    <th>{{$item->payment_status}}</th>
-                                                </tr>
-                                            @endforeach
+                                           
+                                            
+                                            @php
+                                            $sn = 1;
+                                        @endphp
+                                        @foreach ($product as $detail)
+                                            <tr>
+                                                <td>{{ $sn++ }}</td>
+                                                <td>{{ $detail->products->name ?? 'Code Not Found'}}</td>
+                                                <td>{{$detail->quantity}} </td>
+                                                <td>{{ $detail->price }}</td>
+                                                <td>{{$detail->payment_status}}</td>
+                                              
+                                            </tr>
+                                        @endforeach
+                                        
+                              
 
                                             {{-- <tr>
                                                 <th colspan="2" style="text-align: center">Total</th>
