@@ -5,8 +5,8 @@
     <h6 class="alert alert-success">{{session('status')}}</h6>
     @endif --}}
         <div class="margin_top_30 padding-bottom_2 d-flex justify-content-end ">
-        {{-- <a class="btn btns btn-primary p-3 " href="{{ route('Product.create') }}" type="button">Add Prdouct</a> --}}
-    </div>
+            {{-- <a class="btn btns btn-primary p-3 " href="{{ route('Product.create') }}" type="button">Add Prdouct</a> --}}
+        </div>
         <div class="dark_shd full margin_bottom_30 border ">
             <div class="full graph_head center" style="background-color: #214162">
                 <div class="heading1 margin_0 text-white">
@@ -22,10 +22,11 @@
                                 <th>Product Name</th>
                                 <th>User Name</th>
                                 <th>Quantity</th>
-                                <th>Price<th>
+                                <th>Price
+                                <th>
                                 <th>Payment Status</th>
                                 <th>Action</th>
-                            <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,12 +36,15 @@
                             @foreach ($art as $item)
                                 <tr>
                                     <td>{{ $sn++ }}</td>
-                                    <td>{{$item->Product->name}}</td>
+                                    <td>{{ $item->products->name }}</td>
                                     <td>{{ $item->login->name }}</td>
                                     <td>{{ $item->quantity }} </td>
                                     <td>{{ $item->price }}</td>
                                     <td></td>
-                                    <td>{{ $item->payment_status }}</td>
+                                    <td>{{ $item->payment_status == '0' ? 'Pending' : 'Completed' }}</td>
+                                    <td> <button class="btn btn-primary editbtn" value="{{ $item->id }}"><a
+                                                href="" class="text-white"><span class="fas fa-pencil "></a></button>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -50,4 +54,73 @@
         </div>
     </div>
     </div>
+    {{-- Model --}}
+
+    <div class="modal fade" id="editModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" style="margin-top: 12rem ; margin-left:12rem">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="text-align: center">Change Status</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label for="">Order Status</label>
+                    <select class="custom-select  custom-select-lg mb-3" name="payment_status" id='payment_status'>
+                        <option value="0">Pending</option>
+                        <option id="complete" value="1">Completed</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="Save">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- endModel --}}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(document).on('click', '.editbtn', function() {
+                var status_id = $(this).val();
+                // alert(status_id);
+                event.preventDefault();
+                $('#editModel').modal('show');
+                // 
+                $("#Save").on('click', function() {
+                    var status = $("#payment_status").val();
+                    $.ajax({
+                        url: '{{ route('OrderList.store') }}',
+                        type: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        contentType: 'application/json',
+                        dataType: 'json',
+                        data: JSON.stringify({
+                            payment_status: status
+                        }),
+                        success: function(response) {
+                            console.log(response);
+                        },
+                       
+                    });
+                });
+               
+
+
+
+
+
+
+
+
+            });
+        });
+    </script>
 @endsection

@@ -5,7 +5,7 @@
     <h6 class="alert alert-success">{{session('status')}}</h6>
     @endif
     <div class="margin_top_30 padding-bottom_2 d-flex justify-content-end ">
-        <a class="btn btns btn-primary p-3 " href="{{ route('Product.create') }}" type="button">Add Prdouct</a>
+        <a class="btn btns btn-primary p-3 " href="{{ route('Product.create') }}" type="button">Add Product</a>
     </div>
     <div class="dark_shd full margin_bottom_30 border ">
        <div class="full graph_head center" style="background-color: #214162">

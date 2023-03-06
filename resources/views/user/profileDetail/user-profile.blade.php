@@ -289,13 +289,10 @@
                                                     <td>{{ $detail->products->name }}</td>
                                                     <td>{{ $detail->quantity }} </td>
                                                     <td>{{ $detail->price }}</td>
-                                                    <td>{{ $detail->payment_status }}</td>
+                                                    <td>{{ $detail->payment_status == '0' ? 'Pending' :'Completed'}}</td>
 
                                                 </tr>
                                             @endforeach
-
-
-
                                             {{-- <tr>
                                                 <th colspan="2" style="text-align: center">Total</th>
                                                 <th colspan="2">Rs.{{$total}} </th>

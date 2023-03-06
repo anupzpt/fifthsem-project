@@ -51,7 +51,7 @@
          </li>
          {{-- orderlist --}}
          <li>
-            <a href="{{route('OrderList.index')}}"><i class="fa fa-user blue1_color"></i><span>Orders</span></a>
+            <a href="{{route('OrderList.index')}}"><i class="fa-solid fa-table-list  red_color"></i></i><span>Orders</span></a>
          </li>
           <li><a href="settings.html"><i class="fa fa-cog yellow_color"></i> <span>Settings</span></a></li>
        </ul>

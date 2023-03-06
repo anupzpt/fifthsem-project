@@ -49,7 +49,7 @@ Route::get('/art-child/{id}', [HomeController::class, 'Child'])->name('home.chil
 Route::resource('/Customer/UserOrderList', UserOrderController::class);
 Route::post('/UserOrderList/store', [UserOrderController::class,'orderStore'])->name('UserOrderList.orderstore');
 
-
+// Route::get('/product-status', [OrderListController::class ,'change_paymentStatus'])->name('product.status');
 
 // ------------Admin Part-------------
 
