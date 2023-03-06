@@ -19,16 +19,15 @@ class OrderListController extends Controller
     {
         //
         // $order = Order::get();
-        $detail = Order::where('userId', Auth::id())->get();
-        $art = Order::with('Product')->get();
+        $detail = Order::where('payment_status', '0')->get();
+        // dd($detail);
+        $art = Order::with('products')->get();
         $username = Order::with('login')->get();
-
-        // dd($username);
-        $total =Order::where('userId', Auth::id())->get()->sum('price');
+        // dd($art);
+        $total = Order::where('userId', Auth::id())->get()->sum('price');
         $count = Order::where('userId', Auth::id())->get()->count();
 
-        return view('admin.Order.index',compact('detail','art','username','total','count'));
-
+        return view('admin.Order.index', compact('detail', 'art', 'username', 'total', 'count'));
     }
 
     /**
@@ -49,7 +48,23 @@ class OrderListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //         $paymentStatus = $request->input('payment_status');
+
+        // dd($paymentStatus)       ;
+        //         //
+        //          return response()->json([
+        //             'status' => 'success',
+        //             'payment_status' => $request->get('payment_status'),
+        //             'code' => 0,
+        //         ]);
+        $paymentStatus = $request->input('payment_status');
+
+        // Perform database insertion here
+        $orderList = new Order();
+        $orderList->payment_status = $paymentStatus;
+        $orderList->save();
+
+        return response()->json(['success' => true]);
     }
 
     /**
@@ -72,6 +87,8 @@ class OrderListController extends Controller
     public function edit($id)
     {
         //
+
+
     }
 
     /**
@@ -96,4 +113,10 @@ class OrderListController extends Controller
     {
         //
     }
+    // public function change_paymentStatus(Request $request){
+    //     $id =$request->id;
+    //     $payment_status= $request->payment_status;
+    //     $status = Order::where('id',$id)->update(['
+    //     payment_status' => $payment_status]);
+    // }
 }

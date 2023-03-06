@@ -72,6 +72,8 @@
     <script src="{{ asset('adminpanel/js/jquery.min.js') }}"></script>
     <script src="{{ asset('adminpanel/js/popper.min.js') }}"></script>
     <script src="{{ asset('adminpanel/js/bootstrap.min.js') }}"></script>
+    {{-- ------------------- --}}
+   
     <!-- wow animation -->
     <script src="{{ asset('adminpanel/js/animate.js') }}"></script>
     <!-- select country -->
@@ -91,6 +93,7 @@
     <!-- custom js -->
     <script src="{{ asset('adminpanel/js/custom.js') }}"></script>
     <script src="{{ asset('adminpanel/js/chart_custom_style1.js') }}"></script>
+    @yield('scripts')
 </body>
 
 </html>
