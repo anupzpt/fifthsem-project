@@ -75,52 +75,90 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="Save">Save changes</button>
+                    <button type="button" class="btn btn-primary save" id="Save">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
     {{-- endModel --}}
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(document).on('click', '.editbtn', function() {
-                var status_id = $(this).val();
-                // alert(status_id);
-                event.preventDefault();
-                $('#editModel').modal('show');
-                // 
-                $("#Save").on('click', function() {
-                    var status = $("#payment_status").val();
-                    $.ajax({
-                        url: '{{ route('OrderList.store') }}',
-                        type: 'POST',
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        contentType: 'application/json',
-                        dataType: 'json',
-                        data: JSON.stringify({
-                            payment_status: status
-                        }),
-                        success: function(response) {
-                            console.log(response);
-                        },
-                       
-                    });
-                });
-               
 
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+    crossorigin="anonymous"></script>
+{{-- <script src="toastr.js"></script> --}}
+<script>
+    function set($id) {
+        debugger
+        $.ajax({
+            url: '{{ route('home.cart') }}',
+            type: 'POST',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "id": $id
 
-
-
-
-
-
-
-            });
+            },
+            success: function(response) {
+                console.log(response.message);
+                if (response.code == 0) {
+                    $(".cartCount").text("")
+                    $(".cartCount").text(response.count);
+                }
+                if (response.code == 1) {}
+                if (response.code == 101) {
+                    window.location.href = "{{ route('login') }}";
+                }
+            },
+            error: function(xhr) {
+                alert(xhr.responseText);
+            }
         });
-    </script>
+    }
+    $(document).ready(function() {
+        $(".cart").click(function() {
+            // debugger
+        });
+    });
+</script>
+
+
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script> --}}
+    {{-- <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+    crossorigin="anonymous"></script>
+    <script>
+       $(document).ready(function() {
+    $(document).on('click', '.editbtn', function() {
+        var status_id = $(this).val();
+        event.preventDefault();
+        $('#editModel').modal('show');
+        $(document).on('click', '.save', function() {
+            var status = $("#payment_status").val();
+            var order_id = status_id; // get the ID of the OrderList record
+            $.ajax({
+            url: '{{ route('home.cart') }}',
+            type: 'POST',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "id": order_id,
+            },
+            success: function(response) {
+                console.log(response.message);
+                if (response.code == 0) {
+                    $(".cartCount").text("")
+                    $(".cartCount").text(response.count);
+                }
+                if (response.code == 1) {}
+                if (response.code == 101) {
+                    window.location.href = "{{ route('login') }}";
+                }
+            },
+            error: function(xhr) {
+                alert(xhr.responseText);
+            }
+        });
+           
+        });
+    });
+});
+    </script> --}}
 @endsection

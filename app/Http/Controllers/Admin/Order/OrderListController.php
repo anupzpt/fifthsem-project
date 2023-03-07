@@ -48,23 +48,25 @@ class OrderListController extends Controller
      */
     public function store(Request $request)
     {
-        //         $paymentStatus = $request->input('payment_status');
-
-        // dd($paymentStatus)       ;
-        //         //
-        //          return response()->json([
-        //             'status' => 'success',
-        //             'payment_status' => $request->get('payment_status'),
-        //             'code' => 0,
-        //         ]);
-        $paymentStatus = $request->input('payment_status');
-
-        // Perform database insertion here
-        $orderList = new Order();
-        $orderList->payment_status = $paymentStatus;
+        $validatedData = $request->validate([
+            'payment_status' => 'required|in:0,1',
+        ]);
+    
+        // save the data to the database
+        $orderList = new Order;
+        $orderList->payment_status = $validatedData['payment_status'];
         $orderList->save();
-
+    
+        // return a response
         return response()->json(['success' => true]);
+        // $paymentStatus = $request->input('payment_status');
+
+        // // // Perform database insertion here
+        // $orderList = new Order();
+        // $orderList->payment_status = $paymentStatus;
+        // $orderList->save();
+
+        // return response()->json(['success' => true]);
     }
 
     /**
@@ -76,6 +78,8 @@ class OrderListController extends Controller
     public function show($id)
     {
         //
+        // $orders= Order::where('id',$id)->get();
+        // return view('admin.Order.index',compact('orders'));
     }
 
     /**
@@ -101,6 +105,10 @@ class OrderListController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $order = Order::find($id);
+    $order->payment_status = $request->input('payment_status');
+    $order->save();
+    return response()->json(['success' => true]);
     }
 
     /**

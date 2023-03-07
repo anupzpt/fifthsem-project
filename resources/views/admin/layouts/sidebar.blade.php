@@ -37,10 +37,10 @@
             <a href="{{ route('Product.index') }}"><i class="fa fa-map purple_color"></i> <span>Product</span></a>
         </li>
           {{-- <li><a href="price.html"><i class="fa fa-briefcase blue1_color"></i> <span>Pricing Tables</span></a></li> --}}
-          <li>
+          {{-- <li>
              <a href="contact.html">
              <i class="fa fa-paper-plane red_color"></i> <span>Contact</span></a>
-          </li>
+          </li> --}}
           {{-- admin --}}
           <li>
             <a href="{{ route('AdminList.index')}}"><i class="fa fa-user green_color"></i> <span>Admin</span></a>
@@ -53,7 +53,7 @@
          <li>
             <a href="{{route('OrderList.index')}}"><i class="fa-solid fa-table-list  red_color"></i></i><span>Orders</span></a>
          </li>
-          <li><a href="settings.html"><i class="fa fa-cog yellow_color"></i> <span>Settings</span></a></li>
+          {{-- <li><a href="settings.html"><i class="fa fa-cog yellow_color"></i> <span>Settings</span></a></li> --}}
        </ul>
     </div>
  </nav>
