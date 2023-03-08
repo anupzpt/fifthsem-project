@@ -56,7 +56,7 @@ class UserOrderController extends Controller
     }
     public function orderStore(Request $request)
     {
-        
+
         $detail = $request->all();
         for ($i = 0; $i < count($request->get('userId')); $i++) {
             $order = new Order();
@@ -68,6 +68,7 @@ class UserOrderController extends Controller
             $order->payment_status = "0";
             $order->save();
         }
+        // dd($order);
         $cartItems = AddToCart::where('userId', Auth::id())->get();
        AddToCart::destroy($cartItems);
         return redirect('/')->with('status',"Order placed successfully");
@@ -83,6 +84,7 @@ class UserOrderController extends Controller
     {
         $detail = null;
         $orderDetail=Product::where('id',$id)->get();
+        // dd($orderDetail);
         $totalarray = Product::where('id', Auth::id())->get('price');
         $total=$totalarray[0]->price;
         $count = AddToCart::where('userId', Auth::id())->get()->count();

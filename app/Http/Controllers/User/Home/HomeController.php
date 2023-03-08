@@ -51,6 +51,7 @@ class HomeController extends Controller
         $parent = Category::whereNull('parent_id')->get();
         $child = Category::whereNotNull('parent_id')->get();
         $products = Product::all();
+        // dd($products);
         $count = AddToCart::where('userId', Auth::id())->get()->count();
         return view('user.art.art', compact('products', 'child', 'parent', 'count'));
     }
@@ -100,7 +101,7 @@ class HomeController extends Controller
         $art = AddToCart::with('products')
             ->where('userId', Auth::id())
             ->get();
-            
+
         // $art = AddToCart::with('products')->get();
         $total = AddToCart::where('userId', Auth::id())->get()->sum('price');
         return view('user.addtocart.index', compact('response', 'count', 'art', 'total'));

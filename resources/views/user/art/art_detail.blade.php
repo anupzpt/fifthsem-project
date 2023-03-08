@@ -1,6 +1,7 @@
 @extends('user.layout.master')
 @section('content')
     <section class="design" id="design">
+        <link href="toastr.css" rel="stylesheet" />
         <div class="container">
             <div class="toggler-and-category bg-brown text-white flex" style="margin-left: 40%; margin-top: 1%">
                 <div class="category-list">
@@ -33,7 +34,8 @@
                             <span class="fw-bold d-block">RS. {{ $product->price }}</span>
                             <button id="cart" class="button btn-primary mt-3 cart"
                                 onClick="set('{{ $product->id }}')">Add to Cart</button>
-                                <a href="#" class="button btn-primary mt-3 ml-2">Buy it Now</a>
+                            <a href="{{ route('UserOrderList.show', [$product->id]) }}"
+                                class="button btn-primary mt-3 ml-2">Buy it Now</a>
                         </div>
                     </div>
                 @endforeach
@@ -49,6 +51,8 @@
     crossorigin="anonymous"></script>
 <script>
     function set($id) {
+        toastr.options.progressBar = false;
+
         $.ajax({
             url: '{{ route('home.cart') }}',
             type: 'POST',
@@ -58,7 +62,22 @@
 
             },
             success: function(response) {
-                alert(response.message);
+                console.log(response.message);
+                if (response.code == 0) {
+                    $(".cartCount").text("")
+                    $(".cartCount").text(response.count);
+                    toastr.success('Product added to cart');
+
+                }
+                if (response.code == 1) {
+                    toastr.error('Product already added to cart');
+
+                }
+                if (response.code == 101) {
+
+                    window.location.href = "{{ route('login') }}";
+
+                }
             },
             error: function(xhr) {
                 alert(xhr.responseText);
