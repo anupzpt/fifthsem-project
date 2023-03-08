@@ -34,6 +34,8 @@
     {{-- personal css --}}
     <link rel="stylesheet" href="{{ asset('adminpanel/css/main.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{asset('adminpanel/css/toster.css')}}" />
+
     {{-- --font logo---- --}}
 
     <!--[if lt IE 9]>
@@ -73,7 +75,7 @@
     <script src="{{ asset('adminpanel/js/popper.min.js') }}"></script>
     <script src="{{ asset('adminpanel/js/bootstrap.min.js') }}"></script>
     {{-- ------------------- --}}
-   
+
     <!-- wow animation -->
     <script src="{{ asset('adminpanel/js/animate.js') }}"></script>
     <!-- select country -->
@@ -93,6 +95,8 @@
     <!-- custom js -->
     <script src="{{ asset('adminpanel/js/custom.js') }}"></script>
     <script src="{{ asset('adminpanel/js/chart_custom_style1.js') }}"></script>
+    <script src="{{asset('adminpanel/js/toastr.js')}}"></script>
+
     @yield('scripts')
 </body>
 

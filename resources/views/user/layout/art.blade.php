@@ -43,39 +43,45 @@
      crossorigin="anonymous"></script>
  {{-- <script src="toastr.js"></script> --}}
  <script>
-     function set($id) {
-         debugger
-         $.ajax({
-             url: '{{ route('home.cart') }}',
-             type: 'POST',
-             data: {
-                 "_token": "{{ csrf_token() }}",
-                 "id": $id
+    function set($id) {
+        // debugger
+         toastr.options.progressBar = false;
+        $.ajax({
+            url: '{{ route('home.cart') }}',
+            type: 'POST',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "id": $id
 
-             },
-             success: function(response) {
-                 console.log(response.message);
-                 if (response.code == 0) {
-                     $(".cartCount").text("")
-                     $(".cartCount").text(response.count);
-                 }
-                 if (response.code == 1) {}
-                 if (response.code == 101) {
+            },
+            success: function(response) {
+                console.log(response.message);
+                if (response.code == 0) {
+                    $(".cartCount").text("")
+                    $(".cartCount").text(response.count);
+                    toastr.success('Product added to cart');
 
-                     window.location.href = "{{ route('login') }}";
+                }
+                if (response.code == 1) {
+                    toastr.error('Product already added to cart');
 
-                 }
-             },
-             error: function(xhr) {
-                 alert(xhr.responseText);
-             }
-         });
-     }
-     $(document).ready(function() {
+                }
+                if (response.code == 101) {
 
-         $(".cart").click(function() {
-             // debugger
+                    window.location.href = "{{ route('login') }}";
 
-         });
-     });
- </script>
+                }
+            },
+            error: function(xhr) {
+                alert(xhr.responseText);
+            }
+        });
+    }
+    $(document).ready(function() {
+
+        $(".cart").click(function() {
+            // debugger
+
+        });
+    });
+</script>

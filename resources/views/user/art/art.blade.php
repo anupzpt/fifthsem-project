@@ -56,7 +56,7 @@
 <script>
     function set($id) {
         // debugger
-         toastr.options.progressBar = true;
+         toastr.options.progressBar = false;
         $.ajax({
             url: '{{ route('home.cart') }}',
             type: 'POST',
