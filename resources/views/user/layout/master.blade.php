@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{asset('userpanel/css/main.css')}}" />
     <!-- dropdown card css -->
     <link rel="stylesheet" href="{{asset('userpanel/css/dropdownCard.css')}}" />
+    <link rel="stylesheet" href="{{asset('userpanel/css/toster.css')}}" />
     <!-- slick slider css -->
     <link rel="stylesheet" href="{{asset('userpanel/plugins/slick-1.8.1/slick/slick.css')}}" />
     <link rel="stylesheet" href="{{asset('userpanel/plugins/slick-1.8.1/slick/slick-theme.css')}}" />
@@ -45,6 +46,8 @@
     <script src="{{asset('userpanel/plugins/slick-1.8.1/slick/slick.js')}}"></script>
     <!-- custom js -->
     <script src="{{asset('userpanel/js/script.js')}}"></script>
+    <script src="{{asset('userpanel/js/toastr.js')}}"></script>
+
     @if(session()->has('error_msg'))
     <script>
         alert("{{ session('error_msg') }}");

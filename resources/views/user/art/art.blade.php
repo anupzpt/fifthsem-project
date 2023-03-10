@@ -55,7 +55,8 @@
 {{-- <script src="toastr.js"></script> --}}
 <script>
     function set($id) {
-        debugger
+        // debugger
+         toastr.options.progressBar = false;
         $.ajax({
             url: '{{ route('home.cart') }}',
             type: 'POST',
@@ -69,8 +70,13 @@
                 if (response.code == 0) {
                     $(".cartCount").text("")
                     $(".cartCount").text(response.count);
+                    toastr.success('Product added to cart');
+
                 }
-                if (response.code == 1) {}
+                if (response.code == 1) {
+                    toastr.error('Product already added to cart');
+
+                }
                 if (response.code == 101) {
 
                     window.location.href = "{{ route('login') }}";

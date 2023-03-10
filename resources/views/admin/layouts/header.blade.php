@@ -18,9 +18,9 @@
                     {{-- {{asset('/uploads'.'/'.auth()->user()->img_path)}} --}}
                       {{-- <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="" alt="#" /><span class="name_user">{{auth()->user()->name}}</span></a> --}}
                       <div class="dropdown-menu">
-                         <a class="dropdown-item" href="profile.html">My Profile</a>
-                         <a class="dropdown-item" href="settings.html">Settings</a>
-                         <a class="dropdown-item" href="help.html">Help</a>
+                         {{-- <a class="dropdown-item" href="profile.html">My Profile</a>
+
+                         <a class="dropdown-item" href="help.html">Help</a> --}}
                          <a class="dropdown-item" href="{{route('home.index')}}">Back to Website</a>
                          <a class="dropdown-item" href="{{ route('logout') }}"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
                       </div>
