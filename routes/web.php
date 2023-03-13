@@ -16,6 +16,7 @@ use App\Http\Controllers\Forget\ForgetController;
 use App\Http\Controllers\Admin\AdminList\AdminController;
 use App\Http\Controllers\Admin\Order\OrderListController;
 use App\Http\Controllers\User\Order\UserOrderController;
+use App\Http\Controllers\Artistregister\ArtistregisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,3 +95,6 @@ Route::post('/forget-password',[ForgetController::class,'forgetPassword'])->name
 
 Route::get('/reset-password/{token}',[ForgetController::class,'resetPasswordLoad']);
 Route::post('/reset-password',[ForgetController::class,'resetPassword'])->name('resetPassword');
+
+//Artist registration
+Route::post('login-artist', [UserController::class,'artist'])->name('login-artist');
