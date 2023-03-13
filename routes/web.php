@@ -16,6 +16,7 @@ use App\Http\Controllers\Forget\ForgetController;
 use App\Http\Controllers\Admin\AdminList\AdminController;
 use App\Http\Controllers\Admin\Order\OrderListController;
 use App\Http\Controllers\User\Order\UserOrderController;
+use App\Http\Controllers\Artistregister\ArtistregisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,6 +96,7 @@ Route::post('/forget-password',[ForgetController::class,'forgetPassword'])->name
 Route::get('/reset-password/{token}',[ForgetController::class,'resetPasswordLoad']);
 Route::post('/reset-password',[ForgetController::class,'resetPassword'])->name('resetPassword');
 
+<<<<<<< HEAD
 // Checker Maker
 Route::get('/orders/verify/{orderCode}',[OrderListController::class,'ViewVerifyOrderDetail'])->name('orders.verify');
 Route::post('/orders/verify-details',[OrderListController::class,'VerifyOrderDetail'])->name('orders.verifyDetail');
@@ -105,3 +107,7 @@ Route::get('/orders/view/{orderCode}',[OrderListController::class,'ViewOrderDeta
 
 
 
+=======
+//Artist registration
+Route::post('login-artist', [UserController::class,'artist'])->name('login-artist');
+>>>>>>> 050e0de6fa888dacd0a045df38f53222e9555166

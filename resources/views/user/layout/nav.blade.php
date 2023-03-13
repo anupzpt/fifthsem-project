@@ -180,7 +180,7 @@
              </a>
              <a href="{{route('return')}}" class="sub-menu-link">
                  <img src="{{asset('userpanel/images/cancel.png')}}">
-                 <p>Return & Cancellation</p>
+                 <p>Artist registeration</p>
                  <span>></span>
              </a>
              <a href="{{ route('logout') }}" class="sub-menu-link">

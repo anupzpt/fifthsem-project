@@ -61,9 +61,9 @@
                                 <a href="#" class="text-decoration-none d-flex align-items-start">
                                     <div class="far fa-address-book pt-2 me-3"></div>
                                     <div class="d-flex flex-column">
-                                        <div class="link">Returns & Cancellation</div>
+                                        <div class="link">Artist registration</div>
                                         <div class="link-desc">
-                                            View & Manag your returns & Cancellation
+                                            View & Apply for artist
                                         </div>
                                     </div>
                                 </a>
@@ -425,18 +425,77 @@
             </div>
             <!-- order section end -->
 
-            <!-- return section -->
+            <!-- Artistregistration section -->
             <div class="col-lg-9 my-lg-0 my-1 return-section-wrap" id="return-wrap">
                 <div id="main-content" class="bg-white border">
                     <div class="d-flex flex-column">
-                        <h2>My Return & Cancellation</h2>
+                        <h2>Artist registration</h2>
                         <div class="h5 mt-3">Hello {{ auth()->user()->name }},</div>
                         <div>Logged in as: {{ auth()->user()->email }}</div>
                         <hr />
+                        <form class="rounded bg-white shadow p-5" action="" method="POST">
+                                @csrf
+                                <p class="text-dark fw-bolder fs-4 mb-2">Artist registration</p>
+                                <div class="fw-normal text-muted mb-2">
+                                    Already have an account ? <a href="" class="text-primary fw-bold text-decoration-none">return to homepage</a>
+                                </div>
+                                <div class="text-center text-muted text-uppercase mb-3">or</div>
+
+                                @if(Session::has('error'))
+                                <p class="text-danger">{{Session::get('error')}}</p>
+                                @endif
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control @error ('name') is-invalid @enderror" id="floatingInput" name="name" placeholder="Full Name">
+                                    <label for="floatingInput">Full Name</label>
+                                    <span style="color :red;">@error('name') {{$message}} @enderror</span>
+                                </div>
+                            
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control @error ('email') is-invalid @enderror" id="floatingInput" name="email" placeholder="name@example.com">
+                                    <label for="floatingInput">Email address</label>
+                                    <span style="color :red;">@error('email') {{$message}} @enderror</span>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control @error ('contact') is-invalid @enderror" id="floatingInput" name="contact" placeholder="Contact Number">
+                                    <label for="floatingInput">Contact Number</label>
+                                    <span style="color :red;">@error('contact') {{$message}} @enderror</span>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control @error ('address') is-invalid @enderror" id="floatingInput" name="address" placeholder="Address">
+                                    <label for="floatingInput">Address</label>
+                                    <span style="color :red;">@error('address') {{$message}} @enderror</span>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="file" class="form-control" id="floatingPassword" placeholder="upload picture">
+                                    <label for="floatingPassword">upload picture</label>
+                                </div>
+                                <!-- <div class="input-group mb-3">
+                                    <label class="input-group-text selected" for="inputGroupSelect01">Are you a ?</label>
+                                    <select class="form-select selected" name="user_type" id="inputGroupSelect01">
+                                        <option selected value="User">User</option>
+                                        <option value="Artist">Artist</option>
+                                    </select>
+                                </div> -->
+
+                                    <div class="form-check d-flex align-items-center">
+                                        <input class="form-check-input check" type="checkbox" id="gridCheck">
+                                        <label class="form-check-label ms-2" for="gridCheck">
+                                            I Agree <a href="#">Terms and conditions</a>.
+                                        </label>
+                                    </div>
+
+
+                                    <button type="submit" class="btn btn-primary submit_btn w-100 my-4">Continue</button>
+		                </form>
+                    </div>
+                    
                     </div>
                 </div>
-            </div>
-            <!-- return section end -->
+            <!-- Artistregistration section end -->
         </div>
     </div>
     {{-- <div class="myfooter" >
