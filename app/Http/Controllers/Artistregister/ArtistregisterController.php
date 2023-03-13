@@ -14,26 +14,37 @@ class ArtistregisterController extends Controller
 
     public function artist(Request $request)
     {
-        dd($request->all());
-        $artistregisters->name = $request->input('name');
-        $artistregisters->name = $request->input('email');
-        $artistregisters->name = $request->input('contact');
-        $artistregisters->name = $request->input('address');
+        
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:artistregisters|email',
+            'contact' => 'required',
+            'address' => 'required',
+            'image' => 'required'
 
-        if($request->hasfile('image'))
-        {
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '-' . $extension;
-            $file->move('uploads/artist/', $filename);
-            $artist->image = $filename;
-        } else {
-            return $request;
-            $artist->image = '';
+        ]);
+
+        $artist = new Artistregister;
+        $artist->name = $request->name;
+        $artist->email = $request->email;
+        $artist->contact = $request->contact;
+        $artist->address = $request->address;
+        // dd($request->all());
+        
+        if ($request->hasFile('image')) {
+
+            $image = $request->file('image');
+            $fileName = date('dmY') . time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path("/uploads"), $fileName);
+            $artist->image = $fileName;
         }
-
+        
+        
         $artist->save();
 
-        return view('')->with('artist',$artist);
+        return redirect()->route('artist-register')->with('status', 'Artist Created Successfully');
+
+
+       
     }
 }
