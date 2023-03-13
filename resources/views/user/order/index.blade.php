@@ -34,7 +34,7 @@
                                             value="{{ Auth::user()->email }}" readonly>
                                         <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
                                         <div>
-                                            <select id="dynamic-address" onclick="Captcha()">
+                                            <select id="dynamic-address" onchange="Captcha()">
                                                 <option value="">Select Address</option>
                                                 @if (Auth::user()->address != null)
                                                     <option
@@ -149,15 +149,17 @@
                                     </div>
 
                                 </div>
-                                <div class="capt">
+                                <div class="capt" id="captcha">
                                     <h2 type="text" id="mainCaptcha"></h2>
                                     <p><input type="button" id="refresh" onclick="Captcha();" /></p> <input
                                         type="text" id="txtInput" />
                                     <input id="Button1" type="button" value="Check"
-                                        onclick="alert(ValidateCaptcha());" />
+                                        onclick="ValidateCaptcha();" />
                                 </div>
-                                <div class="line"></div>
-                                <button type="submit" class="order-btn btn" style="float: right">Continue</button>
+                                <div class="line" ></div>
+                                <div style="text-align: right">
+                                    <button type="submit" id="btnSubmit" style="display:none" class="order-btn btn" style="margin-left:90%">Continue</button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -244,6 +246,7 @@
 </script>
 <script>
     function Captcha() {
+        document.getElementById('captcha').style.display="block";
         var alpha = new Array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
             'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
@@ -268,9 +271,10 @@
         var string1 = removeSpaces(document.getElementById('mainCaptcha').value);
         var string2 = removeSpaces(document.getElementById('txtInput').value);
         if (string1 == string2) {
-            return true;
+            document.getElementById('btnSubmit').style.display="block";
         } else {
-            return false;
+            toastr.error("Invalid Captcha,Try Again!!");
+            document.getElementById('btnSubmit').style.display="none";
         }
     }
 
