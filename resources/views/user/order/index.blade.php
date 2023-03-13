@@ -2,7 +2,6 @@
 @section('content')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('userpanel/css/custom-css.css') }}" />
-    <link href="toastr.css" rel="stylesheet" />
 
 
     <div class="container-main">
@@ -121,7 +120,7 @@
                                                                 <td>
                                                                     {{ $item->name }}
                                                                     <input type="hidden" name="productId[]"
-                                                                    value="{{ $item->productId }}" />
+                                                                        value="{{ $item->productId }}" />
                                                                 </td>
                                                                 <td>
                                                                     1
@@ -188,8 +187,6 @@
 {{-- <script src="toastr.js"></script> --}}
 <script>
     $(document).ready(function() {
-        toastr.options.progressBar = false;
-
         $("#myBtn").on('click', function() {
             $("#myModal").show();
         });
@@ -226,8 +223,6 @@
                     newOption.val(data);
                     selectElement.append(newOption);
                     $("#myModal").hide();
-
-
                 },
             });
         })
@@ -238,8 +233,6 @@
         $(".order-btn").on('click', function() {
             var address = $("#dynamic-address").val();
             $(".insert-address").val(address);
-            toastr.success('Order Placed Successfully');
-
         });
 
     });

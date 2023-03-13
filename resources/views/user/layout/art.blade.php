@@ -18,21 +18,23 @@
          </div>
 
          <div class="design-content">
-            <!-- item -->
-            @foreach ($products as $product)
-                <div class="design-item">
-                    <div class="design-img">
-                        <img src="{{ asset('/uploads' . '/' . $product->image) }}" alt="" />
-                    </div>
-                    <div class="text-center">
-                        <div class="text-capitalize mt-3 mb-1">{{ $product->name }}</div>
-                        <span class="fw-bold d-block">RS. {{ $product->price }}</span>
-                        <button id="cart" class="button btn-primary mt-3 cart"
-                            onClick="set('{{ $product->id }}')">Add to Cart</button>
-                        <a href="{{route('UserOrderList.show',[$product->id])}}" class="button btn-primary mt-3 ml-2">Buy it Now</a>                        </div>
-                </div>
-            @endforeach
-        </div>
+             <!-- item -->
+             @foreach ($products as $product)
+                 <div class="design-item">
+                     <div class="design-img">
+                         <img src="{{ asset('/uploads' . '/' . $product->image) }}" alt="" />
+                     </div>
+                     <div class="text-center">
+                         <div class="text-capitalize mt-3 mb-1">{{ $product->name }}</div>
+                         <span class="fw-bold d-block">RS. {{ $product->price }}</span>
+                         <button id="cart" class="button btn-primary mt-3 cart"
+                             onClick="set('{{ $product->id }}')">Add to Cart</button>
+                         <a href="{{ route('UserOrderList.show', [$product->id]) }}"
+                             class="button btn-primary mt-3 ml-2">Buy it Now</a>
+                     </div>
+                 </div>
+             @endforeach
+         </div>
          <div>
              <div class="center">
                  <a href="{{ route('home.art') }}" class="button btn-primary ">View More</a>
@@ -41,47 +43,41 @@
  </section>
  <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
      crossorigin="anonymous"></script>
- {{-- <script src="toastr.js"></script> --}}
  <script>
-    function set($id) {
-        // debugger
-         toastr.options.progressBar = false;
-        $.ajax({
-            url: '{{ route('home.cart') }}',
-            type: 'POST',
-            data: {
-                "_token": "{{ csrf_token() }}",
-                "id": $id
+     function set($id) {
+         $.ajax({
+             url: '{{ route('home.cart') }}',
+             type: 'POST',
+             data: {
+                 "_token": "{{ csrf_token() }}",
+                 "id": $id
 
-            },
-            success: function(response) {
-                console.log(response.message);
-                if (response.code == 0) {
-                    $(".cartCount").text("")
-                    $(".cartCount").text(response.count);
-                    toastr.success('Product added to cart');
+             },
+             success: function(response) {
+                 console.log(response.message);
+                 if (response.code == 0) {
+                     $(".cartCount").text("")
+                     $(".cartCount").text(response.count);
+                 }
+                 if (response.code == 1) {
+                     toastr.error(response.message)
+                 }
+                 if (response.code == 101) {
 
-                }
-                if (response.code == 1) {
-                    toastr.error('Product already added to cart');
+                     window.location.href = "{{ route('login') }}";
 
-                }
-                if (response.code == 101) {
+                 }
+             },
+             error: function(xhr) {
+                 alert(xhr.responseText);
+             }
+         });
+     }
+     $(document).ready(function() {
 
-                    window.location.href = "{{ route('login') }}";
+         $(".cart").click(function() {
+             // debugger
 
-                }
-            },
-            error: function(xhr) {
-                alert(xhr.responseText);
-            }
-        });
-    }
-    $(document).ready(function() {
-
-        $(".cart").click(function() {
-            // debugger
-
-        });
-    });
-</script>
+         });
+     });
+ </script>

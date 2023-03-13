@@ -1,12 +1,8 @@
 @extends('admin.layouts.master')
 @section('content')
-<link href="toastr.css" rel="stylesheet" />
-
     <div class="col-md-12 margin_top_30 ">
         @if (session('status'))
-        <script type="text/javascript">
-            toastr.info("{{ session("status") }}");
-        <script>
+            <h6 class="alert alert-success">{{ session('status') }}</h6>
         @endif
         <div class="margin_top_30 padding-bottom_2 d-flex justify-content-end ">
 

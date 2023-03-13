@@ -19,14 +19,11 @@
                         <thead>
                             <tr>
                                 <th>SN</th>
-                                <th>Product Name</th>
                                 <th>User Name</th>
-                                <th>Quantity</th>
-                                <th>Price
+                                <th>Address
                                 <th>
-                                <th>Payment Status</th>
+                                <th>Status</th>
                                 <th>Action</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,15 +33,35 @@
                             @foreach ($art as $item)
                                 <tr>
                                     <td>{{ $sn++ }}</td>
-                                    <td>{{ $item->products->name }}</td>
-                                    <td>{{ $item->login->name }}</td>
-                                    <td>{{ $item->quantity }} </td>
-                                    <td>{{ $item->price }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->address }} </td>
                                     <td></td>
-                                    <td>{{ $item->payment_status == '0' ? 'Pending' : 'Completed' }}</td>
-                                    <td> <button class="btn btn-primary editbtn" value="{{ $item->id }}"><a
-                                                href="" class="text-white"><span class="fas fa-pencil "></a></button>
-                                    </td>
+                                    @if ($item->payment_status == 'Verification Pending')
+                                        <td>
+                                            <span
+                                                class="badge  badge-pill bg-warning text-white">{{ $item->payment_status }}</span>
+                                        </td>
+                                        <td> <a href="{{ route('orders.verify', [$item->OrderCode]) }}"
+                                                class="text-white btn btn-primary editbtn"><span class="fas fa-eye "></a>
+                                        </td>
+                                    @elseif($item->payment_status == 'Approve Pending')
+                                        <td><span
+                                                class="badge  badge-pill bg-warning text-white">{{ $item->payment_status }}</span>
+                                        </td>
+                                        <td> <a href="{{ route('orders.approve', [$item->OrderCode]) }}"
+                                                class="text-white btn btn-primary editbtn"><span class="fas fa-eye "></a>
+                                        @elseif($item->payment_status == 'Approved')
+                                        <td><span
+                                                class="badge  badge-pill bg-success text-white">{{ $item->payment_status }}</span>
+                                        </td>
+                                        <td> <a href="{{ route('orders.view', [$item->OrderCode]) }}"
+                                                class="text-white btn btn-primary editbtn"><span class="fas fa-eye "></a>
+                                        @else
+                                        <td><span
+                                                class="badge  badge-pill bg-danger text-white">{{ $item->payment_status }}</span>
+                                        </td>
+                                    @endif
+
                                 </tr>
                             @endforeach
                         </tbody>
@@ -84,41 +101,41 @@
 
 
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
-    crossorigin="anonymous"></script>
-{{-- <script src="toastr.js"></script> --}}
-<script>
-    function set($id) {
-        debugger
-        $.ajax({
-            url: '{{ route('home.cart') }}',
-            type: 'POST',
-            data: {
-                "_token": "{{ csrf_token() }}",
-                "id": $id
+        crossorigin="anonymous"></script>
+    {{-- <script src="toastr.js"></script> --}}
+    <script>
+        function set($id) {
+            debugger
+            $.ajax({
+                url: '{{ route('home.cart') }}',
+                type: 'POST',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "id": $id
 
-            },
-            success: function(response) {
-                console.log(response.message);
-                if (response.code == 0) {
-                    $(".cartCount").text("")
-                    $(".cartCount").text(response.count);
+                },
+                success: function(response) {
+                    console.log(response.message);
+                    if (response.code == 0) {
+                        $(".cartCount").text("")
+                        $(".cartCount").text(response.count);
+                    }
+                    if (response.code == 1) {}
+                    if (response.code == 101) {
+                        window.location.href = "{{ route('login') }}";
+                    }
+                },
+                error: function(xhr) {
+                    alert(xhr.responseText);
                 }
-                if (response.code == 1) {}
-                if (response.code == 101) {
-                    window.location.href = "{{ route('login') }}";
-                }
-            },
-            error: function(xhr) {
-                alert(xhr.responseText);
-            }
+            });
+        }
+        $(document).ready(function() {
+            $(".cart").click(function() {
+                // debugger
+            });
         });
-    }
-    $(document).ready(function() {
-        $(".cart").click(function() {
-            // debugger
-        });
-    });
-</script>
+    </script>
 
 
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -156,7 +173,7 @@
                 alert(xhr.responseText);
             }
         });
-           
+
         });
     });
 });

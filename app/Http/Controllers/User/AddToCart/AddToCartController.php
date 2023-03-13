@@ -9,6 +9,7 @@ use App\Models\User\Order\Order;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AddToCartController extends Controller
 {
@@ -19,7 +20,25 @@ class AddToCartController extends Controller
      */
     public function index()
     {
-        return redirect()->route("UserOrderList.index");
+        $orders = DB::table('products')
+            ->join('add_to_carts', 'add_to_carts.productId', '=', 'products.id')
+            ->select('products.name')
+            ->where('add_to_carts.userId', Auth::id())
+            ->where('products.productStatus', 'sold')
+            ->get();
+        if (count($orders) >= 1) {
+            return response()->json([
+                'status' => 'success',
+                'message' => $orders[0]->name,
+                'code' => count($orders),
+            ]);
+        } else {
+            return response()->json([
+                'status' => 'success',
+                'message' => "",
+                'code' => count($orders),
+            ]);
+        }
     }
 
     /**
@@ -40,24 +59,22 @@ class AddToCartController extends Controller
      */
     public function store(Request $request)
     {
-       $cartItems = AddToCart::where('userId', Auth::id())->get();
-       $cartItemIds = $cartItems->pluck('id')->toArray();
+        $cartItems = AddToCart::where('userId', Auth::id())->get();
+        $cartItemIds = $cartItems->pluck('id')->toArray();
         $data = array();
-        foreach($cartItemIds as $i=>$value){
+        foreach ($cartItemIds as $i => $value) {
             $cart = AddToCart::find($value);
             $data[$i]['userId'] = $cart->userId;
             $data[$i]['productId'] = $cart->productId;
             $data[$i]['quantity'] = $cart->quantity;
             $data[$i]['price'] = $cart->price;
             $data[$i]['payment_status'] = '0';
-
         }
         $ProductBooking = Order::insert($data);
-        if($ProductBooking){
+        if ($ProductBooking) {
             AddToCart::destroy($cartItemIds);
         }
-        return redirect('/')->with('status',"Order placed successfully");
-
+        return redirect('/')->with('status', "Order placed successfully");
     }
     /**
      * Display the specified resource.

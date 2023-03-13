@@ -17,16 +17,15 @@
     padding: 10px;
     display: flex;
 }
-.logoimg{
-   margin-left: 12rem;
-
+.logoimg {
+    margin-left: 12rem;
 }
-.myheader{
+.myheader {
     margin-left: 20rem;
     margin-top: 1rem;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
-.myfooter{
+.myfooter {
     background-color: #252525;
     width: 100%;
     height: 40px;
@@ -34,7 +33,7 @@
     padding: 10px;
     text-align: center;
     position: fixed;
-    left:0;
+    left: 0;
     bottom: 0;
 }
 /* Main content styles */
@@ -175,6 +174,92 @@
     border-radius: 50%;
 }
 
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+.ProductDetail {
+    display: block;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+.order-content-detail{
+    display: flex;
+    justify-content: space-between;
+    background-color: gainsboro;
+    padding: 10px;
+    border-radius: 5px;
+    width: 98%;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+.line{
+    border: 1px solid black;
+    width: 150px;
+    margin-bottom: 10px;}
+.verify{
+    padding: 5px;
+    background-color: #FFC107;
+    color: white;
+    display: block;
+    border-radius: 7px;
+    height: 38px;
+    width: 156px;
+}
+.approve{
+    padding: 5px;
+    background-color: #28A745;
+    color: white;
+    display: block;
+    border-radius: 7px;
+    height: 38px;
+    width: 156px;
+}
+.rejected{
+    padding: 5px;
+    background-color: red;
+    color: white;
+    display: block;
+    border-radius: 7px;
+    height: 38px;
+    width: 156px;
+}
+.sub-menu-tab{
+    display: none;
+}
 /* Responsive styles */
 @media (max-width: 767px) {
     #sidebar {

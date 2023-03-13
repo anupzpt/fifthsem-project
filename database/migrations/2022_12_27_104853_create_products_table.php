@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('price');
             $table->string('image');
+            $table->string('productStatus')->default('available');
             $table->string('status')->default('A');
             $table->string('description');
             $table->unsignedBigInteger('category_id');

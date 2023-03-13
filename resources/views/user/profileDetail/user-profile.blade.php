@@ -258,50 +258,168 @@
 
             <!-- order section -->
             <div class="col-lg-9 my-lg-0 my-1 order-section-wrap" id="order-wrap">
-                <div id="main-content" class="bg-white border">
+                <div id="main-content" class="bg-white border" style="overflow:scroll;height:80vh">
                     <div class="d-flex flex-column">
                         <h2>My Order</h2>
                         <div class="h5 mt-3">Hello {{ auth()->user()->name }},</div>
                         <div>Logged in as: {{ auth()->user()->email }}</div>
                         <hr />
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <table class="table table-bordered">
+                        @if (count($art) > 0)
+                            @foreach ($art as $userDetail)
+                                <div class="order-content-detail product-description">
+                                    <div class="sn">
+                                        {{ $userDetail->OrderCode }}
+                                    </div>
+                                    <div class="description">
+                                        {{ $userDetail->OrderRemarks }}
+                                    </div>
+                                    <div class="total-cost">
+                                        Rs.{{ $total }}
 
-                                        <thead>
-                                            <tr class="table-dark">
-                                                <th>SN</th>
-                                                <th>Product Name</th>
-                                                <th>Quantity</th>
-                                                {{-- <th>Order Date</th> --}}
-                                                <th>Price</th>
-                                                <th>Status</th>
-                                            </tr>
-
-
-                                            @php
-                                                $sn = 1;
-                                            @endphp
-                                            @foreach ($OrderList as $detail)
-                                                <tr>
-                                                    <td>{{ $sn++ }}</td>
-                                                    <td>{{ $detail->products->name }}</td>
-                                                    <td>{{ $detail->quantity }} </td>
-                                                    <td>{{ $detail->price }}</td>
-                                                    <td>{{ $detail->payment_status == '0' ? 'Pending' :'Completed'}}</td>
-
-                                                </tr>
-                                            @endforeach
-                                            {{-- <tr>
-                                                <th colspan="2" style="text-align: center">Total</th>
-                                                <th colspan="2">Rs.{{$total}} </th>
-                                            </tr> --}}
-                                        </thead>
-                                    </table>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                                <div class="container sub-menu-tab">
+                                    <div class="row ">
+                                        <div class="col-md-12">
+                                            <div class="tab">
+                                                <button class="tablinks"
+                                                    onclick="openCity(event, 'ProductDetail{{ $userDetail->OrderCode }}')">Product
+                                                    Detail</button>
+                                                <button class="tablinks"
+                                                    onclick="openCity(event, 'Status{{ $userDetail->OrderCode }}')">Status</button>
+                                                <button class="tablinks"
+                                                    onclick="openCity(event, 'Invoice{{ $userDetail->OrderCode }}')">Invoice</button>
+                                            </div>
+
+                                            <div id="ProductDetail{{ $userDetail->OrderCode }}"
+                                                class="tabcontent ProductDetail">
+                                                <table class="table  table-condensed">
+                                                    <thead>
+                                                        <tr>
+                                                            <th colspan=2>
+                                                                <h4>User Information Details</h4>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><Strong>Customer Name :</Strong></td>
+                                                            <td> {{ $userDetail->name }}</td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td><Strong>Email :</Strong></td>
+                                                            <td> {{ $userDetail->email }}</td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td><Strong>Contact Number :</Strong></td>
+                                                            <td> {{ $userDetail->contact }}</td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Delivery Address :</strong></td>
+                                                            <td> {{ $userDetail->address }}</td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <div id="Status{{ $userDetail->OrderCode }}" class="tabcontent"
+                                                style="padding:20px">
+                                                <strong>Status</strong>
+                                                <div class="line"></div>
+                                                @if ($userDetail->payment_status == 'Verification Pending')
+                                                    <span class="verify">
+                                                        {{ $userDetail->payment_status }}
+                                                    </span>
+                                                @elseif ($userDetail->payment_status == 'Approve Pending')
+                                                    <span class="verify">
+                                                        {{ $userDetail->payment_status }}
+                                                    </span>
+                                                    <hr>
+                                                    <h6>Remarks:</h6>
+                                                    <p>
+                                                        {{ $userDetail->VerifiedRemarks }}
+                                                    </p>
+                                                @elseif ($userDetail->payment_status == 'Approved')
+                                                    <span class="approve">
+                                                        {{ $userDetail->payment_status }}
+                                                    </span>
+                                                    <hr>
+                                                    <h6>Remarks:</h6>
+                                                    <p>
+                                                        {{ $userDetail->ApproveRemarks }}
+                                                    </p>
+                                                @else
+                                                    <span class="rejected">
+                                                        {{ $userDetail->payment_status }}
+                                                    </span>
+                                                    <hr>
+                                                    <h6>Remarks:</h6>
+                                                    <p>
+                                                        {{ $userDetail->RejectedRemarks }}
+                                                    </p>
+                                                @endif
+                                            </div>
+
+                                            <div id="Invoice{{ $userDetail->OrderCode }}" class="tabcontent">
+                                                <h3>Invoice</h3>
+
+                                                @if ($userDetail->payment_status == 'Approved')
+                                                    <div
+                                                        style="border: 2px solid #ccc; border-radius: 5px; padding: 20px; width: 400px; font-family: Arial, sans-serif; margin-left:30%">
+                                                        <h1
+                                                            style="font-size: 24px; margin: 0; padding-bottom: 10px; border-bottom: 2px solid #ccc;">
+                                                            Invoice </h1>
+                                                        <p style="font-size: 16px; margin: 0; padding-top: 10px;">
+                                                            Billed
+                                                            To: {{ $userDetail->name }}</p>
+                                                        <p style="font-size: 16px; margin: 0;">Address:
+                                                            {{ $userDetail->address }}
+                                                        </p>
+                                                        <table
+                                                            style="font-size: 16px; margin-top: 20px; border-collapse: collapse; width: 100%;">
+                                                            <tr>
+                                                                <th style="text-align: left; padding-bottom: 10px;">
+                                                                    Item
+                                                                    Description</th>
+                                                                <th style="text-align: right; padding-bottom: 10px;">
+                                                                    Price
+                                                                </th>
+                                                            </tr>
+                                                            @foreach ($orders as $item)
+                                                                <tr>
+                                                                    <td style="padding-top: 10px;">{{$item->name}}</td>
+                                                                    <td style="text-align: right; padding-top: 10px;">
+                                                                        Rs.{{$item->price}}
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
+
+                                                            <tr>
+                                                                <th style="text-align: right; padding-top: 10px;">
+                                                                    Total:
+                                                                </th>
+                                                                <td style="text-align: right; padding-top: 10px;">
+                                                                    Rs.{{ $total }}
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                @else
+                                                    <p>Invoice will be generate when order get approved.</p>
+                                                @endif
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @else
+                            <div>No Product Data !!</div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -325,6 +443,9 @@
         <p class="text text-white text-center">&copy; Artihc.com.np</p>
     </div> --}}
 </body>
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 @if (session()->get('popupBoxValue') === '1')
     <script>
@@ -428,6 +549,43 @@
         editForm.classList.remove("d-none");
         editForm.classList.add("d-block");
 
+    });
+</script>
+
+<script>
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+<script>
+    // $('.product-description').on('click', function() {
+    //     var subMenuTab = $(this).closest('.container').find('.sub-menu-tab');
+
+    //     if (subMenuTab.is(':visible')) {
+    //         subMenuTab.hide();
+    //     } else {
+    //         subMenuTab.show();
+    //     }
+    // });
+    $('.order-content-detail').click(function() {
+        var submenu = $(this).next('.sub-menu-tab');
+        if (submenu.is(':visible')) {
+            submenu.hide();
+            $('.ProductDetail').show();
+        } else {
+            $('.sub-menu-tab').hide();
+            submenu.show();
+        }
     });
 </script>
 

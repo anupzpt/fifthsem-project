@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- custom utilities css -->
     <link rel="stylesheet" href="{{asset('userpanel/css/utilities.css')}}" />
+    <link rel="stylesheet" href="{{asset('userpanel/css/toastr.css')}}" />
     <!-- custom main css -->
     <link rel="stylesheet" href="{{asset('userpanel/css/main.css')}}" />
     <!-- dropdown card css -->
     <link rel="stylesheet" href="{{asset('userpanel/css/dropdownCard.css')}}" />
-    <link rel="stylesheet" href="{{asset('userpanel/css/toster.css')}}" />
     <!-- slick slider css -->
     <link rel="stylesheet" href="{{asset('userpanel/plugins/slick-1.8.1/slick/slick.css')}}" />
     <link rel="stylesheet" href="{{asset('userpanel/plugins/slick-1.8.1/slick/slick-theme.css')}}" />
@@ -47,7 +47,6 @@
     <!-- custom js -->
     <script src="{{asset('userpanel/js/script.js')}}"></script>
     <script src="{{asset('userpanel/js/toastr.js')}}"></script>
-
     @if(session()->has('error_msg'))
     <script>
         alert("{{ session('error_msg') }}");

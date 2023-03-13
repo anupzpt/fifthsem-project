@@ -94,3 +94,14 @@ Route::post('/forget-password',[ForgetController::class,'forgetPassword'])->name
 
 Route::get('/reset-password/{token}',[ForgetController::class,'resetPasswordLoad']);
 Route::post('/reset-password',[ForgetController::class,'resetPassword'])->name('resetPassword');
+
+// Checker Maker
+Route::get('/orders/verify/{orderCode}',[OrderListController::class,'ViewVerifyOrderDetail'])->name('orders.verify');
+Route::post('/orders/verify-details',[OrderListController::class,'VerifyOrderDetail'])->name('orders.verifyDetail');
+
+Route::get('/orders/approve/{orderCode}',[OrderListController::class,'ViewApprveOrderDetail'])->name('orders.approve');
+Route::post('/orders/approve-details',[OrderListController::class,'ApproveOrderDetail'])->name('orders.approveDetail');
+Route::get('/orders/view/{orderCode}',[OrderListController::class,'ViewOrderDetail'])->name('orders.view');
+
+
+
