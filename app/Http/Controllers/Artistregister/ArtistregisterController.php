@@ -12,8 +12,9 @@ class ArtistregisterController extends Controller
         return view('');
     }
 
-    public function artist()
+    public function artist(Request $request)
     {
+        dd($request->all());
         $artistregisters->name = $request->input('name');
         $artistregisters->name = $request->input('email');
         $artistregisters->name = $request->input('contact');
