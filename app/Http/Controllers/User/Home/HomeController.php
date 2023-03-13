@@ -39,7 +39,7 @@ class HomeController extends Controller
         $OrderList = Order::with('products')->get();
         return view('user.profileDetail.user-profile', compact('OrderList'));
     }
-    public function returnAndCancel()
+    public function artistRegister()
     {
         session()->put('popupBoxValue', '3');
         $OrderList = Order::with('products')->get();

@@ -41,7 +41,7 @@ use App\Http\Controllers\Artistregister\ArtistregisterController;
 Route::get('/', [HomeController::class, 'Index'])->name('home.index');
 Route::get('/user-profile/my-account', [HomeController::class, 'myAccount'])->name('account');
 Route::get('/user-profile/my-order', [HomeController::class, 'myOrder'])->name('order');
-Route::get('/user-profile/return-and-cancel', [HomeController::class, 'returnAndCancel'])->name('return');
+Route::get('/user-profile/artist-register', [HomeController::class, 'artistRegister'])->name('artist-register');
 Route::get('/art', [HomeController::class, 'Art'])->name('home.art');
 Route::POST('/cart', [HomeController::class, 'Cart'])->name('home.cart');
 Route::get('/cartIndex', [HomeController::class, 'CartIndex'])->name('home.cart.index');

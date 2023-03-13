@@ -304,12 +304,15 @@
             <!-- Artistregistration section -->
             <div class="col-lg-9 my-lg-0 my-1 return-section-wrap" id="return-wrap">
                 <div id="main-content" class="bg-white border">
+                    @if(session('status'))
+                    <h6 class="alert alert-success">{{session('status')}}</h6>
+                    @endif
                     <div class="d-flex flex-column">
                         <h2>Artist registration</h2>
                         <div class="h5 mt-3">Hello {{ auth()->user()->name }},</div>
                         <div>Logged in as: {{ auth()->user()->email }}</div>
                         <hr />
-                        <form action="{{route('login-artist')}}" method="POST">
+                        <form action="{{route('login-artist')}}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="fw-normal text-muted mb-2">
@@ -346,7 +349,7 @@
                             </div>
 
                             <div class="form-floating mb-3">
-                                <input type="file" class="form-control" id="floatingPassword" placeholder="upload picture">
+                                <input type="file" class="form-control" name="image" id="floatingPassword" placeholder="upload picture">
                                 <label for="floatingPassword">upload picture</label>
                             </div>
                             <!-- <div class="input-group mb-3">
