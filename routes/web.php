@@ -66,11 +66,11 @@ Route::resource('/Admin/UserList', UserListController::class);
 
 // -------------------------------------
 
-Route::get('login', [UserController::class, 'loginIndex'])->name('login1');
+Route::get('login', [UserController::class, 'loginIndex'])->name('login');
 Route::post('login', [UserController::class, 'authentication'])->name('login');
 Route::post('/update-user-data', [UserController::class, 'updateUserData'])->name('update-user-data');
 
-Route::get('register', [UserController::class, 'registerIndex'])->name('register1');
+Route::get('register', [UserController::class, 'registerIndex'])->name('register');
 Route::post('register', [UserController::class, 'save'])->name('register');
 
 Route::get('logout', [UserController::class, 'logout'])->name('logout');
@@ -97,4 +97,4 @@ Route::get('/reset-password/{token}',[ForgetController::class,'resetPasswordLoad
 Route::post('/reset-password',[ForgetController::class,'resetPassword'])->name('resetPassword');
 
 //Artist registration
-Route::post('login-artist', [UserController::class,'artist'])->name('login-artist');
+Route::post('login-artist', [ArtistregisterController::class,'artist'])->name('login-artist');
