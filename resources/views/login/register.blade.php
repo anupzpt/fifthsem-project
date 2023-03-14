@@ -24,7 +24,7 @@
                     @csrf
                     <p class="text-dark fw-bolder fs-4 mb-2">Create your Artihc Account</p>
                     <div class="fw-normal text-muted mb-2">
-                        Already have an account ? <a href="{{route('login')}}" class="text-primary fw-bold text-decoration-none">Login Here</a>
+                        Already have an account ? <a href="{{route('login1')}}" class="text-primary fw-bold text-decoration-none">Login Here</a>
                     </div>
                     <div class="text-center text-muted text-uppercase mb-3">or</div>
 
