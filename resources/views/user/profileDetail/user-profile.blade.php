@@ -10,7 +10,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" />
-    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" />
     <link rel="stylesheet" href="/userpanel/css/user-profile.css">
 </head>
@@ -80,7 +82,7 @@
                             @if (Auth::user()->user_type == '1')
                             <img src="{{ asset('/uploads' . '/' . auth()->user()->img_path) }}">
                             @else
-                            <img src="{{ auth()->user()->img_path }}">
+                            <img src="{{auth()->user()->img_path }}">
                             @endif
                         </div>
                         <div class="h5 mt-3">Hello {{ auth()->user()->name }},</div>
@@ -360,6 +362,12 @@
                                             </div>
 
                                             <div id="Invoice{{ $userDetail->OrderCode }}" class="tabcontent">
+                                                <div style="float:right">
+                                                    <button onclick="printDiv('Invoice{{ $userDetail->OrderCode }}')"
+                                                        style="border:none;background-color: green; color: white;width:100px;height:30px"><i
+                                                            class="fa-solid fa-print "
+                                                            style="margin-right: 10px"></i>Print</button>
+                                                </div>
                                                 <h3>Invoice</h3>
 
                                                 @if ($userDetail->payment_status == 'Approved')
@@ -385,12 +393,22 @@
                                                                 </th>
                                                             </tr>
                                                             @foreach ($orders as $item)
-                                                                <tr>
-                                                                    <td style="padding-top: 10px;">{{$item->name}}</td>
-                                                                    <td style="text-align: right; padding-top: 10px;">
-                                                                        Rs.{{$item->price}}
-                                                                    </td>
-                                                                </tr>
+                                                                @if ($item->OrderCode == $userDetail->OrderCode)
+                                                                    <tr>
+                                                                        <td style="padding-top: 10px;">
+                                                                            {{ $item->name }}
+                                                                        </td>
+                                                                        <td
+                                                                            style="text-align: right; padding-top: 10px;">
+                                                                            Rs.{{ $item->price }}
+                                                                            @php
+                                                                                $total = 0;
+                                                                                $total = $total + $item->price;
+                                                                            @endphp
+
+                                                                        </td>
+                                                                    </tr>
+                                                                @endif
                                                             @endforeach
 
                                                             <tr>
@@ -623,15 +641,6 @@
     }
 </script>
 <script>
-    // $('.product-description').on('click', function() {
-    //     var subMenuTab = $(this).closest('.container').find('.sub-menu-tab');
-
-    //     if (subMenuTab.is(':visible')) {
-    //         subMenuTab.hide();
-    //     } else {
-    //         subMenuTab.show();
-    //     }
-    // });
     $('.order-content-detail').click(function() {
         var submenu = $(this).next('.sub-menu-tab');
         if (submenu.is(':visible')) {
@@ -642,6 +651,19 @@
             submenu.show();
         }
     });
+</script>
+<script>
+    function printDiv(divid) {
+        const divToPrint = document.getElementById(divid);
+        // Create a new window and write the contents of the div to it
+        const newWindow = window.open('', 'Print Window');
+        newWindow.document.write(divToPrint.outerHTML);
+        newWindow.document.close();
+        // Print the contents of the new window
+        newWindow.focus();
+        newWindow.print();
+        newWindow.close();
+    }
 </script>
 
 </html>

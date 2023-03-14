@@ -424,7 +424,7 @@
                 @foreach ($orderDetail as $item)
                     <tr>
                         <td>{{ $sn++ }}</td>
-                        <td><img class="image-responsive" src="{{ asset('/uploads' . '/' . $item->image) }}">
+                        <td class="text-center"><img class="image-responsive" src="{{ asset('/uploads' . '/' . $item->image) }}" width="100" height="100">
                         </td>
                         <td>
                             {{ $item->name }}
