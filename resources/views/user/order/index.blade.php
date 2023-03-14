@@ -2,9 +2,6 @@
 @section('content')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('userpanel/css/custom-css.css') }}" />
-    <link href="toastr.css" rel="stylesheet" />
-
-
     <div class="container-main">
         <div class="sub-container">
             <div class="head-bar">
@@ -30,14 +27,14 @@
                                     <div class="col-50" style="margin-left:-7%">
                                         <h3 style="margin-bottom: 5px;">Billing Address</h3>
                                         <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                                        <input type="text" id="fname"  placeholder="Enter Name"
+                                        <input type="text" id="fname" placeholder="Enter Name"
                                             value="{{ Auth::user()->name }}" readonly>
                                         <label for="email"><i class="fa fa-envelope"></i> Email</label>
                                         <input type="text" id="email" placeholder="Enter Email Address"
                                             value="{{ Auth::user()->email }}" readonly>
                                         <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
                                         <div>
-                                            <select id="dynamic-address">
+                                            <select id="dynamic-address" onchange="Captcha()">
                                                 <option value="">Select Address</option>
                                                 @if (Auth::user()->address != null)
                                                     <option
@@ -86,7 +83,7 @@
                                                             <tr>
                                                                 <td>{{ $sn++ }}</td>
                                                                 <td><img class="image-responsive"
-                                                                        src="{{asset('/uploads'.'/'.$item->products->image)}}">
+                                                                        src="{{ asset('/uploads' . '/' . $item->products->image) }}">
                                                                 </td>
                                                                 <td>
                                                                     {{ $item->products->name }}
@@ -116,12 +113,12 @@
                                                             <tr>
                                                                 <td>{{ $sn++ }}</td>
                                                                 <td><img class="image-responsive"
-                                                                    src="{{asset('/uploads'.'/'.$item->image)}}">
+                                                                        src="{{ asset('/uploads' . '/' . $item->image) }}">
                                                                 </td>
                                                                 <td>
                                                                     {{ $item->name }}
                                                                     <input type="hidden" name="productId[]"
-                                                                    value="{{ $item->productId }}" />
+                                                                        value="{{ $item->productId }}" />
                                                                 </td>
                                                                 <td>
                                                                     1
@@ -152,8 +149,17 @@
                                     </div>
 
                                 </div>
-                                <div class="line"></div>
-                                <button type="submit" class="order-btn btn" style="float: right">Continue</button>
+                                <div class="capt" id="captcha">
+                                    <h2 type="text" id="mainCaptcha"></h2>
+                                    <p><input type="button" id="refresh" onclick="Captcha();" /></p> <input
+                                        type="text" id="txtInput" />
+                                    <input id="Button1" type="button" value="Check"
+                                        onclick="ValidateCaptcha();" />
+                                </div>
+                                <div class="line" ></div>
+                                <div style="text-align: right">
+                                    <button type="submit" id="btnSubmit" style="display:none" class="order-btn btn" style="margin-left:90%">Continue</button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -188,8 +194,6 @@
 {{-- <script src="toastr.js"></script> --}}
 <script>
     $(document).ready(function() {
-        toastr.options.progressBar = false;
-
         $("#myBtn").on('click', function() {
             $("#myModal").show();
         });
@@ -226,8 +230,6 @@
                     newOption.val(data);
                     selectElement.append(newOption);
                     $("#myModal").hide();
-
-
                 },
             });
         })
@@ -238,9 +240,45 @@
         $(".order-btn").on('click', function() {
             var address = $("#dynamic-address").val();
             $(".insert-address").val(address);
-            toastr.success('Order Placed Successfully');
-
         });
 
     });
+</script>
+<script>
+    function Captcha() {
+        document.getElementById('captcha').style.display="block";
+        var alpha = new Array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+            'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+            'v', 'w', 'x', 'y', 'z',
+            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+        var i;
+        for (i = 0; i < 6; i++) {
+            var a = alpha[Math.floor(Math.random() * alpha.length)];
+            var b = alpha[Math.floor(Math.random() * alpha.length)];
+            var c = alpha[Math.floor(Math.random() * alpha.length)];
+            var d = alpha[Math.floor(Math.random() * alpha.length)];
+            var e = alpha[Math.floor(Math.random() * alpha.length)];
+            var f = alpha[Math.floor(Math.random() * alpha.length)];
+            var g = alpha[Math.floor(Math.random() * alpha.length)];
+        }
+        var code = a + ' ' + b + ' ' + ' ' + c + ' ' + d + ' ' + e + ' ' + f + ' ' + g;
+        document.getElementById("mainCaptcha").innerHTML = code
+        document.getElementById("mainCaptcha").value = code
+    }
+
+    function ValidateCaptcha() {
+        var string1 = removeSpaces(document.getElementById('mainCaptcha').value);
+        var string2 = removeSpaces(document.getElementById('txtInput').value);
+        if (string1 == string2) {
+            document.getElementById('btnSubmit').style.display="block";
+        } else {
+            toastr.error("Invalid Captcha,Try Again!!");
+            document.getElementById('btnSubmit').style.display="none";
+        }
+    }
+
+    function removeSpaces(string) {
+        return string.split(' ').join('');
+    }
 </script>

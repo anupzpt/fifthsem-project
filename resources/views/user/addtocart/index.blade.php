@@ -3,8 +3,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link href="toastr.css" rel="stylesheet" />
-
     <style>
         .footer {
             position: fixed;
@@ -12,12 +10,14 @@
             bottom: 0;
             width: 100%;
         }
-        .back{
+
+        .back {
             position: fixed;
-            left:650px;
+            left: 650px;
             top: 280px;
 
         }
+
         .panel-heading {
             padding: 20px 0;
             background-color: gainsboro;
@@ -106,6 +106,7 @@
             cursor: pointer;
             margin-right: 20px;
         }
+
         .empty {
             text-align: center;
             margin-top: 40px;
@@ -185,7 +186,7 @@
                     </div>
 
                     <div class="order" style="margin-bottom: 10%">
-                        <a href="{{ route('Order.index') }}" class="btn order-btn" type="submit">Place Order</a>
+                        <a class="btn order-btn" id="btnCart" type="submit">Place Order</a>
                     </div>
                 </div>
             @else
@@ -208,8 +209,20 @@
 {{-- <script src="toastr.js"></script> --}}
 <script>
     $(document).ready(function() {
-        toastr.options.progressBar = false;
-
+        $("#btnCart").on('click', function() {
+            $.ajax({
+                url: '{{ route('Order.index') }}',
+                type: 'GET',
+                success: function(response) {
+                    console.log(response);
+                    if (response.code == '0') {
+                        window.location.href = '{{ route('UserOrderList.index') }}';
+                    } else {
+                        toastr.error("Sorry," + response.message + " Already Sold.")
+                    }
+                }
+            });
+        })
         $('.delete_cart_data').click(function(e) {
             e.preventDefault();
             var productId = $(this).closest(".cartpage").find('.productId').val();
@@ -235,12 +248,10 @@
                         $('.content').remove();
                         $('.main-empty').append(
                             '<div class="empty"><h2>Your Cart is empty</h2></div><div class="order"><a href="{{ route('home.art') }}" class="btn order-btn" type="submit">Back</a></div>'
-                            );
+                        );
                     }
                     $("#totalsum").text(totalsum - parseInt(price));
-                    // swal("", response.status, "success");
-                    toastr.success('Cart Item Deleted Sucessfully');
-
+                    swal("", response.status, "success");
 
                 }
             });

@@ -22,8 +22,8 @@
     border: none;
     border-bottom: 2px solid black;
 }
-.line{
-    border: 1px solid #EDE7ED;
+.line {
+    border: 1px solid #ede7ed;
     width: 100%;
     margin-bottom: 30px;
 }
@@ -76,7 +76,6 @@
 }
 
 .container-main {
-
     margin-left: 100px;
 }
 
@@ -84,15 +83,15 @@
     margin-top: 30px;
     margin-bottom: 90px;
     width: 95%;
-    background-color: #FFFCFC;
-    border: 2px solid #514F51;
+    background-color: #fffcfc;
+    border: 2px solid #514f51;
     padding: 40px;
 }
 
 /* //////////////////////////////////////// */
 
 .head-bar {
-    background-color: #514F51;
+    background-color: #514f51;
     border-radius: 15px;
     height: 50px;
     width: 100%;
@@ -130,7 +129,6 @@
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
-
 }
 
 #table-design td,
@@ -141,7 +139,7 @@
 }
 
 #table-design tr:nth-child(even) {
-    background-color: #E5E5E5;
+    background-color: #e5e5e5;
 }
 
 #table-design th {
@@ -149,7 +147,7 @@
     padding-bottom: 12px;
     text-align: center;
     background-color: #373636;
-    color: #FFFDFD;
+    color: #fffdfd;
 }
 
 /* //////////////////////////////////////////// */
@@ -157,11 +155,9 @@
     margin-top: 100px;
     display: flex;
     justify-content: space-between;
-
 }
 
 .total {
-
     /* margin-left: 80rem; */
 
     padding: 10px 0;
@@ -195,69 +191,68 @@
 
 /* //////////////////////////////////// */
 
-
-  .row {
+.row {
     display: -ms-flexbox; /* IE10 */
     display: flex;
     -ms-flex-wrap: wrap; /* IE10 */
     flex-wrap: wrap;
     margin: 0 -4px;
     padding: 13px;
-  }
+}
 
-  .col-25 {
+.col-25 {
     -ms-flex: 25%; /* IE10 */
     flex: 25%;
-  }
+}
 
-  .col-50 {
+.col-50 {
     width: 47%; /* IE10 */
     flex: 50%;
-  }
+}
 
-  .col-75 {
+.col-75 {
     -ms-flex: 75%; /* IE10 */
     flex: 75%;
-  }
+}
 
-  .col-25,
-  .col-50,
-  .col-75 {
+.col-25,
+.col-50,
+.col-75 {
     padding: 0 16px;
-  }
+}
 
-  /* .container {
+/* .container {
     background-color: #f2f2f2;
     padding: 5px 20px 15px 20px;
     border: 1px solid lightgrey;
     border-radius: 3px;
   } */
 
-  input[type=text] {
+input[type="text"] {
     width: 100%;
     margin-bottom: 20px;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 3px;
-  }
-  #dynamic-address{
+}
+#dynamic-address {
     width: 100%;
     margin-bottom: 20px;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 3px;
-  }
+}
 /*
   label {
     margin-bottom: 10px;
     display: block;
   } */
 
-  .icon-container {
+.icon-container {
     margin-bottom: 20px;
     padding: 7px 0;
     font-size: 24px;
-  }
+}
 /*
   .btn {
     background-color: #04AA6D;
@@ -279,26 +274,75 @@
     color: #2196F3;
   } */
 
-  hr {
+hr {
     border: 1px solid lightgrey;
-  }
+}
 
-  span.price {
+span.price {
     float: right;
     color: grey;
-  }
-  .image-responsive{
+}
+.image-responsive {
     width: 70px;
     border-radius: 50%;
     height: 70px;
-  }
+}
+.capt {
+    background-color: #ffffff;
+    width: 400px;
+    height: 200px;
+    border-radius: 5px;
+    display: none;
+}
 
-  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
-  @media (max-width: 800px) {
+#mainCaptcha {
+    position: relative;
+    max-width: 350px;
+    margin: auto;
+    margin: 20px;
+    padding: 10px;
+    user-select: none;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 139, 253, 0.25);
+}
+
+#refresh {
+    position: relative;
+    left: 300px;
+    width: 30px;
+    height: 50px;
+    bottom: 55px;
+    background-color: transparent;
+    outline: none;
+    background-image: url("https://img.icons8.com/android/24/000000/refresh.png");
+    border: 0;
+    background-repeat: no-repeat;
+}
+
+#txtInput,
+#Button1 {
+    position: relative;
+    left: 40px;
+    padding: 10px 10px;
+    bottom: 40px;
+    font-size: 18px;
+}
+
+#txtInput {
+    border: 2px solid rgb(4, 82, 160);
+}
+
+#Button1 {
+    background-color: rgb(7, 59, 115);
+    border-color: rgb(7, 59, 115);
+    color: #fff;
+}
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
     .row {
-      flex-direction: column-reverse;
+        flex-direction: column-reverse;
     }
     .col-25 {
-      margin-bottom: 20px;
+        margin-bottom: 20px;
     }
-  }
+}

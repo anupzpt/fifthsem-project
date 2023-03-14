@@ -54,40 +54,35 @@
     crossorigin="anonymous"></script>
 {{-- <script src="toastr.js"></script> --}}
 <script>
-    function set($id) {
-        // debugger
-         toastr.options.progressBar = false;
-        $.ajax({
-            url: '{{ route('home.cart') }}',
-            type: 'POST',
-            data: {
-                "_token": "{{ csrf_token() }}",
-                "id": $id
+     function set($id) {
+         $.ajax({
+             url: '{{ route('home.cart') }}',
+             type: 'POST',
+             data: {
+                 "_token": "{{ csrf_token() }}",
+                 "id": $id
 
-            },
-            success: function(response) {
-                console.log(response.message);
-                if (response.code == 0) {
-                    $(".cartCount").text("")
-                    $(".cartCount").text(response.count);
-                    toastr.success('Product added to cart');
+             },
+             success: function(response) {
+                 console.log(response.message);
+                 if (response.code == 0) {
+                     $(".cartCount").text("")
+                     $(".cartCount").text(response.count);
+                 }
+                 if (response.code == 1) {
+                     toastr.error(response.message)
+                 }
+                 if (response.code == 101) {
 
-                }
-                if (response.code == 1) {
-                    toastr.error('Product already added to cart');
+                     window.location.href = "{{ route('login') }}";
 
-                }
-                if (response.code == 101) {
-
-                    window.location.href = "{{ route('login') }}";
-
-                }
-            },
-            error: function(xhr) {
-                alert(xhr.responseText);
-            }
-        });
-    }
+                 }
+             },
+             error: function(xhr) {
+                 alert(xhr.responseText);
+             }
+         });
+     }
     $(document).ready(function() {
 
         $(".cart").click(function() {

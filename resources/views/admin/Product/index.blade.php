@@ -2,7 +2,6 @@
 @section('content')
 <div class="col-md-12  ">
     @if(session('status'))
-    
     <h6 class="alert alert-success">{{session('status')}}</h6>
     @endif
     <div class="margin_top_30 padding-bottom_2 d-flex justify-content-end ">

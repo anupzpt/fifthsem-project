@@ -13,6 +13,7 @@ use App\Models\User\Order\Order;
 use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -27,11 +28,21 @@ class HomeController extends Controller
     public function myOrder()
     {
         session()->put('popupBoxValue', '2');
-        $orders = Order::where('userId', Auth::id())->get();
+        $orders = DB::table('orders')
+            ->join('products', 'orders.productId', '=', 'products.id')
+            ->select('products.name','orders.*')
+            ->where('userId', Auth::id())
+            ->get();
         $OrderList = Order::with('products')->where('userId', Auth::id())
-        ->get();
+            ->get();
         $total = Order::where('userId', Auth::id())->get()->sum('price');
-        return view('user.profileDetail.user-profile', compact('orders', 'OrderList', 'total'));
+        $art = DB::table('orders')
+            ->join('users', 'orders.userId', '=', 'users.id')
+            ->select('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
+            ->where('orders.userId', '=', Auth::id())
+            ->groupBy('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
+            ->get();
+        return view('user.profileDetail.user-profile', compact('orders', 'OrderList', 'total', 'art'));
     }
     public function myAccount()
     {
@@ -51,7 +62,6 @@ class HomeController extends Controller
         $parent = Category::whereNull('parent_id')->get();
         $child = Category::whereNotNull('parent_id')->get();
         $products = Product::all();
-        // dd($products);
         $count = AddToCart::where('userId', Auth::id())->get()->count();
         return view('user.art.art', compact('products', 'child', 'parent', 'count'));
     }
@@ -74,9 +84,16 @@ class HomeController extends Controller
                     'message' => "Product Already Exists",
                     'code' => 1,
                     'count' => $count,
-
                 ]);
-            } else {
+            }
+            else if($cart->productStatus=="sold") {
+                return response()->json([
+                    'status' => 'success',
+                    'message' => "Sorry,Product Already Sold.",
+                    'code' => 1,
+                ]);
+            }
+            else {
                 $cartDetail = new AddToCart();
                 $cartDetail->productId = $cart->id;
                 $cartDetail->userId = Auth::id();
