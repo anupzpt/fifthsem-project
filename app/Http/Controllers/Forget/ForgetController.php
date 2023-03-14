@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Forget;
-
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Carbon;
 use App\Models\login\User;
-use Mail;
+
 
 class ForgetController extends Controller
 {

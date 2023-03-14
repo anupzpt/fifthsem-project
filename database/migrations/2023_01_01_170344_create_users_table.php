@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('contact')->nullable();
             $table->string('password')->nullable();
-            $table->string('img_path')->default('userpanel/images/avatar.png');
+            $table->string('img_path')->default('/userpanel/images/avatar.png');
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('zip_code')->nullable();
