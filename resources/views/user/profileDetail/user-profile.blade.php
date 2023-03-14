@@ -316,7 +316,7 @@
                             @csrf
 
                             <div class="fw-normal text-muted mb-2">
-                                Already have an account ? <a href="" class="text-primary fw-bold text-decoration-none">return to homepage</a>
+                                Already have an account ? <a href="{{route('login1')}}" class="text-primary fw-bold text-decoration-none">login here</a>
                             </div>
                             <div class="text-center text-muted text-uppercase mb-3">or</div>
 
@@ -349,7 +349,7 @@
                             </div>
 
                             <div class="form-floating mb-3">
-                                <input type="file" class="form-control" name="image" id="floatingPassword" placeholder="upload picture">
+                                <input type="file" class="form-control" name="artistImage"  placeholder="upload picture">
                                 <label for="floatingPassword">upload picture</label>
                             </div>
                             <!-- <div class="input-group mb-3">

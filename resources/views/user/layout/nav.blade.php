@@ -128,7 +128,7 @@
                      <p>My Order</p>
                      <span>></span>
                  </a>
-                 <a href="{{route('return')}}" class="sub-menu-link">
+                 <a href="{{route('artist-register')}}" class="sub-menu-link">
                      <img src="{{asset('userpanel/images/cancel.png')}}">
                      <p>Artist Registration</p>
                      <span>></span>
@@ -178,7 +178,7 @@
                  <p>My Order</p>
                  <span>></span>
              </a>
-             <a href="{{route('return')}}" class="sub-menu-link">
+             <a href="{{route('artist-register')}}" class="sub-menu-link">
                  <img src="{{asset('userpanel/images/cancel.png')}}">
                  <p>Artist registeration</p>
                  <span>></span>
