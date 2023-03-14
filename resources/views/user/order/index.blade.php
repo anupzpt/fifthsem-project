@@ -118,7 +118,7 @@
                                                                 <td>
                                                                     {{ $item->name }}
                                                                     <input type="hidden" name="productId[]"
-                                                                        value="{{ $item->productId }}" />
+                                                                        value="{{ $item->id }}" />
                                                                 </td>
                                                                 <td>
                                                                     1
