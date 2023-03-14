@@ -19,24 +19,15 @@ class OrderListController extends Controller
      */
     public function index()
     {
-        //
-        // $order = Order::get();
         $art = DB::table('orders')
             ->join('users', 'orders.userId', '=', 'users.id')
             ->select('orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address')
             ->groupBy('orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address')
             ->get();
         $detail = Order::where('payment_status', '0')->get();
-        // dd($detail);
-        // $orders = Order::with('products')
-        //     ->groupBy('userId', 'created_at')
-        //     ->get();
-        //     dd($art);
         $username = Order::with('login')->get();
-        // dd($art);
         $total = Order::where('userId', Auth::id())->get()->sum('price');
         $count = Order::where('userId', Auth::id())->get()->count();
-
         return view('admin.Order.index', compact('detail', 'art', 'username', 'total', 'count'));
     }
 
@@ -66,17 +57,7 @@ class OrderListController extends Controller
         $orderList = new Order;
         $orderList->payment_status = $validatedData['payment_status'];
         $orderList->save();
-
-        // return a response
         return response()->json(['success' => true]);
-        // $paymentStatus = $request->input('payment_status');
-
-        // // // Perform database insertion here
-        // $orderList = new Order();
-        // $orderList->payment_status = $paymentStatus;
-        // $orderList->save();
-
-        // return response()->json(['success' => true]);
     }
 
     /**
@@ -87,9 +68,6 @@ class OrderListController extends Controller
      */
     public function show($id)
     {
-        //
-        // $orders= Order::where('id',$id)->get();
-        // return view('admin.Order.index',compact('orders'));
     }
 
     /**
@@ -131,13 +109,6 @@ class OrderListController extends Controller
     {
         //
     }
-    // public function change_paymentStatus(Request $request){
-    //     $id =$request->id;
-    //     $payment_status= $request->payment_status;
-    //     $status = Order::where('id',$id)->update(['
-    //     payment_status' => $payment_status]);
-    // }
-
     public function ViewVerifyOrderDetail($orderCode)
     {
         $userDetail = Order::join('users', 'orders.userId', '=', 'users.id')
@@ -195,7 +166,15 @@ class OrderListController extends Controller
     }
     public function ViewOrderDetail($orderCode)
     {
-        $orderDetail = Order::where('orders.OrderCode', $orderCode)->get();
+        // $art = DB::table('orders')
+        // ->join('products', 'products.id', '=', 'orders.productId')
+        // ->select('products.id','products.image','products.name', 'products.price')
+        // ->groupBy('orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address')
+        // ->get();
+        $orderDetail = Order::join('products', 'products.id', '=', 'orders.productId')
+            ->select('products.id','products.image','products.name', 'products.price','orders.*')
+            ->where('orders.OrderCode', $orderCode)
+            ->get();
         $order = Order::where('orders.OrderCode', $orderCode)->first();
         $total = Order::where('orders.OrderCode', $orderCode)->get()->sum('price');
         return view('admin.Order.view', compact('orderDetail', 'total', 'order'));
