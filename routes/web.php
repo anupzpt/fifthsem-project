@@ -41,7 +41,7 @@ use App\Http\Controllers\Artistregister\ArtistregisterController;
 Route::get('/', [HomeController::class, 'Index'])->name('home.index');
 Route::get('/user-profile/my-account', [HomeController::class, 'myAccount'])->name('account');
 Route::get('/user-profile/my-order', [HomeController::class, 'myOrder'])->name('order');
-Route::get('/user-profile/return-and-cancel', [HomeController::class, 'returnAndCancel'])->name('return');
+Route::get('/user-profile/artist-register', [HomeController::class, 'artistRegister'])->name('artist-register');
 Route::get('/art', [HomeController::class, 'Art'])->name('home.art');
 Route::POST('/cart', [HomeController::class, 'Cart'])->name('home.cart');
 Route::get('/cartIndex', [HomeController::class, 'CartIndex'])->name('home.cart.index');
@@ -56,7 +56,7 @@ Route::post('/UserOrderList/Check', [UserOrderController::class,'CheckCart'])->n
 
 // ------------Admin Part-------------
 
-Route::resource('/admin', DashboardController::class)->middleware(['auth']);;
+Route::resource('/admin', DashboardController::class)->middleware(['auth']);
 Route::resource('/Admin/Category', CategoryController::class);
 Route::resource('/Admin/Product', ProductController::class);
 Route::resource('/Admin/OrderList', OrderListController::class);
@@ -109,4 +109,6 @@ Route::get('/orders/view/{orderCode}',[OrderListController::class,'ViewOrderDeta
 
 
 //Artist registration
-Route::post('login-artist', [UserController::class,'artist'])->name('login-artist');
+
+Route::post('login-artist', [ArtistregisterController::class,'artist'])->name('login-artist');
+

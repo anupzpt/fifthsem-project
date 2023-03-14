@@ -80,75 +80,21 @@
 
              @auth
 
-                 <div class="nav-item">
-                     <a href="{{route('home.cart.index')}}" class="btn text-white">
-                         <i class="fas fa-cart-shopping"> </i>
-                         <sup> <span  class="cartCount">{{$count}}</span></sup>
-                     </a>
-                 </div>
-                 <div class="nav-item">
-                     <a class="nav-link" href="#">
-                         <!-- <span class="nav-link-textt"  id="toggleMenu"></span> -->
-                         {{-- <img src="{{ auth()->user()->img_path }}" class="user-pic" id="toggleMenu"> --}}
-                         <img src="{{asset('userpanel/images/avatar.png')}}" class="user-pic" id="toggleMenu">
-
-                     </a>
-                 </div>
-
-                 <!-- <div class="nav-item">
-                                    <a href="{{ route('logout') }}" class="nav-link">
-                                        <span class="nav-link-text">Logout</span>
-                                    </a>
-                                </div> -->
-
-
-
-
-                 <!-- end of nav list -->
-             </div>
-             <!-- end of main navigation list -->
-         </div>
-         <div class="sub-menu-wrap" id="subMenu">
-             <div class="sub-menu">
-                 <div class="user-info">
-                     {{-- <img src="{{ auth()->user()->img_path }}"> --}}
-                     <img src="{{ asset('userpanel/images/avatar.png') }}">
-
-                     <h3>{{ auth()->user()->name }}</h3>
-
-                 </div>
-                 <hr>
-                 <a href="{{route('account')}}" class="sub-menu-link">
-                     <img src="{{ asset('userpanel/images/happiness.png') }}">
-                     <p>Manage Account</p>
-                     <span>></span>
-                 </a>
-                 <a href="{{route('order')}}" class="sub-menu-link">
-                     <img src="{{asset('userpanel/images/my-order.png')}}">
-                     <p>My Order</p>
-                     <span>></span>
-                 </a>
-                 <a href="{{route('return')}}" class="sub-menu-link">
-                     <img src="{{asset('userpanel/images/cancel.png')}}">
-                     <p>Artist Registration</p>
-                     <span>></span>
-                 </a>
-                 <a href="{{ route('logout') }}" class="sub-menu-link">
-                     <img src="{{asset('userpanel/images/logout.png')}}">
-                     <p>Logout</p>
-                     <span>></span>
-
+             <div class="nav-item">
+                 <a href="{{route('home.cart.index')}}" class="btn text-white">
+                     <i class="fas fa-cart-shopping"> </i>
+                     <sup> <span class="cartCount">{{$count}}</span></sup>
                  </a>
              </div>
              <div class="nav-item">
                  <a class="nav-link" href="#">
                      <!-- <span class="nav-link-textt"  id="toggleMenu"></span> -->
-                     @if (Auth::user()->user_type == '1')
+                     @if(auth()->user()->user_type == 1)
                      <img src="{{asset('/uploads'.'/'.auth()->user()->img_path)}}" class="user-pic" id="toggleMenu">
-
                      @else
-                     {{-- <img src="{{ auth()->user()->img_path }}" class="user-pic" id="toggleMenu"> --}}
+                     <img src="{{ auth()->user()->img_path }}" class="user-pic" id="toggleMenu">
                      @endif
+
                  </a>
              </div>
 
@@ -156,14 +102,46 @@
          </div>
          <!-- end of main navigation list -->
      </div>
+     <!-- dropdown section -->
+     @if(auth()->user()->user_type == 1)
      <div class="sub-menu-wrap" id="subMenu">
          <div class="sub-menu">
              <div class="user-info">
-                 @if (Auth::user()->user_type == '1')
-                 <img src="{{asset('/uploads'.'/'.auth()->user()->img_path)}}">
+                 @if(auth()->user()->user_type == 1)
+                 <img src="{{asset('/uploads'.'/'.auth()->user()->img_path)}}" class="user-pic" id="toggleMenu">
                  @else
-                 <img src="{{ auth()->user()->img_path }}">
+                 <img src="{{auth()->user()->img_path }}" class="user-pic" id="toggleMenu">
                  @endif
+
+                 <h3>{{ auth()->user()->name }}</h3>
+
+             </div>
+             <hr>
+             <a href="{{route('admin.index')}}" class="sub-menu-link">
+                 <img src="{{asset('userpanel/images/cancel.png')}}">
+                 <p>Go to admin page</p>
+                 <span>></span>
+             </a>
+             <a href="{{ route('logout') }}" class="sub-menu-link">
+                 <img src="{{asset('userpanel/images/logout.png')}}">
+                 <p>Logout</p>
+                 <span>></span>
+
+             </a>
+         </div>
+     </div>
+     @else
+
+     @endif
+     <div class="sub-menu-wrap" id="subMenu">
+         <div class="sub-menu">
+             <div class="user-info">
+                 @if(auth()->user()->user_type == 1)
+                 <img src="{{asset('/uploads'.'/'.auth()->user()->img_path)}}" class="user-pic" id="toggleMenu">
+                 @else
+                 <img src="{{ auth()->user()->img_path }}" class="user-pic" id="toggleMenu">
+                 @endif
+
                  <h3>{{ auth()->user()->name }}</h3>
 
              </div>
@@ -178,18 +156,22 @@
                  <p>My Order</p>
                  <span>></span>
              </a>
-             <a href="{{route('return')}}" class="sub-menu-link">
+             <a href="{{route('artist-register')}}" class="sub-menu-link">
                  <img src="{{asset('userpanel/images/cancel.png')}}">
-                 <p>Artist registeration</p>
+                 <p>Artist Registration</p>
                  <span>></span>
              </a>
              <a href="{{ route('logout') }}" class="sub-menu-link">
                  <img src="{{asset('userpanel/images/logout.png')}}">
                  <p>Logout</p>
                  <span>></span>
+
              </a>
          </div>
      </div>
+
+     <!-- end of dropdown section -->
+
      @endauth
  </nav>
  <!-- end of navbar -->

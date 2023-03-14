@@ -23,7 +23,7 @@
                     @csrf
                     <p class="text-dark fw-bolder fs-4 mb-2">Welcome to Artihc! Please login</p>
                     <div class="fw-normal text-muted mb-4">
-                        New Here? <a href="{{url('/register1')}}" class="text-primary fw-bold text-decoration-none">Create an Account</a>
+                        New Here? <a href="{{route('register1')}}" class="text-primary fw-bold text-decoration-none">Create an Account</a>
                     </div>
                     @if(Session::has('error'))
                     <p class="text-danger">{{Session::get('error')}}</p>
