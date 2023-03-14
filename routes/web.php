@@ -49,6 +49,8 @@ Route::get('/art/{id}', [HomeController::class, 'Parent'])->name('home.category'
 Route::get('/art-child/{id}', [HomeController::class, 'Child'])->name('home.child');
 Route::resource('/Customer/UserOrderList', UserOrderController::class);
 Route::post('/UserOrderList/store', [UserOrderController::class,'orderStore'])->name('UserOrderList.orderstore');
+Route::post('/UserOrderList/Check', [UserOrderController::class,'CheckCart'])->name('UserOrderList.check');
+
 
 // Route::get('/product-status', [OrderListController::class ,'change_paymentStatus'])->name('product.status');
 

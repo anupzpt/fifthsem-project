@@ -29,8 +29,9 @@
                          <span class="fw-bold d-block">RS. {{ $product->price }}</span>
                          <button id="cart" class="button btn-primary mt-3 cart"
                              onClick="set('{{ $product->id }}')">Add to Cart</button>
-                         <a href="{{ route('UserOrderList.show', [$product->id]) }}"
-                             class="button btn-primary mt-3 ml-2">Buy it Now</a>
+                         {{-- <a href="{{ route('UserOrderList.show', [$product->id]) }}"
+                             class="button btn-primary mt-3 ml-2">Buy it Now</a> --}}
+                         <a onClick="buyNow('{{ $product->id }}')" class="button btn-primary mt-3 ml-2">Buy it Now</a>
                      </div>
                  </div>
              @endforeach
@@ -59,6 +60,39 @@
                      $(".cartCount").text("")
                      $(".cartCount").text(response.count);
                  }
+                 if (response.code == 1) {
+                     toastr.error(response.message)
+                 }
+                 if (response.code == 101) {
+
+                     window.location.href = "{{ route('login') }}";
+
+                 }
+             },
+             error: function(xhr) {
+                 alert(xhr.responseText);
+             }
+         });
+
+     }
+
+     function buyNow($id) {
+         $.ajax({
+             url: '{{ route('UserOrderList.check') }}',
+             type: 'POST',
+             data: {
+                 "_token": "{{ csrf_token() }}",
+                 "id": $id
+
+             },
+             success: function(response) {
+                 console.log(response.message);
+
+                 if (response.code == 0) {
+                     var orderId = response.message;
+                     window.location.href = "{{ route('UserOrderList.show', ':id') }}".replace(':id', orderId);
+                 }
+
                  if (response.code == 1) {
                      toastr.error(response.message)
                  }
