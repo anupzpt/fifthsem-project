@@ -80,7 +80,7 @@
                             @if (Auth::user()->user_type == '1')
                             <img src="{{ asset('/uploads' . '/' . auth()->user()->img_path) }}">
                             @else
-                            <img src="{{ auth()->user()->img_path }}">
+                            <img src="{{auth()->user()->img_path }}">
                             @endif
                         </div>
                         <div class="h5 mt-3">Hello {{ auth()->user()->name }},</div>

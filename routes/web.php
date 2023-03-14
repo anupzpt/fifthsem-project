@@ -54,7 +54,7 @@ Route::post('/UserOrderList/store', [UserOrderController::class,'orderStore'])->
 
 // ------------Admin Part-------------
 
-Route::resource('/admin', DashboardController::class)->middleware(['auth']);;
+Route::resource('/admin', DashboardController::class)->middleware(['auth']);
 Route::resource('/Admin/Category', CategoryController::class);
 Route::resource('/Admin/Product', ProductController::class);
 Route::resource('/Admin/OrderList', OrderListController::class);
