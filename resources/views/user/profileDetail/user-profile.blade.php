@@ -397,13 +397,22 @@
                                                                 </th>
                                                             </tr>
                                                             @foreach ($orders as $item)
-                                                                <tr>
-                                                                    <td style="padding-top: 10px;">{{ $item->name }}
-                                                                    </td>
-                                                                    <td style="text-align: right; padding-top: 10px;">
-                                                                        Rs.{{ $item->price }}
-                                                                    </td>
-                                                                </tr>
+                                                                @if ($item->OrderCode == $userDetail->OrderCode)
+                                                                    <tr>
+                                                                        <td style="padding-top: 10px;">
+                                                                            {{ $item->name }}
+                                                                        </td>
+                                                                        <td
+                                                                            style="text-align: right; padding-top: 10px;">
+                                                                            Rs.{{ $item->price }}
+                                                                            @php
+                                                                                $total = 0;
+                                                                                $total = $total + $item->price;
+                                                                            @endphp
+
+                                                                        </td>
+                                                                    </tr>
+                                                                @endif
                                                             @endforeach
 
                                                             <tr>
