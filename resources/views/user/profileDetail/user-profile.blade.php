@@ -11,7 +11,9 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" />
-    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" />
     <link rel="stylesheet" href="/userpanel/css/user-profile.css">
 </head>
@@ -363,7 +365,12 @@
                                                     </p>
                                                 @endif
                                             </div>
-
+                                            <div style="float:right">
+                                                <button onclick="printDiv('Invoice{{ $userDetail->OrderCode }}')"
+                                                    style="border:none;background-color: green; color: white;width:100px;height:30px"><i
+                                                        class="fa-solid fa-print "
+                                                        style="margin-right: 10px"></i>Print</button>
+                                            </div>
                                             <div id="Invoice{{ $userDetail->OrderCode }}" class="tabcontent">
                                                 <h3>Invoice</h3>
 
@@ -391,9 +398,10 @@
                                                             </tr>
                                                             @foreach ($orders as $item)
                                                                 <tr>
-                                                                    <td style="padding-top: 10px;">{{$item->name}}</td>
+                                                                    <td style="padding-top: 10px;">{{ $item->name }}
+                                                                    </td>
                                                                     <td style="text-align: right; padding-top: 10px;">
-                                                                        Rs.{{$item->price}}
+                                                                        Rs.{{ $item->price }}
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
@@ -434,46 +442,68 @@
                         <div>Logged in as: {{ auth()->user()->email }}</div>
                         <hr />
                         <form class="rounded bg-white shadow p-5" action="" method="POST">
-                                @csrf
-                                <p class="text-dark fw-bolder fs-4 mb-2">Artist registration</p>
-                                <div class="fw-normal text-muted mb-2">
-                                    Already have an account ? <a href="" class="text-primary fw-bold text-decoration-none">return to homepage</a>
-                                </div>
-                                <div class="text-center text-muted text-uppercase mb-3">or</div>
+                            @csrf
+                            <p class="text-dark fw-bolder fs-4 mb-2">Artist registration</p>
+                            <div class="fw-normal text-muted mb-2">
+                                Already have an account ? <a href=""
+                                    class="text-primary fw-bold text-decoration-none">return to homepage</a>
+                            </div>
+                            <div class="text-center text-muted text-uppercase mb-3">or</div>
 
-                                @if(Session::has('error'))
-                                <p class="text-danger">{{Session::get('error')}}</p>
-                                @endif
+                            @if (Session::has('error'))
+                                <p class="text-danger">{{ Session::get('error') }}</p>
+                            @endif
 
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error ('name') is-invalid @enderror" id="floatingInput" name="name" placeholder="Full Name">
-                                    <label for="floatingInput">Full Name</label>
-                                    <span style="color :red;">@error('name') {{$message}} @enderror</span>
-                                </div>
-                            
-                                <div class="form-floating mb-3">
-                                    <input type="email" class="form-control @error ('email') is-invalid @enderror" id="floatingInput" name="email" placeholder="name@example.com">
-                                    <label for="floatingInput">Email address</label>
-                                    <span style="color :red;">@error('email') {{$message}} @enderror</span>
-                                </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                    id="floatingInput" name="name" placeholder="Full Name">
+                                <label for="floatingInput">Full Name</label>
+                                <span style="color :red;">
+                                    @error('name')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
 
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error ('contact') is-invalid @enderror" id="floatingInput" name="contact" placeholder="Contact Number">
-                                    <label for="floatingInput">Contact Number</label>
-                                    <span style="color :red;">@error('contact') {{$message}} @enderror</span>
-                                </div>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                    id="floatingInput" name="email" placeholder="name@example.com">
+                                <label for="floatingInput">Email address</label>
+                                <span style="color :red;">
+                                    @error('email')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
 
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error ('address') is-invalid @enderror" id="floatingInput" name="address" placeholder="Address">
-                                    <label for="floatingInput">Address</label>
-                                    <span style="color :red;">@error('address') {{$message}} @enderror</span>
-                                </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control @error('contact') is-invalid @enderror"
+                                    id="floatingInput" name="contact" placeholder="Contact Number">
+                                <label for="floatingInput">Contact Number</label>
+                                <span style="color :red;">
+                                    @error('contact')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
 
-                                <div class="form-floating mb-3">
-                                    <input type="file" class="form-control" id="floatingPassword" placeholder="upload picture">
-                                    <label for="floatingPassword">upload picture</label>
-                                </div>
-                                <!-- <div class="input-group mb-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control @error('address') is-invalid @enderror"
+                                    id="floatingInput" name="address" placeholder="Address">
+                                <label for="floatingInput">Address</label>
+                                <span style="color :red;">
+                                    @error('address')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="file" class="form-control" id="floatingPassword"
+                                    placeholder="upload picture">
+                                <label for="floatingPassword">upload picture</label>
+                            </div>
+                            <!-- <div class="input-group mb-3">
                                     <label class="input-group-text selected" for="inputGroupSelect01">Are you a ?</label>
                                     <select class="form-select selected" name="user_type" id="inputGroupSelect01">
                                         <option selected value="User">User</option>
@@ -481,26 +511,24 @@
                                     </select>
                                 </div> -->
 
-                                    <div class="form-check d-flex align-items-center">
-                                        <input class="form-check-input check" type="checkbox" id="gridCheck">
-                                        <label class="form-check-label ms-2" for="gridCheck">
-                                            I Agree <a href="#">Terms and conditions</a>.
-                                        </label>
-                                    </div>
+                            <div class="form-check d-flex align-items-center">
+                                <input class="form-check-input check" type="checkbox" id="gridCheck">
+                                <label class="form-check-label ms-2" for="gridCheck">
+                                    I Agree <a href="#">Terms and conditions</a>.
+                                </label>
+                            </div>
 
 
-                                    <button type="submit" class="btn btn-primary submit_btn w-100 my-4">Continue</button>
-		                </form>
+                            <button type="submit" class="btn btn-primary submit_btn w-100 my-4">Continue</button>
+                        </form>
                     </div>
-                    
-                    </div>
+
                 </div>
+            </div>
             <!-- Artistregistration section end -->
         </div>
     </div>
-    {{-- <div class="myfooter" >
-        <p class="text text-white text-center">&copy; Artihc.com.np</p>
-    </div> --}}
+
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
     crossorigin="anonymous"></script>
@@ -627,15 +655,6 @@
     }
 </script>
 <script>
-    // $('.product-description').on('click', function() {
-    //     var subMenuTab = $(this).closest('.container').find('.sub-menu-tab');
-
-    //     if (subMenuTab.is(':visible')) {
-    //         subMenuTab.hide();
-    //     } else {
-    //         subMenuTab.show();
-    //     }
-    // });
     $('.order-content-detail').click(function() {
         var submenu = $(this).next('.sub-menu-tab');
         if (submenu.is(':visible')) {
@@ -646,6 +665,19 @@
             submenu.show();
         }
     });
+</script>
+<script>
+    function printDiv(divid) {
+        const divToPrint = document.getElementById(divid);
+        // Create a new window and write the contents of the div to it
+        const newWindow = window.open('', 'Print Window');
+        newWindow.document.write(divToPrint.outerHTML);
+        newWindow.document.close();
+        // Print the contents of the new window
+        newWindow.focus();
+        newWindow.print();
+        newWindow.close();
+    }
 </script>
 
 </html>
