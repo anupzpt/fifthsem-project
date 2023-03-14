@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" />
     <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" />
@@ -19,8 +18,7 @@
 <body>
     <div class="mycontainer">
         <div class="logoimg">
-            <img src="{{ asset('userpanel/images/logo-white.png') }}" alt="img"
-                style="height: 4rem; width: 7rem" />
+            <img src="{{ asset('userpanel/images/logo-white.png') }}" alt="img" style="height: 4rem; width: 7rem" />
         </div>
         <div class="myheader">
             <h3> My Profile</h3>
@@ -80,9 +78,9 @@
                         <h2>My Account</h2>
                         <div class="d-flex align-items-center">
                             @if (Auth::user()->user_type == '1')
-                                <img src="{{ asset('/uploads' . '/' . auth()->user()->img_path) }}">
+                            <img src="{{ asset('/uploads' . '/' . auth()->user()->img_path) }}">
                             @else
-                                <img src="{{ auth()->user()->img_path }}">
+                            <img src="{{ auth()->user()->img_path }}">
                             @endif
                         </div>
                         <div class="h5 mt-3">Hello {{ auth()->user()->name }},</div>
@@ -108,9 +106,9 @@
                                 <div class="detail-label">Mobile:</div>
                                 <div class="detail-value">
                                     @if (auth()->user()->contact)
-                                        {{ auth()->user()->contact }}
+                                    {{ auth()->user()->contact }}
                                     @else
-                                        <span class="placeholder-text">Please enter your mobile</span>
+                                    <span class="placeholder-text">Please enter your mobile</span>
                                     @endif
                                 </div>
                             </div>
@@ -120,9 +118,9 @@
                                 <div class="detail-label">Address:</div>
                                 <div class="detail-value">
                                     @if (auth()->user()->address)
-                                        {{ auth()->user()->address }}
+                                    {{ auth()->user()->address }}
                                     @else
-                                        <span class="placeholder-text">Please enter your address</span>
+                                    <span class="placeholder-text">Please enter your address</span>
                                     @endif
 
                                 </div>
@@ -133,9 +131,9 @@
                                 <div class="detail-label">City:</div>
                                 <div class="detail-value">
                                     @if (auth()->user()->city)
-                                        {{ auth()->user()->city }}
+                                    {{ auth()->user()->city }}
                                     @else
-                                        <span class="placeholder-text">Please enter your city</span>
+                                    <span class="placeholder-text">Please enter your city</span>
                                     @endif
                                 </div>
                             </div>
@@ -145,9 +143,9 @@
                                 <div class="detail-label">Zip Code:</div>
                                 <div class="detail-value">
                                     @if (auth()->user()->zip_code)
-                                        {{ auth()->user()->zip_code }}
+                                    {{ auth()->user()->zip_code }}
                                     @else
-                                        <span class="placeholder-text">Please enter your zip code</span>
+                                    <span class="placeholder-text">Please enter your zip code</span>
                                     @endif
                                 </div>
                             </div>
@@ -197,10 +195,9 @@
                                     <div class="detail-label">Mobile:</div>
                                     <div class="detail-value">
                                         @if (auth()->user()->contact)
-                                            <input type="text" name="contact"
-                                                value="{{ auth()->user()->contact }}">
+                                        <input type="text" name="contact" value="{{ auth()->user()->contact }}">
                                         @else
-                                            <input type="text" name="contact" placeholder="Enter your number">
+                                        <input type="text" name="contact" placeholder="Enter your number">
                                         @endif
                                     </div>
                                 </div>
@@ -210,11 +207,9 @@
                                     <div class="detail-label">Address:</div>
                                     <div class="detail-value">
                                         @if (auth()->user()->address)
-                                            <input type="text" name="address"
-                                                value="{{ auth()->user()->address }}">
+                                        <input type="text" name="address" value="{{ auth()->user()->address }}">
                                         @else
-                                            <input type="text" name="address"
-                                                placeholder="Eg: Tokha-06,Jalpachowk,Baniyatar">
+                                        <input type="text" name="address" placeholder="Eg: Tokha-06,Jalpachowk,Baniyatar">
                                         @endif
 
                                     </div>
@@ -225,9 +220,9 @@
                                     <div class="detail-label">City:</div>
                                     <div class="detail-value">
                                         @if (auth()->user()->city)
-                                            <input type="text" name="city" value="{{ auth()->user()->city }}">
+                                        <input type="text" name="city" value="{{ auth()->user()->city }}">
                                         @else
-                                            <input type="text" name="city" placeholder="Enter your city">
+                                        <input type="text" name="city" placeholder="Enter your city">
                                         @endif
                                     </div>
                                 </div>
@@ -237,10 +232,9 @@
                                     <div class="detail-label">Zip Code:</div>
                                     <div class="detail-value">
                                         @if (auth()->user()->zip_code)
-                                            <input type="text" name="zip_code"
-                                                value="{{ auth()->user()->zip_code }}">
+                                        <input type="text" name="zip_code" value="{{ auth()->user()->zip_code }}">
                                         @else
-                                            <input type="text" name="zip_code" placeholder="Enter zip code ">
+                                        <input type="text" name="zip_code" placeholder="Enter zip code ">
                                         @endif
                                     </div>
                                 </div>
@@ -264,6 +258,7 @@
                         <div class="h5 mt-3">Hello {{ auth()->user()->name }},</div>
                         <div>Logged in as: {{ auth()->user()->email }}</div>
                         <hr />
+
                         @if (count($art) > 0)
                             @foreach ($art as $userDetail)
                                 <div class="order-content-detail product-description">
@@ -428,79 +423,80 @@
             <!-- Artistregistration section -->
             <div class="col-lg-9 my-lg-0 my-1 return-section-wrap" id="return-wrap">
                 <div id="main-content" class="bg-white border">
+                    @if(session('status'))
+                    <h6 class="alert alert-success">{{session('status')}}</h6>
+                    @endif
                     <div class="d-flex flex-column">
                         <h2>Artist registration</h2>
                         <div class="h5 mt-3">Hello {{ auth()->user()->name }},</div>
                         <div>Logged in as: {{ auth()->user()->email }}</div>
                         <hr />
-                        <form class="rounded bg-white shadow p-5" action="" method="POST">
-                                @csrf
-                                <p class="text-dark fw-bolder fs-4 mb-2">Artist registration</p>
-                                <div class="fw-normal text-muted mb-2">
-                                    Already have an account ? <a href="" class="text-primary fw-bold text-decoration-none">return to homepage</a>
-                                </div>
-                                <div class="text-center text-muted text-uppercase mb-3">or</div>
+                        <form action="{{route('login-artist')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
 
-                                @if(Session::has('error'))
-                                <p class="text-danger">{{Session::get('error')}}</p>
-                                @endif
+                            <div class="fw-normal text-muted mb-2">
+                                Already have an account ? <a href="{{route('login1')}}" class="text-primary fw-bold text-decoration-none">login here</a>
+                            </div>
+                            <div class="text-center text-muted text-uppercase mb-3">or</div>
 
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error ('name') is-invalid @enderror" id="floatingInput" name="name" placeholder="Full Name">
-                                    <label for="floatingInput">Full Name</label>
-                                    <span style="color :red;">@error('name') {{$message}} @enderror</span>
-                                </div>
-                            
-                                <div class="form-floating mb-3">
-                                    <input type="email" class="form-control @error ('email') is-invalid @enderror" id="floatingInput" name="email" placeholder="name@example.com">
-                                    <label for="floatingInput">Email address</label>
-                                    <span style="color :red;">@error('email') {{$message}} @enderror</span>
-                                </div>
+                            @if(Session::has('error'))
+                            <p class="text-danger">{{Session::get('error')}}</p>
+                            @endif
 
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error ('contact') is-invalid @enderror" id="floatingInput" name="contact" placeholder="Contact Number">
-                                    <label for="floatingInput">Contact Number</label>
-                                    <span style="color :red;">@error('contact') {{$message}} @enderror</span>
-                                </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control @error ('name') is-invalid @enderror" id="floatingInput" name="name" placeholder="Full Name">
+                                <label for="floatingInput">Full Name</label>
+                                <span style="color :red;">@error('name') {{$message}} @enderror</span>
+                            </div>
 
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error ('address') is-invalid @enderror" id="floatingInput" name="address" placeholder="Address">
-                                    <label for="floatingInput">Address</label>
-                                    <span style="color :red;">@error('address') {{$message}} @enderror</span>
-                                </div>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control @error ('email') is-invalid @enderror" id="floatingInput" name="email" placeholder="name@example.com">
+                                <label for="floatingInput">Email address</label>
+                                <span style="color :red;">@error('email') {{$message}} @enderror</span>
+                            </div>
 
-                                <div class="form-floating mb-3">
-                                    <input type="file" class="form-control" id="floatingPassword" placeholder="upload picture">
-                                    <label for="floatingPassword">upload picture</label>
-                                </div>
-                                <!-- <div class="input-group mb-3">
-                                    <label class="input-group-text selected" for="inputGroupSelect01">Are you a ?</label>
-                                    <select class="form-select selected" name="user_type" id="inputGroupSelect01">
-                                        <option selected value="User">User</option>
-                                        <option value="Artist">Artist</option>
-                                    </select>
-                                </div> -->
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control @error ('contact') is-invalid @enderror" id="floatingInput" name="contact" placeholder="Contact Number">
+                                <label for="floatingInput">Contact Number</label>
+                                <span style="color :red;">@error('contact') {{$message}} @enderror</span>
+                            </div>
 
-                                    <div class="form-check d-flex align-items-center">
-                                        <input class="form-check-input check" type="checkbox" id="gridCheck">
-                                        <label class="form-check-label ms-2" for="gridCheck">
-                                            I Agree <a href="#">Terms and conditions</a>.
-                                        </label>
-                                    </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control @error ('address') is-invalid @enderror" id="floatingInput" name="address" placeholder="Address">
+                                <label for="floatingInput">Address</label>
+                                <span style="color :red;">@error('address') {{$message}} @enderror</span>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="file" class="form-control" name="artistImage"  placeholder="upload picture">
+                                <label for="floatingPassword">upload picture</label>
+                            </div>
+                            <!-- <div class="input-group mb-3">
+                                <label class="input-group-text selected" for="inputGroupSelect01">Are you a ?</label>
+                                <select class="form-select selected" name="user_type" id="inputGroupSelect01">
+                                    <option selected value="User">User</option>
+                                    <option value="Artist">Artist</option>
+                                </select>
+                            </div> -->
+
+                            <div class="form-check d-flex align-items-center">
+                                <input class="form-check-input check" type="checkbox" id="gridCheck">
+                                <label class="form-check-label ms-2" for="gridCheck">
+                                    I Agree <a href="#">Terms and conditions</a>.
+                                </label>
+                            </div>
 
 
-                                    <button type="submit" class="btn btn-primary submit_btn w-100 my-4">Continue</button>
-		                </form>
+                            <button type="submit" class="btn btn-primary submit_btn w-100 my-4">Continue</button>
+                        </form>
                     </div>
-                    
-                    </div>
+
                 </div>
+            </div>
             <!-- Artistregistration section end -->
         </div>
     </div>
-    {{-- <div class="myfooter" >
-        <p class="text text-white text-center">&copy; Artihc.com.np</p>
-    </div> --}}
+
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
     crossorigin="anonymous"></script>
