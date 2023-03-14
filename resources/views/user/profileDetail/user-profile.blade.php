@@ -365,13 +365,14 @@
                                                     </p>
                                                 @endif
                                             </div>
-                                            <div style="float:right">
-                                                <button onclick="printDiv('Invoice{{ $userDetail->OrderCode }}')"
-                                                    style="border:none;background-color: green; color: white;width:100px;height:30px"><i
-                                                        class="fa-solid fa-print "
-                                                        style="margin-right: 10px"></i>Print</button>
-                                            </div>
+
                                             <div id="Invoice{{ $userDetail->OrderCode }}" class="tabcontent">
+                                                <div style="float:right">
+                                                    <button onclick="printDiv('Invoice{{ $userDetail->OrderCode }}')"
+                                                        style="border:none;background-color: green; color: white;width:100px;height:30px"><i
+                                                            class="fa-solid fa-print "
+                                                            style="margin-right: 10px"></i>Print</button>
+                                                </div>
                                                 <h3>Invoice</h3>
 
                                                 @if ($userDetail->payment_status == 'Approved')
