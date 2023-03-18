@@ -20,7 +20,7 @@ class ArtistregisterController extends Controller
             'email' => 'required|unique:artistregisters|email',
             'contact' => 'required',
             'address' => 'required',
-            'artistImage' => 'required'
+            
 
         ]);
 
@@ -29,17 +29,11 @@ class ArtistregisterController extends Controller
         $artist->email = $request->email;
         $artist->contact = $request->contact;
         $artist->address = $request->address;
-        
-        if ($request->hasFile('artistImage')) {
-
-            $image = $request->file('artistImage');
-            $fileName = date('dmY') . time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path("/uploads"), $fileName);
-            $artist->image = $fileName;
-        }      
+        $artist->id = $request->id;
+        $artist->user_type = $request->user_type;
         $artist->save();
 
-        return redirect()->route('artist-register')->with('status', 'Artist Created Successfully');
+        return redirect()->route('artist-register')->with('status', 'Applied sucessfully!!! Try login after 24 hours');
 
 
        

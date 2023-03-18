@@ -14,6 +14,7 @@ use App\Http\Controllers\Contact\ContactusController;
 use App\Http\Controllers\Forget\ForgetController;
 
 use App\Http\Controllers\Admin\AdminList\AdminController;
+use App\Http\Controllers\Admin\ArtistList\ArtistController;
 use App\Http\Controllers\Admin\Order\OrderListController;
 use App\Http\Controllers\User\Order\UserOrderController;
 use App\Http\Controllers\Artistregister\ArtistregisterController;
@@ -65,6 +66,10 @@ Route::resource('/Customer/Order', AddToCartController::class);
 Route::delete('delete-from-cart', [AddToCartController::class, 'delete'])->name('cart.delete');
 Route::resource('/Admin/AdminList', AdminController::class);
 Route::resource('/Admin/UserList', UserListController::class);
+Route::get('artistList', [ArtistController::class,'index'])->name('artistList');
+Route::get('artistRequest', [ArtistController::class,'request'])->name('artistRequest');
+Route::get('/artistRegister/{id}', [ArtistController::class,'update'])->name('artistRegister');
+Route::get('/deleteRequest/{id}', [ArtistController::class,'delete'])->name('deleteRequest');
 
 // -------------------------------------
 

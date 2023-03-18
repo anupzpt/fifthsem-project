@@ -37,19 +37,11 @@ class HomeController extends Controller
             ->get();
         $total = Order::where('userId', Auth::id())->get()->sum('price');
         $art = DB::table('orders')
-<<<<<<< HEAD
-        ->join('users', 'orders.userId', '=', 'users.id')
-        ->select('users.email', DB::raw('SUM(orders.price) as total'), 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
-        ->where('orders.userId', '=', Auth::id())
-        ->groupBy('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
-        ->get();
-=======
             ->join('users', 'orders.userId', '=', 'users.id')
             ->select('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
             ->where('orders.userId', '=', Auth::id())
             ->groupBy('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
             ->get();
->>>>>>> c4c8367963bdb78d77345327d1aacc7f343887f8
 
         return view('user.profileDetail.user-profile', compact('orders', 'OrderList', 'total', 'art'));
     }
@@ -87,7 +79,7 @@ class HomeController extends Controller
         ->where('orders.userId', '=', Auth::id())
         ->groupBy('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
         ->get();
-        return view('user.profileDetail.user-profile', compact('OrderList','art','total','order'));
+        return view('user.profileDetail.user-profile', compact('OrderList','art','total','orders'));
     }
 
     public function Art()
