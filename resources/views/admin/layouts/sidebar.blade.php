@@ -1,5 +1,5 @@
  <!-- Sidebar  -->
- @if(Auth::user()->user_type == '2')
+ @if(auth()->user()->user_type == '2')
  <nav id="sidebar">
     <div class="sidebar_blog_1">
        <div class="sidebar-header">
@@ -33,8 +33,7 @@
           <li>
             <a href="{{ route('Product.index') }}"><i class="fa fa-map purple_color"></i> <span>Product</span></a>
         </li>
-          
-       </ul>
+                 </ul>
     </div>
  </nav>
  @else
@@ -101,4 +100,5 @@
     </div>
  </nav>
  @endif
+ 
  <!-- end sidebar -->
