@@ -46,12 +46,14 @@
                             <td></td>
                             <td>
                                 <button class="btn btn-primary"><a href="{{ route('AdminList.edit', [$item->id]) }}" class="text-white"><span class="fas fa-pencil "></a></button>
+                            </td>
                             <td>
                                 <form action="{{ route('AdminList.destroy', [$item->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger" data-bs-target="#exampleModal"><span class="fas fa-trash "></a></button>
                                 </form>
+                            </td>
                         </tr>
                         @endforeach
 

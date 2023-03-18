@@ -45,6 +45,10 @@
           <li>
             <a href="{{ route('AdminList.index')}}"><i class="fa fa-user green_color"></i> <span>Admin</span></a>
          </li>
+         {{-- artist --}}
+          <li>
+            <a href="{{ route('artistList')}}"><i class="fa fa-user red_color"></i> <span>Artist</span></a>
+         </li>
          {{-- users --}}
          <li>
             <a href="{{route('UserList.index')}}"><i class="fa fa-user blue1_color"></i><span>Users</span></a>

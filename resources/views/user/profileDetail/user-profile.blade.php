@@ -276,13 +276,8 @@
                                     <div class="description">
                                         {{ $userDetail->OrderRemarks }}
                                     </div>
-<<<<<<< HEAD
-                                    <div class="total-cost">
-                                        Rs.{{ $userDetail->total }}
-=======
                                     {{-- <div class="total-cost">
                                         Rs.{{ $total }}
->>>>>>> c4c8367963bdb78d77345327d1aacc7f343887f8
 
                                     </div> --}}
                                 </div>
@@ -413,10 +408,6 @@
                                                                         <td
                                                                             style="text-align: right; padding-top: 10px;">
                                                                             Rs.{{ $item->price }}
-<<<<<<< HEAD
-
-=======
->>>>>>> c4c8367963bdb78d77345327d1aacc7f343887f8
 
                                                                             {{-- @php
                                                                                 $total = 0;
@@ -432,12 +423,8 @@
                                                                     Total:
                                                                 </th>
                                                                 <td style="text-align: right; padding-top: 10px;">
-<<<<<<< HEAD
-                                                                    Rs.{{ $userDetail->total }}
-=======
                                                                     Rs.{{ $total }}
 
->>>>>>> c4c8367963bdb78d77345327d1aacc7f343887f8
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -478,6 +465,7 @@
                                     class="text-primary fw-bold text-decoration-none">login here</a>
                             </div>
                             <div class="text-center text-muted text-uppercase mb-3">or</div>
+                            <div class="text-center text-bold text-uppercase mb-3">Apply for artist registration</div>
 
                             @if (Session::has('error'))
                                 <p class="text-danger">{{ Session::get('error') }}</p>
@@ -527,28 +515,17 @@
                                 </span>
                             </div>
 
-                            <div class="form-floating mb-3">
-                                <input type="file" class="form-control" name="artistImage"
-                                    placeholder="upload picture">
-                                <label for="floatingPassword">upload picture</label>
-                            </div>
-                            <!-- <div class="input-group mb-3">
-                                <label class="input-group-text selected" for="inputGroupSelect01">Are you a ?</label>
-                                <select class="form-select selected" name="user_type" id="inputGroupSelect01">
-                                    <option selected value="User">User</option>
-                                    <option value="Artist">Artist</option>
-                                </select>
-                            </div> -->
-
                             <div class="form-check d-flex align-items-center">
                                 <input class="form-check-input check" type="checkbox" id="gridCheck">
                                 <label class="form-check-label ms-2" for="gridCheck">
                                     I Agree <a href="#">Terms and conditions</a>.
                                 </label>
                             </div>
+                            <input type="hidden" value="{{ auth()->user()->id}}" name="id">
+                            <input type="hidden" value="{{auth()->user()->user_type}}" name="user_type">
 
 
-                            <button type="submit" class="btn btn-primary submit_btn w-100 my-4">Continue</button>
+                            <button type="submit" class="btn btn-success submit_btn w-100 my-4">Apply</button>
                         </form>
                     </div>
 

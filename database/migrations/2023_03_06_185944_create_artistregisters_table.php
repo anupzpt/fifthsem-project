@@ -14,12 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('artistregisters', function (Blueprint $table) {
-            $table->id();
+            // $table->id();
             $table->string("name")->nullable();
             $table->string("email")->unique()->nullable();
             $table->string("contact")->nullable();
             $table->string("address")->nullable();
-            $table->string("image")->nullable();
+            $table->string("id")->primary();
+            $table->string("user_type")->nullable()->default('0');
             $table->timestamps();
         });
     }
