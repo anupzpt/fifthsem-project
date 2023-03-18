@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Arthic</title>
     <link rel="stylesheet" href="style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
@@ -276,17 +276,22 @@
                                     <div class="description">
                                         {{ $userDetail->OrderRemarks }}
                                     </div>
+<<<<<<< HEAD
                                     <div class="total-cost">
                                         Rs.{{ $userDetail->total }}
+=======
+                                    {{-- <div class="total-cost">
+                                        Rs.{{ $total }}
+>>>>>>> c4c8367963bdb78d77345327d1aacc7f343887f8
 
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="container sub-menu-tab">
                                     <div class="row ">
                                         <div class="col-md-12">
                                             <div class="tab">
                                                 <button class="tablinks"
-                                                    onclick="openCity(event, 'ProductDetail{{ $userDetail->OrderCode }}')">Product
+                                                    onclick="openCity(event, 'ProductDetail{{ $userDetail->OrderCode }}')">User
                                                     Detail</button>
                                                 <button class="tablinks"
                                                     onclick="openCity(event, 'Status{{ $userDetail->OrderCode }}')">Status</button>
@@ -408,8 +413,15 @@
                                                                         <td
                                                                             style="text-align: right; padding-top: 10px;">
                                                                             Rs.{{ $item->price }}
+<<<<<<< HEAD
 
+=======
+>>>>>>> c4c8367963bdb78d77345327d1aacc7f343887f8
 
+                                                                            {{-- @php
+                                                                                $total = 0;
+                                                                                $total =  $item->price * $item->price;
+                                                                            @endphp --}}
                                                                         </td>
                                                                     </tr>
                                                                 @endif
@@ -420,7 +432,12 @@
                                                                     Total:
                                                                 </th>
                                                                 <td style="text-align: right; padding-top: 10px;">
+<<<<<<< HEAD
                                                                     Rs.{{ $userDetail->total }}
+=======
+                                                                    Rs.{{ $total }}
+
+>>>>>>> c4c8367963bdb78d77345327d1aacc7f343887f8
                                                                 </td>
                                                             </tr>
                                                         </table>
