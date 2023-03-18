@@ -37,6 +37,7 @@
                     {{-- <hr /> --}}
                     <div id="navbar">
                         <ul>
+                            @if(Auth::user()->user_type == '2')
                             <li class="btnn active mb-2" id="account">
                                 <a href="#" class="text-decoration-none d-flex align-items-start">
                                     <div class="fas fa-box pt-2 me-3"></div>
@@ -48,6 +49,19 @@
                                     </div>
                                 </a>
                             </li>
+                            @else
+                            <li class="btnn active mb-2" id="account">
+                                <a href="#" class="text-decoration-none d-flex align-items-start">
+                                    <div class="fas fa-box pt-2 me-3"></div>
+                                    <div class="d-flex flex-column">
+                                        <div class="link">My Account</div>
+                                        <div class="link-desc">
+                                            View & Manage Accounts Details
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
 
                             <li class="btnn mb-2" id="order">
                                 <a href="#" class="text-decoration-none d-flex align-items-start">
@@ -70,11 +84,195 @@
                                     </div>
                                 </a>
                             </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
             </div>
+            @if(Auth::user()->user_type == '2')
+              <!-- Account Section -->
+              <div class="col-lg-9 my-lg-0 my-1 account-section-wrap enable" id="account-wrap">
+                <div id="main-content" class="bg-white border">
+                    <div class="d-flex flex-column user-info">
+                        <h2>My Account</h2>
+                        <div class="d-flex align-items-center">
+                            @if (Auth::user()->user_type == '1')
+                                <img src="{{ asset('/uploads' . '/' . auth()->user()->img_path) }}">
+                            @else
+                                <img src="{{ auth()->user()->img_path }}">
+                            @endif
+                        </div>
+                        <div class="h5 mt-3">Hello {{ auth()->user()->name }},</div>
+                        <div>Logged in as: {{ auth()->user()->email }}</div>
+                    </div>
+                    <hr />
 
+                    <div class="row mt-4">
+                        <div class="col-md-5 mb-5">
+                            <div class="account-detail">
+                                <div class="detail-label">Full Name</div>
+                                <div class="detail-value">{{ auth()->user()->name }}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 mb-5">
+                            <div class="account-detail">
+                                <div class="detail-label">Email:</div>
+                                <div class="detail-value">{{ auth()->user()->email }}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 mb-5">
+                            <div class="account-detail">
+                                <div class="detail-label">Mobile:</div>
+                                <div class="detail-value">
+                                    @if (auth()->user()->contact)
+                                        {{ auth()->user()->contact }}
+                                    @else
+                                        <span class="placeholder-text">Please enter your mobile</span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 mb-5">
+                            <div class="account-detail">
+                                <div class="detail-label">Address:</div>
+                                <div class="detail-value">
+                                    @if (auth()->user()->address)
+                                        {{ auth()->user()->address }}
+                                    @else
+                                        <span class="placeholder-text">Please enter your address</span>
+                                    @endif
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 mb-5">
+                            <div class="account-detail">
+                                <div class="detail-label">City:</div>
+                                <div class="detail-value">
+                                    @if (auth()->user()->city)
+                                        {{ auth()->user()->city }}
+                                    @else
+                                        <span class="placeholder-text">Please enter your city</span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 mb-5">
+                            <div class="account-detail">
+                                <div class="detail-label">Zip Code:</div>
+                                <div class="detail-value">
+                                    @if (auth()->user()->zip_code)
+                                        {{ auth()->user()->zip_code }}
+                                    @else
+                                        <span class="placeholder-text">Please enter your zip code</span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <a href="#" id="edit-profile-btn" class="my-button">EDIT PROFILE</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- account section end -->
+
+            <!-- edit form section -->
+            <!-- <form id="edit-profile-form" style="display:block;" > -->
+            <div class="col-lg-9 my-lg-0 my-1 account-section-wrap enable d-none" id="edit-profile-form">
+                <div id="main-content" class="bg-white border">
+                    <div class="d-flex flex-column user-info">
+                        <h2>My Account</h2>
+                        <div class="d-flex align-items-center">
+                            <img src="{{ auth()->user()->img_path }}">
+                        </div>
+                        <div class="h5 mt-3">Hello {{ auth()->user()->name }},</div>
+                        <div>Logged in as: {{ auth()->user()->email }}</div>
+                    </div>
+                    <hr />
+                    <form action="{{ route('update-user-data') }}" method="POST">
+                        @csrf
+                        <div class="row mt-4">
+                            <div class="col-md-5 mb-5">
+                                <div class="account-detail">
+                                    <div class="detail-label">Full Name</div>
+                                    <div class="detail-value">
+                                        <input type="text" name="name" value="{{ auth()->user()->name }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-5">
+                                <div class="account-detail">
+                                    <div class="detail-label">Email:</div>
+                                    <div class="detail-value">
+                                        <input type="text" name="email" value="{{ auth()->user()->email }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-5">
+                                <div class="account-detail">
+                                    <div class="detail-label">Mobile:</div>
+                                    <div class="detail-value">
+                                        @if (auth()->user()->contact)
+                                            <input type="text" name="contact"
+                                                value="{{ auth()->user()->contact }}">
+                                        @else
+                                            <input type="text" name="contact" placeholder="Enter your number">
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-5">
+                                <div class="account-detail">
+                                    <div class="detail-label">Address:</div>
+                                    <div class="detail-value">
+                                        @if (auth()->user()->address)
+                                            <input type="text" name="address"
+                                                value="{{ auth()->user()->address }}">
+                                        @else
+                                            <input type="text" name="address"
+                                                placeholder="Eg: Tokha-06,Jalpachowk,Baniyatar">
+                                        @endif
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-5">
+                                <div class="account-detail">
+                                    <div class="detail-label">City:</div>
+                                    <div class="detail-value">
+                                        @if (auth()->user()->city)
+                                            <input type="text" name="city" value="{{ auth()->user()->city }}">
+                                        @else
+                                            <input type="text" name="city" placeholder="Enter your city">
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-5">
+                                <div class="account-detail">
+                                    <div class="detail-label">Zip Code:</div>
+                                    <div class="detail-value">
+                                        @if (auth()->user()->zip_code)
+                                            <input type="text" name="zip_code"
+                                                value="{{ auth()->user()->zip_code }}">
+                                        @else
+                                            <input type="text" name="zip_code" placeholder="Enter zip code ">
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-2">
+                                <button class="my-button" style="background-color:green">UPDATE PROFILE</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            <!-- edit form section end -->
+            @else
             <!-- Account Section -->
             <div class="col-lg-9 my-lg-0 my-1 account-section-wrap enable" id="account-wrap">
                 <div id="main-content" class="bg-white border">
@@ -532,6 +730,7 @@
                 </div>
             </div>
             <!-- Artistregistration section end -->
+            @endif
         </div>
     </div>
 
