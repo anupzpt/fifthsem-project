@@ -1,10 +1,13 @@
 @extends('admin.layouts.master')
 @section('content')
 <div class="col-md-12">
+<div class="margin_top_30 padding-bottom_2 d-flex justify-content-end">
+        <a class="btn btns btn-danger p-3" href="{{ route('artistRequest') }}" type="button">Artist Requests</a>
+    </div>
    <div class="dark_shd full margin_bottom_30 border mt-5">
-    <div class="full graph_head center" style="background-color:deepskyblue">
+    <div class="full graph_head center" style="background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(1,152,183,1) 0%);">
         <div class="heading1 margin_0 text-white">
-            <h2>User Table</h2>
+            <h2>Artist Table</h2>
         </div>
     </div>
     <div class="table_section padding_infor_info">
@@ -13,7 +16,7 @@
                 <thead>
                     <tr>
                         <th>Sn</th>
-                        <th>User Name</th>
+                        <th>Artist Name</th>
                         <th>Email</th>
                         <th>Number</th>
                         <th>Address</th>
@@ -39,7 +42,6 @@
                         </td>
                     </tr>
                     @endforeach
-                </tbody>
             </table>
         </div>
     </div>
