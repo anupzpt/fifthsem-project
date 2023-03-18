@@ -58,7 +58,7 @@ class ProductController extends Controller
         }
         $product->save();
         // return redirect()->action("index","Product")->with('status','Product Added Successfully');
-        return redirect()->action([ProductController::class, 'index'])->with('status', 'Product Added Successfully','code','0');
+        return redirect()->action([ProductController::class, 'index'])->with('status', 'Product Added Successfully');
     }
 
     /**
