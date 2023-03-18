@@ -80,12 +80,14 @@
 
              @auth
 
+             @if(Auth::user()->user_type == '0')
              <div class="nav-item">
                  <a href="{{route('home.cart.index')}}" class="btn text-white">
                      <i class="fas fa-cart-shopping"> </i>
                      <sup> <span class="cartCount">{{$count}}</span></sup>
                  </a>
              </div>
+             @endif
              <div class="nav-item">
                  <a class="nav-link" href="#">
                      <!-- <span class="nav-link-textt"  id="toggleMenu"></span> -->

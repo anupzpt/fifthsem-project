@@ -39,7 +39,7 @@ class SocialAuthController extends Controller
                 return redirect()->route('home.index');
             } else {
                 Auth::login($user);
-                if (Auth::user()->user_type == '1') {
+                if (Auth::user()->user_type == '1'||Auth::user()->user_type == '2' ) {
                     return redirect('/admin');
                 } else {
                     return redirect()->route('home.index');
