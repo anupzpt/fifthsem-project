@@ -1,13 +1,13 @@
 @extends('admin.layouts.master')
 @section('content')
-    <link rel="stylesheet" href="{{ asset('userpanel/css/toastr.css') }}" />
+    <div class="col-md-12  ">
+        <div class="margin_top_30 padding-bottom_2 d-flex justify-content-end">
+            @if (session('status'))
+                <h3 class="alert alert-success">{{ session('status') }}</h3>
+            @endif
+        </div>
+        <div class="margin_top_10 padding-bottom_2 d-flex justify-content-end ">
 
-    <div class="col-md-12 ">
-
-        @if (session('status'))
-            <input type="hidden" value="{{ session('status') }}" id="status" />
-        @endif
-        <div class="margin_top_30 padding-bottom_2 d-flex justify-content-end ">
             <a class="btn btns btn-primary p-3 " href="{{ route('Product.create') }}" type="button">Add Product</a>
         </div>
         <div class="dark_shd full margin_bottom_30 border ">
@@ -27,9 +27,10 @@
                                 <th>Category Name</th>
                                 <th>Price
                                 <th>
-                                <th>Image</th>
+                                <th> Image</th>
                                 <th></th>
                                 <th>Action</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -44,9 +45,11 @@
                                     <td>{{ $item->price }}</td>
                                     <td></td>
                                     <td>
-                                        <img src="{{ asset('/uploads' . '/' . $item->image) }}" width="70px"
-                                            height="70px" alt="image">
+                                        <img src="{{ asset('/uploads' . '/' . $item->image) }}" width="70px" height="70px"
+                                            alt="image">
                                     </td>
+                                    <td></td>
+
                                     <td>
                                         <button class="btn btn-primary"><a href="{{ route('Product.edit', [$item->id]) }}"
                                                 class="text-white"><span class="fas fa-pencil "></a></button>
@@ -66,14 +69,4 @@
         </div>
     </div>
     </div>
-    <button onclick="show()">clickme</button>
 @endsection
-
-<script>
-    function show() {
-
-        toastr.success("sdsd")
-    }
-    toastr.success('Hello, world!', 'Toastr.js Example');
-
-</script>
