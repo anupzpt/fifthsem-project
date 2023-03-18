@@ -79,7 +79,7 @@ class HomeController extends Controller
         ->where('orders.userId', '=', Auth::id())
         ->groupBy('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
         ->get();
-        return view('user.profileDetail.user-profile', compact('OrderList','art','total','order'));
+        return view('user.profileDetail.user-profile', compact('OrderList','art','total','orders'));
     }
 
     public function Art()
