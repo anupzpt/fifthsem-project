@@ -58,7 +58,7 @@ class ProductController extends Controller
         }
         $product->save();
         // return redirect()->action("index","Product")->with('status','Product Added Successfully');
-        return redirect()->action([ProductController::class, 'index'])->with('status', 'Product Added Successfully');
+        return redirect()->action([ProductController::class, 'index'])->with('status', 'Product Added Successfully','code','0');
     }
 
     /**
@@ -105,7 +105,7 @@ class ProductController extends Controller
             $response["image"] = $fileName;
         }
         $productDetails->update($response);
-        return redirect()->route('Product.index')->with('status', 'Product Updated Successfully');
+        return redirect()->route('Product.index')->with('message', 'Product Updated Successfully');
     }
 
     /**

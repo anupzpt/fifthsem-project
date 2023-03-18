@@ -41,71 +41,83 @@
                  <a href="{{ route('home.art') }}" class="button btn-primary ">View More</a>
              </div>
          </div>
+         @if (Auth::id() > 0)
+             <input type="hidden" id="user_type" value="{{ Auth::user()->user_type }}">
+         @endif
  </section>
  <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
      crossorigin="anonymous"></script>
  <script>
      function set($id) {
-         $.ajax({
-             url: '{{ route('home.cart') }}',
-             type: 'POST',
-             data: {
-                 "_token": "{{ csrf_token() }}",
-                 "id": $id
+         if ($("#user_type").val() != 1) {
+             $.ajax({
+                 url: '{{ route('home.cart') }}',
+                 type: 'POST',
+                 data: {
+                     "_token": "{{ csrf_token() }}",
+                     "id": $id
 
-             },
-             success: function(response) {
-                 console.log(response.message);
-                 if (response.code == 0) {
-                     $(".cartCount").text("")
-                     $(".cartCount").text(response.count);
+                 },
+                 success: function(response) {
+                     debugger
+                     console.log(response);
+                     if (response.code == 0) {
+                         $(".cartCount").text("")
+                         $(".cartCount").text(response.count);
+                     }
+                     if (response.code == 1) {
+                         toastr.error(response.message)
+                     }
+                     if (response.code == 101) {
+
+                         window.location.href = "{{ route('login') }}";
+
+                     }
+                 },
+                 error: function(xhr) {
+                     alert(xhr.responseText);
                  }
-                 if (response.code == 1) {
-                     toastr.error(response.message)
-                 }
-                 if (response.code == 101) {
-
-                     window.location.href = "{{ route('login') }}";
-
-                 }
-             },
-             error: function(xhr) {
-                 alert(xhr.responseText);
-             }
-         });
-
+             });
+         } else {
+             toastr.error("Try Login as a user", "Sorry,Not Authorized!!");
+         }
      }
 
      function buyNow($id) {
-         $.ajax({
-             url: '{{ route('UserOrderList.check') }}',
-             type: 'POST',
-             data: {
-                 "_token": "{{ csrf_token() }}",
-                 "id": $id
+         if ($("#user_type").val() != 1) {
 
-             },
-             success: function(response) {
-                 console.log(response.message);
+             $.ajax({
+                 url: '{{ route('UserOrderList.check') }}',
+                 type: 'POST',
+                 data: {
+                     "_token": "{{ csrf_token() }}",
+                     "id": $id
+                 },
+                 success: function(response) {
+                     console.log(response.message);
 
-                 if (response.code == 0) {
-                     var orderId = response.message;
-                     window.location.href = "{{ route('UserOrderList.show', ':id') }}".replace(':id', orderId);
+                     if (response.code == 0) {
+                         var orderId = response.message;
+                         window.location.href = "{{ route('UserOrderList.show', ':id') }}".replace(':id',
+                             orderId);
+                     }
+
+                     if (response.code == 1) {
+                         toastr.error(response.message)
+                     }
+                     if (response.code == 101) {
+
+                         window.location.href = "{{ route('login') }}";
+
+                     }
+                 },
+                 error: function(xhr) {
+                     alert(xhr.responseText);
                  }
-
-                 if (response.code == 1) {
-                     toastr.error(response.message)
-                 }
-                 if (response.code == 101) {
-
-                     window.location.href = "{{ route('login') }}";
-
-                 }
-             },
-             error: function(xhr) {
-                 alert(xhr.responseText);
-             }
-         });
+             });
+         } else {
+             toastr.error("Try Login as a user", "Sorry,Not Authorized!!");
+         }
      }
      $(document).ready(function() {
 
