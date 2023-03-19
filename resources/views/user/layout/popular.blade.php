@@ -6,42 +6,15 @@
         </div>
 
         <div class="category-content grid">
-            <div class="category-item">
-                <img src="userpanel/images/category_img_1.png" />
-                <div class="category-badge bg-white text-dark flex">
-                    Sofa Set
+            @foreach ($popularProducts as $item)
+                <div class="category-item">
+                    <img src="userpanel/images/category_img_2.png" />
+                    <div class="category-badge bg-white text-white flex">
+                        {{$item->name}}
+                    </div>
                 </div>
-            </div>
-            <div class="category-item">
-                <img src="userpanel/images/category_img_2.png" />
-                <div class="category-badge bg-white text-dark flex">
-                    Sofa Set
-                </div>
-            </div>
-            <div class="category-item">
-                <img src="userpanel/images/category_img_3.png" />
-                <div class="category-badge bg-white text-dark flex">
-                    Sofa Set
-                </div>
-            </div>
-            <div class="category-item">
-                <img src="userpanel/images/category_img_4.png" />
-                <div class="category-badge bg-white text-dark flex">
-                    Sofa Set
-                </div>
-            </div>
-            <div class="category-item">
-                <img src="userpanel/images/category_img_5.png" />
-                <div class="category-badge bg-white text-dark flex">
-                    Sofa Set
-                </div>
-            </div>
-            <div class="category-item">
-                <img src="userpanel/images/category_img_6.png" />
-                <div class="category-badge bg-white text-dark flex">
-                    Sofa Set
-                </div>
-            </div>
+            @endforeach
+
         </div>
     </div>
 </section>

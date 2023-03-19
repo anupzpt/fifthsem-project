@@ -23,33 +23,33 @@ class HomeController extends Controller
         $products = Product::take(3)->get();
         $latestPosts = Product::limit(3)->latest('created_at')->get();
         $count = AddToCart::where('userId', Auth::id())->get()->count();
-        return view('user.dashboard.dashboard', compact('products', 'latestPosts', 'count'));
+        $product = DB::table('products')
+            ->select('category_id', DB::raw('count(*) as total'))
+            ->groupBy('category_id')
+            ->orderByDesc('total')
+            ->first();
+        $popularProducts = DB::table('products')
+            ->where('category_id', $product->category_id)
+            ->get();
+        return view('user.dashboard.dashboard', compact('products', 'latestPosts', 'count','popularProducts'));
     }
     public function myOrder()
     {
         session()->put('popupBoxValue', '2');
         $orders = DB::table('orders')
             ->join('products', 'orders.productId', '=', 'products.id')
-            ->select('products.name','orders.*')
+            ->select('products.name', 'orders.*')
             ->where('userId', Auth::id())
             ->get();
         $OrderList = Order::with('products')->where('userId', Auth::id())
             ->get();
         $total = Order::where('userId', Auth::id())->get()->sum('price');
         $art = DB::table('orders')
-<<<<<<< HEAD
-        ->join('users', 'orders.userId', '=', 'users.id')
-        ->select('users.email', DB::raw('SUM(orders.price) as total'), 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
-        ->where('orders.userId', '=', Auth::id())
-        ->groupBy('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
-        ->get();
-=======
             ->join('users', 'orders.userId', '=', 'users.id')
-            ->select('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
+            ->select('users.email', DB::raw('SUM(orders.price) as total'), 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
             ->where('orders.userId', '=', Auth::id())
             ->groupBy('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
             ->get();
->>>>>>> c4c8367963bdb78d77345327d1aacc7f343887f8
 
         return view('user.profileDetail.user-profile', compact('orders', 'OrderList', 'total', 'art'));
     }
@@ -57,37 +57,37 @@ class HomeController extends Controller
     {
         session()->put('popupBoxValue', '1');
         $orders = DB::table('orders')
-        ->join('products', 'orders.productId', '=', 'products.id')
-        ->select('products.name','orders.*')
-        ->where('userId', Auth::id())
-        ->get();
+            ->join('products', 'orders.productId', '=', 'products.id')
+            ->select('products.name', 'orders.*')
+            ->where('userId', Auth::id())
+            ->get();
         $OrderList = Order::with('products')->get();
         $total = Order::where('userId', Auth::id())->get()->sum('OrderCode->price');
         $art = DB::table('orders')
-        ->join('users', 'orders.userId', '=', 'users.id')
-        ->select('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
-        ->where('orders.userId', '=', Auth::id())
-        ->groupBy('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
-        ->get();
-        return view('user.profileDetail.user-profile', compact('OrderList','art','total','orders'));
+            ->join('users', 'orders.userId', '=', 'users.id')
+            ->select('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
+            ->where('orders.userId', '=', Auth::id())
+            ->groupBy('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
+            ->get();
+        return view('user.profileDetail.user-profile', compact('OrderList', 'art', 'total', 'orders'));
     }
     public function artistRegister()
     {
         session()->put('popupBoxValue', '3');
         $orders = DB::table('orders')
-        ->join('products', 'orders.productId', '=', 'products.id')
-        ->select('products.name','orders.*')
-        ->where('userId', Auth::id())
-        ->get();
+            ->join('products', 'orders.productId', '=', 'products.id')
+            ->select('products.name', 'orders.*')
+            ->where('userId', Auth::id())
+            ->get();
         $OrderList = Order::with('products')->get();
         $total = Order::where('userId', Auth::id())->get()->sum('price');
         $art = DB::table('orders')
-        ->join('users', 'orders.userId', '=', 'users.id')
-        ->select('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
-        ->where('orders.userId', '=', Auth::id())
-        ->groupBy('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
-        ->get();
-        return view('user.profileDetail.user-profile', compact('OrderList','art','total','order'));
+            ->join('users', 'orders.userId', '=', 'users.id')
+            ->select('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
+            ->where('orders.userId', '=', Auth::id())
+            ->groupBy('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
+            ->get();
+        return view('user.profileDetail.user-profile', compact('OrderList', 'art', 'total', 'order'));
     }
 
     public function Art()
@@ -118,15 +118,13 @@ class HomeController extends Controller
                     'code' => 1,
                     'count' => $count,
                 ]);
-            }
-            else if($cart->productStatus=="sold") {
+            } else if ($cart->productStatus == "sold") {
                 return response()->json([
                     'status' => 'success',
                     'message' => "Sorry,Product Already Sold.",
                     'code' => 1,
                 ]);
-            }
-            else {
+            } else {
                 $cartDetail = new AddToCart();
                 $cartDetail->productId = $cart->id;
                 $cartDetail->userId = Auth::id();

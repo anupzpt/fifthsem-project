@@ -276,15 +276,9 @@
                                     <div class="description">
                                         {{ $userDetail->OrderRemarks }}
                                     </div>
-<<<<<<< HEAD
                                     <div class="total-cost">
                                         Rs.{{ $userDetail->total }}
-=======
-                                    {{-- <div class="total-cost">
-                                        Rs.{{ $total }}
->>>>>>> c4c8367963bdb78d77345327d1aacc7f343887f8
-
-                                    </div> --}}
+                                    </div>
                                 </div>
                                 <div class="container sub-menu-tab">
                                     <div class="row ">
@@ -405,7 +399,6 @@
                                                             </tr>
                                                             @foreach ($orders as $item)
                                                                 @if ($item->OrderCode == $userDetail->OrderCode)
-
                                                                     <tr>
                                                                         <td style="padding-top: 10px;">
                                                                             {{ $item->name }}
@@ -413,10 +406,6 @@
                                                                         <td
                                                                             style="text-align: right; padding-top: 10px;">
                                                                             Rs.{{ $item->price }}
-<<<<<<< HEAD
-
-=======
->>>>>>> c4c8367963bdb78d77345327d1aacc7f343887f8
 
                                                                             {{-- @php
                                                                                 $total = 0;
@@ -432,12 +421,9 @@
                                                                     Total:
                                                                 </th>
                                                                 <td style="text-align: right; padding-top: 10px;">
-<<<<<<< HEAD
                                                                     Rs.{{ $userDetail->total }}
-=======
                                                                     Rs.{{ $total }}
 
->>>>>>> c4c8367963bdb78d77345327d1aacc7f343887f8
                                                                 </td>
                                                             </tr>
                                                         </table>
