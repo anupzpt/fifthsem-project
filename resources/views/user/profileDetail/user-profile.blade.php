@@ -474,10 +474,9 @@
                                     <div class="description">
                                         {{ $userDetail->OrderRemarks }}
                                     </div>
-                                    {{-- <div class="total-cost">
-                                        Rs.{{ $total }}
-
-                                    </div> --}}
+                                    <div class="total-cost">
+                                        Rs.{{ $userDetail->total }}
+                                    </div>
                                 </div>
                                 <div class="container sub-menu-tab">
                                     <div class="row ">
@@ -598,7 +597,6 @@
                                                             </tr>
                                                             @foreach ($orders as $item)
                                                                 @if ($item->OrderCode == $userDetail->OrderCode)
-
                                                                     <tr>
                                                                         <td style="padding-top: 10px;">
                                                                             {{ $item->name }}
@@ -621,6 +619,7 @@
                                                                     Total:
                                                                 </th>
                                                                 <td style="text-align: right; padding-top: 10px;">
+                                                                    Rs.{{ $userDetail->total }}
                                                                     Rs.{{ $total }}
 
                                                                 </td>

@@ -23,7 +23,15 @@ class HomeController extends Controller
         $products = Product::take(3)->get();
         $latestPosts = Product::limit(3)->latest('created_at')->get();
         $count = AddToCart::where('userId', Auth::id())->get()->count();
-        return view('user.dashboard.dashboard', compact('products', 'latestPosts', 'count'));
+        $product = DB::table('products')
+            ->select('category_id', DB::raw('count(*) as total'))
+            ->groupBy('category_id')
+            ->orderByDesc('total')
+            ->first();
+        $popularProducts = DB::table('products')
+            ->where('category_id', $product->category_id)
+            ->get();
+        return view('user.dashboard.dashboard', compact('products', 'latestPosts', 'count','popularProducts'));
     }
     public function myOrder()
     {
