@@ -483,7 +483,7 @@
                                         <div class="col-md-12">
                                             <div class="tab">
                                                 <button class="tablinks"
-                                                    onclick="openCity(event, 'ProductDetail{{ $userDetail->OrderCode }}')">User
+                                                    onclick="openCity(event, 'ProductDetail{{ $userDetail->OrderCode }}')" >User
                                                     Detail</button>
                                                 <button class="tablinks"
                                                     onclick="openCity(event, 'Status{{ $userDetail->OrderCode }}')">Status</button>
@@ -620,7 +620,7 @@
                                                                 </th>
                                                                 <td style="text-align: right; padding-top: 10px;">
                                                                     Rs.{{ $userDetail->total }}
-                                                                    Rs.{{ $total }}
+                                                                    {{-- Rs.{{ $total }} --}}
 
                                                                 </td>
                                                             </tr>
