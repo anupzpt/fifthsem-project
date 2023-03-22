@@ -31,7 +31,7 @@ class HomeController extends Controller
         $popularProducts = DB::table('products')
             ->where('category_id', $product->category_id)
             ->get();
-            
+
         return view('user.dashboard.dashboard', compact('products', 'latestPosts', 'count','popularProducts'));
     }
     public function myOrder()
@@ -134,7 +134,7 @@ class HomeController extends Controller
                 $count = AddToCart::where('userId', Auth::id())->get()->count();
                 return response()->json([
                     'status' => 'success',
-                    'message' => $cartCheck,
+                    'message' => "Successfully added",
                     'code' => 0,
                     'count' => $count,
 
