@@ -8,7 +8,7 @@
         <div class="category-content grid">
             @foreach ($popularProducts as $item)
                 <div class="category-item">
-                    <img src="userpanel/images/category_img_2.png" />
+                    <img src="{{asset('/uploads'.'/'.$item->image)}}" />
                     <div class="category-badge bg-white text-white flex">
                         {{$item->name}}
                     </div>

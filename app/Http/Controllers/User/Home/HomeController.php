@@ -31,6 +31,7 @@ class HomeController extends Controller
         $popularProducts = DB::table('products')
             ->where('category_id', $product->category_id)
             ->get();
+            
         return view('user.dashboard.dashboard', compact('products', 'latestPosts', 'count','popularProducts'));
     }
     public function myOrder()
