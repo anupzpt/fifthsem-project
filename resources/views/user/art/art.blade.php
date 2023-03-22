@@ -1,7 +1,7 @@
 @extends('user.layout.master')
 @section('content')
     <section class="design" id="design">
-        <link href="toastr.css" rel="stylesheet" />
+        <link href="toastr.css" rel="stylesheet"/>
         <div class="container">
             <div class="title">
                 <h1>Arts & Designs</h1>
@@ -64,10 +64,12 @@
 
              },
              success: function(response) {
-                 console.log(response.message);
+                //  console.log(response.message);
                  if (response.code == 0) {
                      $(".cartCount").text("")
                      $(".cartCount").text(response.count);
+                     toastr.success(response.message)
+
                  }
                  if (response.code == 1) {
                      toastr.error(response.message)
