@@ -65,7 +65,7 @@ class HomeController extends Controller
         $total = Order::where('userId', Auth::id())->get()->sum('OrderCode->price');
         $art = DB::table('orders')
             ->join('users', 'orders.userId', '=', 'users.id')
-            ->select('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
+            ->select('users.email', DB::raw('SUM(orders.price) as total'), 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
             ->where('orders.userId', '=', Auth::id())
             ->groupBy('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
             ->get();
@@ -83,7 +83,7 @@ class HomeController extends Controller
         $total = Order::where('userId', Auth::id())->get()->sum('price');
         $art = DB::table('orders')
             ->join('users', 'orders.userId', '=', 'users.id')
-            ->select('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
+            ->select('users.email', DB::raw('SUM(orders.price) as total'), 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
             ->where('orders.userId', '=', Auth::id())
             ->groupBy('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
             ->get();

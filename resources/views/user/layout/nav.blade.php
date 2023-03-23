@@ -153,7 +153,7 @@
              </a>
              <a href="{{route('admin.index')}}" class="sub-menu-link">
                  <img src="{{asset('userpanel/images/cancel.png')}}">
-                 <p>Admin page</p>
+                 <p>Add Your Arts</p>
                  <span>></span>
              </a>
              <a href="{{ route('logout') }}" class="sub-menu-link">

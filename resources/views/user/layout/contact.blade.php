@@ -59,7 +59,7 @@
                         <button type="submit" class="btn-header text-white bg-brown">
                             Send
                         </button>
-                        -->
+                        
                     </div>
                 </form>
             </div>
