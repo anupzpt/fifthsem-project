@@ -569,13 +569,13 @@
                                                     <button onclick="printDiv('Invoice{{ $userDetail->OrderCode }}')"
                                                         style="border:none;background-color: green; color: white;width:100px;height:30px"><i
                                                             class="fa-solid fa-print "
-                                                            style="margin-right: 10px"></i>Print</button>
+                                                            style="margin-right: 10px; margin-top:10px; "></i>Print</button>
                                                 </div>
                                                 <h3>Invoice</h3>
 
                                                 @if ($userDetail->payment_status == 'Approved')
                                                     <div
-                                                        style="border: 2px solid #ccc; border-radius: 5px; padding: 20px; width: 400px; font-family: Arial, sans-serif; margin-left:30%">
+                                                        style="border: 2px solid #ccc; border-radius: 5px; padding: 20px; width: 400px; font-family: Arial, sans-serif; margin-left:30% ; margin-top:2rem; margin-bottom:1rem;">
                                                         <h1
                                                             style="font-size: 24px; margin: 0; padding-bottom: 10px; border-bottom: 2px solid #ccc;">
                                                             Invoice </h1>
@@ -701,7 +701,7 @@
                                 </span>
                             </div>
 
-                            <div class="form-floating mb-3">
+                            {{-- <div class="form-floating mb-3">
                                 <input type="text" class="form-control @error('address') is-invalid @enderror"
                                     id="floatingInput" name="address" placeholder="Address">
                                 <label for="floatingInput">Address</label>
@@ -710,14 +710,14 @@
                                         {{ $message }}
                                     @enderror
                                 </span>
-                            </div>
+                            </div> --}}
 
-                            <div class="form-check d-flex align-items-center">
+                            {{-- <div class="form-check d-flex align-items-center">
                                 <input class="form-check-input check" type="checkbox" id="gridCheck">
                                 <label class="form-check-label ms-2" for="gridCheck">
                                     I Agree <a href="#">Terms and conditions</a>.
                                 </label>
-                            </div>
+                            </div> --}}
                             <input type="hidden" value="{{ auth()->user()->id}}" name="id">
                             <input type="hidden" value="{{auth()->user()->user_type}}" name="user_type">
 
