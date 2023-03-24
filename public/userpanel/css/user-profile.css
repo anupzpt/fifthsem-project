@@ -14,15 +14,15 @@
     width: 100%;
     height: 80px;
     color: white;
-    padding: 10px;
     display: flex;
 }
 .logoimg {
     margin-left: 12rem;
+    margin-top: 2px;
 }
 .myheader {
     margin-left: 20rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
     font-family: "Poppins", sans-serif;
 }
 .myfooter {
@@ -209,6 +209,7 @@
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
+    margin-bottom: 2rem;
 }
 .ProductDetail {
     display: block;

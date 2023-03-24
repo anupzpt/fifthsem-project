@@ -21,8 +21,8 @@
 <body>
     <div class="mycontainer">
         <div class="logoimg">
-            <img src="{{ asset('userpanel/images/logo-white.png') }}" alt="img"
-                style="height: 4rem; width: 7rem" />
+            <a href="{{ route('home.index') }}"><img src="{{ asset('userpanel/images/logo-white.png') }}" alt="img" style="height: 5rem; width: 9rem" /></a>
+
         </div>
         <div class="myheader">
             <h3> My Profile</h3>
@@ -564,25 +564,25 @@
                                                 @endif
                                             </div>
 
-                                            <div id="Invoice{{ $userDetail->OrderCode }}" class="tabcontent">
+                                            <div id="Invoice{{ $userDetail->OrderCode }}" class="tabcontent" style="padding: 3rem">
                                                 <div style="float:right">
                                                     <button onclick="printDiv('Invoice{{ $userDetail->OrderCode }}')"
-                                                        style="border:none;background-color: green; color: white;width:100px;height:30px"><i
+                                                        style="border:none;background-color: green; color: white;width:100px;height:30px; "><i
                                                             class="fa-solid fa-print "
                                                             style="margin-right: 10px; margin-top:10px; "></i>Print</button>
                                                 </div>
                                                 <h3>Invoice</h3>
-
+                                                {{-- <img src="{{ asset('userpanel/images/logo-black.png') }}" alt="img" style="height: 7rem; width: 13rem" /> --}}
                                                 @if ($userDetail->payment_status == 'Approved')
                                                     <div
                                                         style="border: 2px solid #ccc; border-radius: 5px; padding: 20px; width: 400px; font-family: Arial, sans-serif; margin-left:30% ; margin-top:2rem; margin-bottom:1rem;">
                                                         <h1
-                                                            style="font-size: 24px; margin: 0; padding-bottom: 10px; border-bottom: 2px solid #ccc;">
-                                                            Invoice </h1>
-                                                        <p style="font-size: 16px; margin: 0; padding-top: 10px;">
+                                                            style="font-size: 30px; margin: 0; padding-bottom: 10px; border-bottom: 2px solid #ccc;">
+                                                           Arthic </h1>
+                                                        <p style="font-size: 16px; margin: 0; padding-top: 20px;">
                                                             Billed
                                                             To: {{ $userDetail->name }}</p>
-                                                        <p style="font-size: 16px; margin: 0;">Address:
+                                                        <p style="font-size: 16px; margin: 0; margin-top:10px">Address:
                                                             {{ $userDetail->address }}
                                                         </p>
                                                         <table
@@ -871,17 +871,39 @@
     });
 </script>
 <script>
+    // function printDiv(divid) {
+    //     const divToPrint = document.getElementById(divid);
+    //     // Create a new window and write the contents of the div to it
+    //     const newWindow = window.open('', 'Print Window');
+    //     newWindow.document.write(divToPrint.outerHTML);
+    //     newWindow.document.close();
+    //     // Print the contents of the new window
+    //     newWindow.focus();
+    //     newWindow.print();
+    //     newWindow.close();
+    // }
     function printDiv(divid) {
-        const divToPrint = document.getElementById(divid);
-        // Create a new window and write the contents of the div to it
-        const newWindow = window.open('', 'Print Window');
-        newWindow.document.write(divToPrint.outerHTML);
-        newWindow.document.close();
-        // Print the contents of the new window
-        newWindow.focus();
-        newWindow.print();
-        newWindow.close();
-    }
+  const divToPrint = document.getElementById(divid);
+
+  // Add some text to the div
+  const text = document.createTextNode("Arthic");
+  divToPrint.appendChild(text);
+
+  // Create a new window and write the contents of the div to it
+  const newWindow = window.open("", "Print Window");
+  newWindow.document.write(divToPrint.outerHTML);
+  newWindow.document.close();
+
+  // Print the contents of the new window
+  newWindow.focus();
+  newWindow.print();
+  newWindow.close();
+
+  // Remove the text from the div so it doesn't appear when printing
+  divToPrint.removeChild(text);
+}
+
+
 </script>
 
 </html>

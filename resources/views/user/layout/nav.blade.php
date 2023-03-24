@@ -5,7 +5,8 @@
              <button type="button" id="bars" class="btn navbar-show-btn text-white">
                  <i class="fas fa-bars"></i>
              </button>
-             <img src="{{ asset('userpanel/images/logo-white.png') }}" alt="img" style="height: 7rem; width: 13rem" />
+             <a href="{{ route('home.index') }}"><img src="{{ asset('userpanel/images/logo-white.png') }}" alt="img" style="height: 7rem; width: 13rem" /></a>
+
              <!-- <div class="logo">
               <span>Artihc</span>
             </div> -->
