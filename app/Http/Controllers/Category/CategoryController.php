@@ -112,4 +112,10 @@ class CategoryController extends Controller
     {
         //
     }
+    public function DeleteCategory(Request $request){
+       $category=Category::find($request->get('id'));
+       DB::table('products')->where('category_id', $request->get('id'))->delete();
+       $category->delete();
+       return redirect()->route('Category.index');
+    }
 }
