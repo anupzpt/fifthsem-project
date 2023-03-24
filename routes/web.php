@@ -61,6 +61,8 @@ Route::resource('/admin', DashboardController::class)->middleware(['auth']);
 Route::resource('/Admin/Category', CategoryController::class);
 Route::resource('/Admin/Product', ProductController::class);
 Route::resource('/Admin/OrderList', OrderListController::class);
+Route::post('/admin/category/delete-category',[CategoryController::class,'DeleteCategory'])->name('category.deletecategory');
+
 
 Route::resource('/Customer/Order', AddToCartController::class);
 Route::delete('delete-from-cart', [AddToCartController::class, 'delete'])->name('cart.delete');
