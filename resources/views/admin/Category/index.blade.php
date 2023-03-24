@@ -1,31 +1,7 @@
 @extends('admin.layouts.master')
 @section('content')
-    {{-- ---Model--- --}}
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-        Launch demo modal
-    </button>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>Are You sure</h5>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <div class="col-md-12">
 
         <div class="margin_top_30 padding-bottom_2 d-flex justify-content-end ">
@@ -76,26 +52,15 @@
                                             <h5><span class="badge  badge-pill badge-info text-white"></span></h5>
                                         @endif
                                     </td>
-                                    {{-- <td>
-                                        @if ($item->status == 'A')
-                                            <h5><span class="badge badge-pill  bg-success text-white">Active</span></h5>
-                                        @else
-                                            <h5><span class="badge  badge-pill bg-danger text-white">Inactive</span></h5>
-                                        @endif
-                                    </td> --}}
                                     <td>
-                                        {{-- <a href="{{ route('Category.edit', [$item->categoryId]) }}" class="ml-5 mt-1"><i
-                                                class="fa-solid fa-pen "></i></a> --}}
                                         <button class="btn btn-primary"> <a
                                                 href="{{ route('Category.edit', [$item->categoryId]) }}"
                                                 class="text-white"><span class="fas fa-pencil "></a></button>
                                         @if ($item->parent_id != null)
-                                            <button class="btn btn-danger deleteCategoryBtn">
-                                                <a href="{{ route('Category.destroy', [$item->categoryId]) }}"
-                                                    class="text-white"><span class="fas fa-trash "></a></button>
-                                        @else
+                                            <button type="button" class="btn btn-danger deleteCategoryBtn"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                value="{{ $item->categoryId }}"><span class="fas fa-trash "></span></button>
                                         @endif
-
                                     </td>
                                 </tr>
                             @endforeach
@@ -105,41 +70,45 @@
             </div>
         </div>
     </div>
-    {{-- modelii --}}
-    {{-- <div class="modal fade" id="deleteModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Delete Category with its product</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" name="category_delete_id" id="category_id">
-                    <h5>Are you sure you want to delete category with all its product.?</h5>
+                    Deleting this Category will automatically delete all the related products !!
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <form method="POST" action="{{ route('category.deletecategory') }}">
+                        @csrf
+                        <input type="hidden" id="deleteId" name="id">
+                        <button type="submit" class="btn btn-danger deletebtn">Continue</button>
+                    </form>
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 @endsection
 @section('scripts')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
-        crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
             $(document).on('click', '.deleteCategoryBtn', function() {
-                alert();
-                var category_id = $(this).val();
-                $('#category_id').val(category_id);
+                debugger;
+                $("#deleteId").val($(this).val());
+                if ($(this).val() == '') {
+                    $(".deletebtn").hide();
+                } else {
+                    $(".deletebtn").show();
+                }
             });
-            $('#deleteModel').model('show');
         });
     </script>
 @endsection
