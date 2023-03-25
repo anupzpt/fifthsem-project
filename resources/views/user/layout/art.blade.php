@@ -49,7 +49,7 @@
      crossorigin="anonymous"></script>
  <script>
      function set($id) {
-         if ($("#user_type").val() != 1 ) {
+         if ($("#user_type").val() != 1 &&  $("#user_type").val() != 2) {
              $.ajax({
                  url: '{{ route('home.cart') }}',
                  type: 'POST',
