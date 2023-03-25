@@ -8,7 +8,7 @@
         <a class="btn btns btn-success p-3" href="{{ route('AdminList.create') }}" type="button">Add Admin</a>
     </div>
     <div class="dark_shd full margin_bottom_30 border">
-        <div class="full graph_head center" style="background-color: #2E8B57">
+        <div class="full graph_head center" style="background-color: #214162">
             <div class="heading1 margin_0 text-white">
                 <h2>Admin Table</h2>
             </div>
@@ -39,7 +39,7 @@
                             <td>{{$item->email}} </td>
                             <td>{{ $item->contact }}</td>
                             <td>{{ $item->address }}</td>
-                            
+
                             <td>
                                 <img src="{{asset('/uploads'.'/'.$item->img_path)}}" width="70px" height="70px" alt="image">
                             </td>
@@ -67,3 +67,4 @@
 
 </div>
 @endsection
+
