@@ -2,7 +2,7 @@
 @section('content')
 <div class="col-md-12">
    <div class="dark_shd full margin_bottom_30 border mt-5">
-    <div class="full graph_head center" style="background-color:deepskyblue">
+    <div class="full graph_head center" style="background-color:#ff5722">
         <div class="heading1 margin_0 text-white">
             <h2>User Table</h2>
         </div>
@@ -35,7 +35,7 @@
                             <img src="{{ $item->img_path}}" width="70px" height="70px" alt="image">
                         </td>
                         <td>
-                            
+
                         </td>
                     </tr>
                     @endforeach
@@ -43,6 +43,6 @@
             </table>
         </div>
     </div>
-   </div> 
+   </div>
 </div>
 @endsection
