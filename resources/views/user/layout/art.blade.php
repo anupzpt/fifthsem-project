@@ -38,7 +38,12 @@
          </div>
          <div>
              <div class="center">
-                 <a href="{{ route('home.art') }}" class="button btn-primary ">View More</a>
+                @if (Auth::user())
+                <a href="{{ route('home.art') }}" class="button btn-primary ">View More</a>
+
+            @else
+                <a href="{{ route('login') }}" class="button btn-primary ">View More</a>
+            @endif
              </div>
          </div>
          @if (Auth::id() > 0)
