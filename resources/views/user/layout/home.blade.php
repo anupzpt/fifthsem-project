@@ -8,7 +8,14 @@
 
                 <h1>everything that you want to know about art & design</h1>
                 <br />
+                @if(Auth::user())
                 <a href="{{route('home.art')}}" class="btn-header text-white bg-brown">shop now</a>
+
+@else
+<a href="{{route('login')}}" class="btn-header text-white bg-brown">shop now</a>
+
+
+@endif
             </div>
         </div>
     </div>
