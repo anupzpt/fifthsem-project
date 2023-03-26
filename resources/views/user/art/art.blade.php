@@ -1,7 +1,7 @@
 @extends('user.layout.master')
 @section('content')
     <section class="design" id="design">
-        <link href="toastr.css" rel="stylesheet"/>
+        <link href="toastr.css" rel="stylesheet" />
         <div class="container">
             <div class="title">
                 <h1>Arts & Designs</h1>
@@ -39,7 +39,12 @@
                             <span class="fw-bold d-block">RS. {{ $product->price }}</span>
                             <button id="cart" class="button btn-primary mt-3 cart"
                                 onClick="set('{{ $product->id }}')">Add to Cart</button>
-                            <a href="{{route('UserOrderList.show',[$product->id])}}" class="button btn-primary mt-3 ml-2">Buy it Now</a>                        </div>
+
+                                {{-- <a href="{{ route('UserOrderList.show', [$product->id]) }}"
+                                    class="button btn-primary mt-3 ml-2">Buy it Now</a> --}}
+                                    <a onClick="buyNow('{{ $product->id }}')" class="button btn-primary mt-3 ml-2">Buy it Now</a>
+
+                        </div>
                     </div>
                 @endforeach
             </div>
@@ -53,38 +58,118 @@
 <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
     crossorigin="anonymous"></script>
 {{-- <script src="toastr.js"></script> --}}
-<script>
-     function set($id) {
-         $.ajax({
-             url: '{{ route('home.cart') }}',
-             type: 'POST',
-             data: {
-                 "_token": "{{ csrf_token() }}",
-                 "id": $id
+{{-- <script>
+    function set($id) {
+        $.ajax({
+            url: '{{ route('home.cart') }}',
+            type: 'POST',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "id": $id
 
-             },
-             success: function(response) {
+            },
+            success: function(response) {
                 //  console.log(response.message);
-                 if (response.code == 0) {
-                     $(".cartCount").text("")
-                     $(".cartCount").text(response.count);
-                     toastr.success(response.message)
+                if (response.code == 0) {
+                    $(".cartCount").text("")
+                    $(".cartCount").text(response.count);
+                    toastr.success(response.message)
 
-                 }
-                 if (response.code == 1) {
-                     toastr.error(response.message)
-                 }
-                 if (response.code == 101) {
+                }
+                if (response.code == 1) {
+                    toastr.error(response.message)
+                }
+                if (response.code == 101) {
 
-                     window.location.href = "{{ route('login') }}";
+                    window.location.href = "{{ route('login') }}";
 
-                 }
-             },
-             error: function(xhr) {
-                 alert(xhr.responseText);
-             }
-         });
-     }
+                }
+            },
+            error: function(xhr) {
+                alert(xhr.responseText);
+            }
+        });
+    }
+    $(document).ready(function() {
+
+        $(".cart").click(function() {
+            // debugger
+
+        });
+    });
+</script> --}}
+<script>
+    function set($id) {
+        if ($("#user_type").val() != 1 &&  $("#user_type").val() != 2) {
+            $.ajax({
+                url: '{{ route('home.cart') }}',
+                type: 'POST',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "id": $id
+
+                },
+                success: function(response) {
+                    debugger
+                    console.log(response);
+                    if (response.code == 0) {
+                        $(".cartCount").text("")
+                        $(".cartCount").text(response.count);
+                    }
+                    if (response.code == 1) {
+                        toastr.error(response.message)
+                    }
+                    if (response.code == 101) {
+
+                        window.location.href = "{{ route('login') }}";
+
+                    }
+                },
+                error: function(xhr) {
+                    alert(xhr.responseText);
+                }
+            });
+        } else {
+            toastr.error("Try Login as a user", "Sorry,Not Authorized!!");
+        }
+    }
+
+    function buyNow($id) {
+        if ($("#user_type").val() != 1) {
+
+            $.ajax({
+                url: '{{ route('UserOrderList.check') }}',
+                type: 'POST',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "id": $id
+                },
+                success: function(response) {
+                    console.log(response.message);
+
+                    if (response.code == 0) {
+                        var orderId = response.message;
+                        window.location.href = "{{ route('UserOrderList.show', ':id') }}".replace(':id',
+                            orderId);
+                    }
+
+                    if (response.code == 1) {
+                        toastr.error(response.message)
+                    }
+                    if (response.code == 101) {
+
+                        window.location.href = "{{ route('login') }}";
+
+                    }
+                },
+                error: function(xhr) {
+                    alert(xhr.responseText);
+                }
+            });
+        } else {
+            toastr.error("Try Login as a user", "Sorry,Not Authorized!!");
+        }
+    }
     $(document).ready(function() {
 
         $(".cart").click(function() {
@@ -93,3 +178,4 @@
         });
     });
 </script>
+
