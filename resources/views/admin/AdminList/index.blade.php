@@ -1,11 +1,13 @@
 @extends('admin.layouts.master')
 @section('content')
 <div class="col-md-12">
-@if(session('status'))
-    <h6 class="alert alert-success">{{session('status')}}</h6>
-    @endif
     <div class="margin_top_30 padding-bottom_2 d-flex justify-content-end">
-        <a class="btn btns btn-success p-3" href="{{ route('AdminList.create') }}" type="button">Add Admin</a>
+        @if (session('status'))
+            <h3 class="alert alert-success">{{ session('status') }}</h3>
+        @endif
+    </div>
+    <div class="margin_top_10 padding-bottom_2 d-flex justify-content-end ">
+        <a class="btn btns btn-primary p-3" href="{{ route('AdminList.create') }}" type="button">Add Admin</a>
     </div>
     <div class="dark_shd full margin_bottom_30 border">
         <div class="full graph_head center" style="background-color: #214162">

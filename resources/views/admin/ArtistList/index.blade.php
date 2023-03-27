@@ -2,10 +2,13 @@
 @section('content')
 <div class="col-md-12">
 <div class="margin_top_30 padding-bottom_2 d-flex justify-content-end">
-        <a class="btn btns btn-primary p-3" href="{{ route('artistRequest') }}" type="button">Artist Requests</a>
     </div>
-   <div class="dark_shd full margin_bottom_30 border mt-5">
-    <div class="full graph_head center" style="background:  #ff5722;">
+    <div class="margin_top_10 padding-bottom_2 d-flex justify-content-end ">
+        <a class="btn btns btn-primary p-3" href="{{ route('artistRequest') }}" type="button">Artist Requests</a>
+
+    </div>
+   <div class="dark_shd full margin_bottom_30 border ">
+    <div class="full graph_head  center" style="background:  #ff5722;">
         <div class="heading1 margin_0 text-white">
             <h2>Artist Table</h2>
         </div>

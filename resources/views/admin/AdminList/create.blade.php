@@ -9,7 +9,7 @@
             <a class="btn btns btn-primary p-3 " href="{{ route('AdminList.index') }}" type="button">Back</a>
         </div>
         <div class="white_shd full margin_bottom_30 border ">
-            <div class="full graph_head center" style="background-color: #2E8B57">
+            <div class="full graph_head center" style="background-color:  #214162">
                 <div class="heading1 margin_0 text-white">
                     <h2>Add Admin</h2>
                 </div>
@@ -25,7 +25,7 @@
                                 <input type="text" name="name" class="form-control  mt-1"
                                     placeholder="Enter Admin Name">
                             </div>
-                          
+
                             <div class="form-group">
                                 <label for=""> Email</label>
                                 <input type="text" class="form-control  mt-1" name="email" placeholder="Enter Email of Admin">
@@ -51,7 +51,7 @@
                                 <input type="hidden" name="user_type" value="1" class="form-control  mt-1"
                                     placeholder="Set Password for Admin">
                             </div>
-                            
+
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Choose Image</label>
                                 <input class="form-control" type="file" name='img_path' id="formFile"
