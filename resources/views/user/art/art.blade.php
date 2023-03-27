@@ -40,9 +40,9 @@
                             <button id="cart" class="button btn-primary mt-3 cart"
                                 onClick="set('{{ $product->id }}')">Add to Cart</button>
 
-                                {{-- <a href="{{ route('UserOrderList.show', [$product->id]) }}"
+                            {{-- <a href="{{ route('UserOrderList.show', [$product->id]) }}"
                                     class="button btn-primary mt-3 ml-2">Buy it Now</a> --}}
-                                    <a onClick="buyNow('{{ $product->id }}')" class="button btn-primary mt-3 ml-2">Buy it Now</a>
+                            <a onClick="buyNow('{{ $product->id }}')" class="button btn-primary mt-3 ml-2">Buy it Now</a>
 
                         </div>
                     </div>
@@ -52,6 +52,9 @@
         <!-- end of item -->
         </div>
         </div>
+        @if (Auth::id() > 0)
+            <input type="hidden" id="user_type" value="{{ Auth::user()->user_type }}">
+        @endif
     </section>
 @endsection
 
@@ -100,7 +103,7 @@
 </script> --}}
 <script>
     function set($id) {
-        if ($("#user_type").val() != 1 &&  $("#user_type").val() != 2) {
+        if ($("#user_type").val() != 1 && $("#user_type").val() != 2) {
             $.ajax({
                 url: '{{ route('home.cart') }}',
                 type: 'POST',
@@ -178,4 +181,3 @@
         });
     });
 </script>
-

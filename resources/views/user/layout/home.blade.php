@@ -5,7 +5,6 @@
                 <h1 class="banner-title">
                     <span>Artihc</span>
                 </h1>
-
                 <h1>everything that you want to know about art & design</h1>
                 <br />
                 @if (Auth::user())

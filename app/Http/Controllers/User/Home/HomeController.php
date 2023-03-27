@@ -35,7 +35,7 @@ class HomeController extends Controller
         ->where('user_type', '2')
         ->get();
 
-        return view('user.dashboard.dashboard', compact('products','artists', 'latestPosts', 'count','popularProducts'));
+        return view('user.dashboard.dashboard', compact('products','artists', 'latestPosts', 'count','product','popularProducts'));
     }
     public function myOrder()
     {
@@ -104,7 +104,6 @@ class HomeController extends Controller
 
     public function Cart(Request $request)
     {
-
         if (Auth::id() == null) {
             return response()->json([
                 'message' => Auth::check(),

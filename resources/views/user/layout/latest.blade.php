@@ -19,7 +19,7 @@
                     <div class="text-center">
                         <p class="text-capitalize mt-3 mb-1">{{$latest->name}}</p>
                         <span class="fw-bold d-block">Rs. {{$latest->price}}</span>
-                         <a onClick="buyNow('{{ $product->id }}')" class="buttons btn-primary mt-3 ml-2">Buy it Now</a>
+                         <a href="#" class="buttons btn-primary mt-3 ml-2">Buy it Now</a>
 
                     </div>
                 </div>
