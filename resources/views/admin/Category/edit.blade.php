@@ -42,13 +42,6 @@
                         </div>
                     @endif
 
-                    <div class="form-group  p-2">
-                        <label for="exampleInputPassword1">Status</label>
-                        <label class="switch ml-3">
-                            <input type="checkbox" name="status" value="A" checked>
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
                     @if ($category->isParent == 1)
                         <div class="form-group  p-2" id="dropdown" style="display: none">
                         </div>

@@ -29,7 +29,7 @@ class HomeController extends Controller
             ->orderByDesc('total')
             ->first();
         $popularProducts = DB::table('products')
-            // ->where('category_id', $product->category_id)
+            ->where('category_id', $product->category_id)
             ->get();
         $artists = DB::table('users')
         ->where('user_type', '2')
