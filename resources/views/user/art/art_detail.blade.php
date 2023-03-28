@@ -43,9 +43,9 @@
         <!-- end of item -->
         </div>
         </div>
-        @if (Auth::id() > 0)
+        {{-- @if (Auth::id() > 0)
             <input type="hidden" id="user_type" value="{{ Auth::user()->user_type }}">
-        @endif
+        @endif --}}
     </section>
 @endsection
 

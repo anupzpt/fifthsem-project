@@ -34,7 +34,6 @@ class HomeController extends Controller
         $artists = DB::table('users')
         ->where('user_type', '2')
         ->get();
-
         return view('user.dashboard.dashboard', compact('products','artists', 'latestPosts', 'count','product','popularProducts'));
     }
     public function myOrder()

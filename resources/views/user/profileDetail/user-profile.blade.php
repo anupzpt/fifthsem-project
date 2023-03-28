@@ -483,7 +483,7 @@
                                         <div class="col-md-12">
                                             <div class="tab">
                                                 <button class="tablinks"
-                                                    onclick="openCity(event, 'ProductDetail{{ $userDetail->OrderCode }}')" >User
+                                                    onclick="openCity(event, 'ProductDetail{{ $userDetail->OrderCode }}')">User
                                                     Detail</button>
                                                 <button class="tablinks"
                                                     onclick="openCity(event, 'Status{{ $userDetail->OrderCode }}')">Status</button>
@@ -701,7 +701,7 @@
                                 </span>
                             </div>
 
-                            {{-- <div class="form-floating mb-3">
+                            <div class="form-floating mb-3">
                                 <input type="text" class="form-control @error('address') is-invalid @enderror"
                                     id="floatingInput" name="address" placeholder="Address">
                                 <label for="floatingInput">Address</label>
@@ -710,7 +710,7 @@
                                         {{ $message }}
                                     @enderror
                                 </span>
-                            </div> --}}
+                            </div>
 
                             {{-- <div class="form-check d-flex align-items-center">
                                 <input class="form-check-input check" type="checkbox" id="gridCheck">
