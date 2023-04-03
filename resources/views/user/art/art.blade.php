@@ -123,9 +123,7 @@
                         toastr.error(response.message)
                     }
                     if (response.code == 101) {
-
                         window.location.href = "{{ route('login') }}";
-
                     }
                 },
                 error: function(xhr) {
@@ -160,9 +158,7 @@
                         toastr.error(response.message)
                     }
                     if (response.code == 101) {
-
                         window.location.href = "{{ route('login') }}";
-
                     }
                 },
                 error: function(xhr) {
