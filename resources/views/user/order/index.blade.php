@@ -22,7 +22,6 @@
                     <div class="col-75">
                         <div class="container">
                             <form action="/action_page.php">
-
                                 <div class="row row-order">
                                     <div class="col-50" style="margin-left:-7%">
                                         <h3 style="margin-bottom: 5px;">Billing Address</h3>

@@ -97,6 +97,12 @@ class UserOrderController extends Controller
     public function CheckCart(Request $request)
     {
         $cart = Product::find($request->get('id'));
+        if (Auth::id() == null) {
+            return response()->json([
+                'message' => Auth::check(),
+                'code' => 101,
+            ]);
+        }
         if($cart->productStatus=="sold") {
             return response()->json([
                 'status' => 'success',
