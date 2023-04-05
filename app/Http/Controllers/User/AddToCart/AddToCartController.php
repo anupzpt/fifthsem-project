@@ -124,7 +124,8 @@ class AddToCartController extends Controller
         // $cart=AddToCart::find($request->get('id'));
 
         $cartId = $request->input('productId');
-        $cart = AddToCart::where('productId', $cartId);
+        $cart = AddToCart::where('productId', $cartId)
+                        ->where('userId',Auth::id());
         $cart->delete();
         return response()->json(['status' =>  "Deleted"]);
     }
