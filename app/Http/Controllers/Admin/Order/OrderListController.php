@@ -127,6 +127,7 @@ class OrderListController extends Controller
             Order::where('OrderCode',  $request->get('OrderCode'))->update([
                 'VerifiedRemarks' => $request->get('Remarks'),
                 'payment_status' => $request->get('Status')
+                // 'payment_status' => $request->get('Status')
             ]);
         } else {
             Order::where('OrderCode',  $request->get('OrderCode'))->update([
