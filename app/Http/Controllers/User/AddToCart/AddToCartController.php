@@ -130,7 +130,4 @@ class AddToCartController extends Controller
         return response()->json(['status' =>  "Deleted"]);
     }
 
-    // public function order(Request $request){
-    //     dd('antenna');
-    // }
 }

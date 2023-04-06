@@ -167,11 +167,6 @@ class OrderListController extends Controller
     }
     public function ViewOrderDetail($orderCode)
     {
-        // $art = DB::table('orders')
-        // ->join('products', 'products.id', '=', 'orders.productId')
-        // ->select('products.id','products.image','products.name', 'products.price')
-        // ->groupBy('orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address')
-        // ->get();
         $orderDetail = Order::join('products', 'products.id', '=', 'orders.productId')
             ->select('products.id','products.image','products.name', 'products.price','orders.*')
             ->where('orders.OrderCode', $orderCode)
