@@ -110,7 +110,9 @@ class HomeController extends Controller
             ]);
         } else {
             $cart = Product::find($request->get('id'));
-            $cartCheck = AddToCart::where('productId', $request->get('id'))->get()->count();
+            $cartCheck = AddToCart::where('productId', $request->get('id'),'userId')
+                                    ->where('userId', Auth::id())
+                                    ->get()->count();
             if ($cartCheck != null) {
                 $count = AddToCart::where('userId', Auth::id())->get()->count();
                 return response()->json([
