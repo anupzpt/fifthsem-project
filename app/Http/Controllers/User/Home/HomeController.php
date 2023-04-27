@@ -29,7 +29,6 @@ class HomeController extends Controller
             ->orderByDesc('total')
             ->first();
         $popularProducts = DB::table('products')
-            // ->where('category_id', $product->category_id)
             ->get();
         $artists = DB::table('users')
         ->where('user_type', '2')
@@ -46,7 +45,7 @@ class HomeController extends Controller
             ->get();
         $OrderList = Order::with('products')->where('userId', Auth::id())
             ->get();
-            
+
         $total = Order::where('userId', Auth::id())->get()->sum('price');
         $art = DB::table('orders')
             ->join('users', 'orders.userId', '=', 'users.id')
@@ -76,6 +75,7 @@ class HomeController extends Controller
     }
     public function artistRegister()
     {
+        $userdetail=Auth::User();
         session()->put('popupBoxValue', '3');
         $orders = DB::table('orders')
             ->join('products', 'orders.productId', '=', 'products.id')
@@ -90,7 +90,7 @@ class HomeController extends Controller
             ->where('orders.userId', '=', Auth::id())
             ->groupBy('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
             ->get();
-        return view('user.profileDetail.user-profile', compact('OrderList', 'art', 'total', 'orders'));
+        return view('user.profileDetail.user-profile', compact('OrderList', 'art', 'total', 'orders','userdetail'));
     }
 
     public function Art()
