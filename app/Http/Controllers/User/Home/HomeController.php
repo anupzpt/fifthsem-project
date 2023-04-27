@@ -29,7 +29,7 @@ class HomeController extends Controller
             ->orderByDesc('total')
             ->first();
         $popularProducts = DB::table('products')
-            ->where('category_id', $product->category_id)
+            // ->where('category_id', $product->category_id)
             ->get();
         $artists = DB::table('users')
         ->where('user_type', '2')
@@ -46,6 +46,7 @@ class HomeController extends Controller
             ->get();
         $OrderList = Order::with('products')->where('userId', Auth::id())
             ->get();
+            
         $total = Order::where('userId', Auth::id())->get()->sum('price');
         $art = DB::table('orders')
             ->join('users', 'orders.userId', '=', 'users.id')
