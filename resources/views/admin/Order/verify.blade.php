@@ -26,10 +26,10 @@
                                     <td><Strong>Contact Number :</Strong></td>
                                     <td>{{$userDetail->contact}}</td>
                                 </tr>
-                                <tr>
+                                {{-- <tr>
                                     <td><Strong>Address : </Strong></td>
                                     <td>{{$userDetail->address}}</td>
-                                </tr>
+                                </tr> --}}
                                 <tr>
                                     <td><strong>Delivery Address :</strong></td>
                                     <td>{{$order->address}}</td>
@@ -39,8 +39,8 @@
                     </div>
                     <div class="col-md-4">
                         <div style="width:80%;height:100%;margin-top:30px;margin-left:60px">
-                            <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80"
-                                width="100%" height="100%" />
+                            {{-- <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80"
+                                width="100%" height="100%" /> --}}
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                             <tbody>
                                 <tr>
                                     <td><strong>SN</strong></td>
-                                    <td><strong>Image</strong></td>
+                                    {{-- <td><strong>Image</strong></td> --}}
                                     <td><strong>Product Name</strong></td>
                                     <td><strong>Quantity</strong></td>
                                     <td><strong>Price</strong></td>
@@ -68,10 +68,9 @@
                                 @foreach ($orderDetail as $item)
                                     <tr>
                                         <td>{{ $sn++ }}</td>
-                                        <td><img class="image-responsive" src="{{ asset('/uploads' . '/' . $item->image) }}">
-                                        </td>
+
                                         <td>
-                                            {{ $item->name }}
+                                            {{ $item->productId }}
                                             <input type="hidden" name="productId" value="{{ $item->productId }}" />
                                         </td>
                                         <td>
@@ -90,7 +89,7 @@
                                     <td><strong>Total</strong></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
+                                    {{-- <td></td> --}}
                                     <td><strong>{{$total}}</strong></td>
                                 </tr>
                             </tbody>

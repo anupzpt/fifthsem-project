@@ -19,6 +19,7 @@ class HomeController extends Controller
 {
     public function Index()
     {
+
         session()->put(['popupBoxValue']);
         $products = Product::take(3)->get();
         $latestPosts = Product::limit(3)->latest('created_at')->get();
@@ -36,7 +37,7 @@ class HomeController extends Controller
         return view('user.dashboard.dashboard', compact('products','artists', 'latestPosts', 'count','product','popularProducts'));
     }
     public function myOrder()
-    {
+    {   $userdetail=Auth::User();
         session()->put('popupBoxValue', '2');
         $orders = DB::table('orders')
             ->join('products', 'orders.productId', '=', 'products.id')
@@ -45,7 +46,6 @@ class HomeController extends Controller
             ->get();
         $OrderList = Order::with('products')->where('userId', Auth::id())
             ->get();
-
         $total = Order::where('userId', Auth::id())->get()->sum('price');
         $art = DB::table('orders')
             ->join('users', 'orders.userId', '=', 'users.id')
@@ -53,10 +53,11 @@ class HomeController extends Controller
             ->where('orders.userId', '=', Auth::id())
             ->groupBy('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
             ->get();
-        return view('user.profileDetail.user-profile', compact('orders', 'OrderList', 'total', 'art'));
+        return view('user.profileDetail.user-profile', compact('orders', 'OrderList', 'total', 'art','userdetail'));
     }
     public function myAccount()
     {
+        $userdetail=Auth::User();
         session()->put('popupBoxValue', '1');
         $orders = DB::table('orders')
             ->join('products', 'orders.productId', '=', 'products.id')
@@ -71,7 +72,7 @@ class HomeController extends Controller
             ->where('orders.userId', '=', Auth::id())
             ->groupBy('users.email', 'users.contact', 'orders.OrderCode', 'users.name', 'orders.payment_status', 'orders.address', 'orders.OrderRemarks', 'orders.VerifiedRemarks', 'orders.ApproveRemarks', 'orders.RejectedRemarks')
             ->get();
-        return view('user.profileDetail.user-profile', compact('OrderList', 'art', 'total', 'orders'));
+        return view('user.profileDetail.user-profile', compact('OrderList', 'art', 'total', 'orders','userdetail'));
     }
     public function artistRegister()
     {

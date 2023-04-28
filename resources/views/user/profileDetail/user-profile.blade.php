@@ -471,9 +471,9 @@
                                     <div class="sn">
                                         {{ $userDetail->OrderCode }}
                                     </div>
-                                    <div class="description">
+                                    {{-- <div class="description">
                                         {{ $userDetail->OrderRemarks }}
-                                    </div>
+                                    </div> --}}
                                     <div class="total-cost">
                                         Rs.{{ $userDetail->total }}
                                     </div>
