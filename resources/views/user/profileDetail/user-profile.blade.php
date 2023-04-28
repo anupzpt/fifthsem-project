@@ -471,9 +471,9 @@
                                     <div class="sn">
                                         {{ $userDetail->OrderCode }}
                                     </div>
-                                    <div class="description">
+                                    {{-- <div class="description">
                                         {{ $userDetail->OrderRemarks }}
-                                    </div>
+                                    </div> --}}
                                     <div class="total-cost">
                                         Rs.{{ $userDetail->total }}
                                     </div>
@@ -667,10 +667,9 @@
                             @if (Session::has('error'))
                                 <p class="text-danger">{{ Session::get('error') }}</p>
                             @endif
-
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                    id="floatingInput" name="name" placeholder="Full Name">
+                                    id="floatingInput" name="name" value="{{$userdetail->name}}" placeholder="Full Name" readonly>
                                 <label for="floatingInput">Full Name</label>
                                 <span style="color :red;">
                                     @error('name')
@@ -681,7 +680,7 @@
 
                             <div class="form-floating mb-3">
                                 <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                    id="floatingInput" name="email" placeholder="name@example.com">
+                                    id="floatingInput" name="email" placeholder="name@example.com" value="{{$userdetail->email}}" readonly >
                                 <label for="floatingInput">Email address</label>
                                 <span style="color :red;">
                                     @error('email')
@@ -692,7 +691,7 @@
 
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control @error('contact') is-invalid @enderror"
-                                    id="floatingInput" name="contact" placeholder="Contact Number">
+                                    id="floatingInput" name="contact" placeholder="Contact Number" value="{{$userdetail->contact}}" readonly >
                                 <label for="floatingInput">Contact Number</label>
                                 <span style="color :red;">
                                     @error('contact')
@@ -703,7 +702,7 @@
 
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control @error('address') is-invalid @enderror"
-                                    id="floatingInput" name="address" placeholder="Address">
+                                    id="floatingInput" name="address" placeholder="Address" value="{{$userdetail->address}}" readonly >
                                 <label for="floatingInput">Address</label>
                                 <span style="color :red;">
                                     @error('address')

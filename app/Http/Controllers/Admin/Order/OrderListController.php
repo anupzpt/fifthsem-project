@@ -81,7 +81,10 @@ class OrderListController extends Controller
             ->select('users.*')
             ->where('orders.OrderCode', $orderCode)
             ->first();
-        $orderDetail = Order::where('orders.OrderCode', $orderCode)->get();
+            $orderDetail = Order::join('products', 'products.Id', '=', 'orders.productId')
+            ->select('products.*', 'orders.*')
+            ->where('orders.OrderCode', $orderCode)
+            ->get();
         $order = Order::where('orders.OrderCode', $orderCode)->first();
         $total = Order::where('orders.OrderCode', $orderCode)->get()->sum('price');
         return view('admin.Order.verify', compact('userDetail', 'orderDetail', 'total', 'order'));
@@ -109,7 +112,10 @@ class OrderListController extends Controller
             ->select('users.*')
             ->where('orders.OrderCode', $orderCode)
             ->first();
-        $orderDetail = Order::where('orders.OrderCode', $orderCode)->get();
+            $orderDetail = Order::join('products', 'products.Id', '=', 'orders.productId')
+            ->select('products.*', 'orders.*')
+            ->where('orders.OrderCode', $orderCode)
+            ->get();
         $order = Order::where('orders.OrderCode', $orderCode)->first();
         $total = Order::where('orders.OrderCode', $orderCode)->get()->sum('price');
         return view('admin.Order.approve', compact('userDetail', 'orderDetail', 'total', 'order'));
@@ -139,6 +145,7 @@ class OrderListController extends Controller
             ->get();
         $order = Order::where('orders.OrderCode', $orderCode)->first();
         $total = Order::where('orders.OrderCode', $orderCode)->get()->sum('price');
+
         return view('admin.Order.view', compact('orderDetail', 'total', 'order'));
     }
 }

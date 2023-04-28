@@ -53,12 +53,10 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = Category::find($id);
-        if($category->status == "A")
-        {
-            $status="I";
-        }
-        else{
-            $status="A";
+        if ($category->status == "A") {
+            $status = "I";
+        } else {
+            $status = "A";
         }
         $data = array(
             'status' => $status,
@@ -112,10 +110,14 @@ class CategoryController extends Controller
     {
         //
     }
-    public function DeleteCategory(Request $request){
-       $category=Category::find($request->get('id'));
-       DB::table('products')->where('category_id', $request->get('id'))->delete();
-       $category->delete();
-       return redirect()->route('Category.index');
+    public function DeleteCategory(Request $request)
+    {
+        $category = Category::find($request->get('id'));
+        DB::table('products')->where('category_id', $request->get('id'))->delete();
+        if ($category->isParent == 1) {
+            DB::table('categories')->where('parent_id', $request->get('id'))->delete();
+        }
+        $category->delete();
+        return redirect()->route('Category.index');
     }
 }

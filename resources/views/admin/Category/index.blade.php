@@ -56,11 +56,9 @@
                                         <button class="btn btn-primary"> <a
                                                 href="{{ route('Category.edit', [$item->categoryId]) }}"
                                                 class="text-white"><span class="fas fa-pencil "></a></button>
-                                        @if ($item->parent_id != null)
-                                            <button type="button" class="btn btn-danger deleteCategoryBtn"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                value="{{ $item->categoryId }}"><span class="fas fa-trash "></span></button>
-                                        @endif
+                                        <button type="button" class="btn btn-danger deleteCategoryBtn"
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                            value="{{ $item->categoryId }}"><span class="fas fa-trash "></span></button>
                                     </td>
                                 </tr>
                             @endforeach
