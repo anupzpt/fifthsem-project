@@ -71,7 +71,7 @@
                                         {{-- <td><img class="image-responsive" src="{{ asset('/uploads' . '/' . $item->image) }}">
                                         </td> --}}
                                         <td>
-                                            {{ $item->productId }}
+                                            {{ $item->name }}
                                             <input type="hidden" name="productId" value="{{ $item->productId }}" />
                                         </td>
                                         <td>

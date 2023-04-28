@@ -70,7 +70,7 @@
                                         <td>{{ $sn++ }}</td>
 
                                         <td>
-                                            {{ $item->productId }}
+                                            {{ $item->name }}
                                             <input type="hidden" name="productId" value="{{ $item->productId }}" />
                                         </td>
                                         <td>
