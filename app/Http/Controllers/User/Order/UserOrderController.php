@@ -88,7 +88,7 @@ class UserOrderController extends Controller
     {
         $detail = null;
         $orderDetail = Product::where('id', $id)->get();
-        $totalarray = Product::where('id', Auth::id())->get('price');
+        $totalarray = Product::where('id', $id)->get('price');
         $total = $totalarray[0]->price;
         $count = AddToCart::where('userId', Auth::id())->get()->count();
         $userAddress = Address::where('userId', Auth::id())->get();
